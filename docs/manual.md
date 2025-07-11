@@ -1,0 +1,94 @@
+# คู่มือการใช้งาน Angular Seed
+
+คู่มือนี้จะอธิบายถึงการใช้งานคอมโพเนนต์และบริการต่างๆ ที่มีอยู่ในโปรเจค Angular Seed
+
+## สารบัญ
+
+1. [การติดตั้งและเริ่มต้นใช้งาน](#การติดตั้งและเริ่มต้นใช้งาน)
+2. [CSS Components](#css-components)
+   - [Buttons](./components/buttons.md)
+   - [Cards](./components/cards.md)
+3. [UI Components](#ui-components)
+   - [Toastr Notifications](./components/toastr.md)
+   - [Alert Modals](./components/alert.md)
+4. [Services](#services)
+   - [ToastrService](./services/toastr-service.md)
+   - [AlertService](./services/alert-service.md)
+5. [Pages & Routing](#pages--routing)
+6. [Authentication](#authentication)
+7. [Best Practices](#best-practices)
+
+## การติดตั้งและเริ่มต้นใช้งาน
+
+### ความต้องการของระบบ
+- Node.js v18+
+- npm v8+
+- Angular CLI v16+
+
+### การติดตั้ง
+
+1. Clone repository นี้:
+```bash
+git clone https://github.com/superpck/angular-seed.git
+cd angular-seed
+```
+
+2. ติดตั้ง dependencies:
+```bash
+npm install
+```
+
+3. รันโปรเจคใน development mode:
+```bash
+npm start
+```
+
+4. เปิดเบราว์เซอร์และเข้าไปที่ `http://localhost:4200`
+
+## CSS Components
+
+โปรเจคนี้มี CSS Components ที่ถูกสร้างขึ้นด้วย Tailwind CSS เพื่อให้การพัฒนา UI เป็นไปอย่างรวดเร็วและสอดคล้องกัน:
+
+- [Buttons](./components/buttons.md) - ปุ่มหลากหลายรูปแบบ (primary, success, warning, error, info)
+- [Cards](./components/cards.md) - การ์ดพร้อม header, body และ footer
+
+## UI Components
+
+โปรเจคนี้มี UI Components ที่ใช้งานได้ทันที:
+
+- [Toastr Notifications](./components/toastr.md) - การแจ้งเตือนแบบชั่วคราวที่มุมบนขวาของหน้าจอ
+- [Alert Modals](./components/alert.md) - กล่องข้อความเตือนแบบ modal
+
+## Services
+
+Services ที่ช่วยในการจัดการข้อมูลและการทำงานของแอปพลิเคชัน:
+
+- [ToastrService](./services/toastr-service.md) - บริการสำหรับแสดงการแจ้งเตือนแบบ toast
+- [AlertService](./services/alert-service.md) - บริการสำหรับแสดง alert dialog
+
+## Pages & Routing
+
+โปรเจคนี้มีหน้าตัวอย่างและระบบ routing ที่พร้อมใช้งาน:
+
+- `/login` - หน้าเข้าสู่ระบบ
+- `/home` - หน้าหลักหลังจากเข้าสู่ระบบ
+- `/users` - หน้าจัดการผู้ใช้
+- `/toastr-demo` - หน้าตัวอย่างการใช้งาน Toastr
+- `/alert-demo` - หน้าตัวอย่างการใช้งาน Alert
+- `/icons-demo` - หน้าแสดงตัวอย่าง Icons และ CSS Components
+
+## Authentication
+
+โปรเจคนี้มีระบบ Authentication เบื้องต้น:
+
+- ใช้ Guard เพื่อป้องกันการเข้าถึงหน้าที่ต้องการการยืนยันตัวตน
+- มีการจัดเก็บข้อมูลผู้ใช้ที่ล็อกอินในปัจจุบัน
+
+## Best Practices
+
+แนวทางการพัฒนาที่แนะนำสำหรับโปรเจคนี้:
+
+- ใช้ Standalone Components เพื่อให้ง่ายต่อการนำไปใช้และการทดสอบ
+- ใช้ Signal API สำหรับการจัดการ State
+- ใช้ CSS Components ที่มีให้เพื่อความสอดคล้องของ UI
+- แยก Services และ Models เพื่อให้โค้ดอ่านง่ายและบำรุงรักษาได้ง่าย

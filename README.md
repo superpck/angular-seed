@@ -10,6 +10,23 @@ This is a modern Angular 20 application template with Tailwind CSS 4 integration
 - 📱 Responsive Design
 - 🎯 Modern UI Components
 - 🔧 SCSS Support
+- 🔔 Toast Notification System
+- ⚠️ Alert Modal System
+- 🎨 CSS Components (Buttons, Cards, etc.)
+
+## Documentation
+
+For detailed documentation about this project's components and services, please refer to the [Manual](./docs/manual.md).
+
+- [CSS Components](./docs/components)
+  - [Buttons](./docs/components/buttons.md)
+  - [Cards](./docs/components/cards.md)
+- [UI Components](./docs/components)
+  - [Toastr Notifications](./docs/components/toastr.md)
+  - [Alert Modals](./docs/components/alert.md)
+- [Services](./docs/services)
+  - [ToastrService](./docs/services/toastr-service.md)
+  - [AlertService](./docs/services/alert-service.md)
 
 ## Development server
 
@@ -66,3 +83,7 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Changelog
+
+See the [CHANGELOG.md](./CHANGELOG.md) file for detailed information about version updates and changes to this project.

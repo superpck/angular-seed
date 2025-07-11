@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AlertService } from '../services/alert.service';
 import { AlertType } from '../models/alert.model';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-alert',
@@ -24,6 +25,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class AlertComponent {
   private alertService = inject(AlertService);
+  private sanitizer = inject(DomSanitizer);
   
   // เข้าถึง state ของ alert
   protected readonly alert = this.alertService.alert;
@@ -34,12 +36,14 @@ export class AlertComponent {
   }
   
   // ดึงไอคอนตามประเภทของ alert
-  getIcon(type: AlertType | undefined): string {
-    if (!type) return '';
+  getIcon(type: AlertType | undefined): SafeHtml {
+    if (!type) return this.sanitizer.bypassSecurityTrustHtml('');
+    
+    let iconHtml = '';
     
     switch (type) {
       case 'success':
-        return `
+        iconHtml = `
           <div class="flex flex-col items-center">
             <div class="text-4xl mb-2">✅</div>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
@@ -47,8 +51,9 @@ export class AlertComponent {
             </svg>
           </div>
         `;
+        break;
       case 'error':
-        return `
+        iconHtml = `
           <div class="flex flex-col items-center">
             <div class="text-4xl mb-2">❌</div>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
@@ -56,8 +61,9 @@ export class AlertComponent {
             </svg>
           </div>
         `;
+        break;
       case 'warning':
-        return `
+        iconHtml = `
           <div class="flex flex-col items-center">
             <div class="text-4xl mb-2">⚠️</div>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
@@ -65,8 +71,9 @@ export class AlertComponent {
             </svg>
           </div>
         `;
+        break;
       case 'info':
-        return `
+        iconHtml = `
           <div class="flex flex-col items-center">
             <div class="text-4xl mb-2">ℹ️</div>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
@@ -74,8 +81,9 @@ export class AlertComponent {
             </svg>
           </div>
         `;
+        break;
       case 'confirm':
-        return `
+        iconHtml = `
           <div class="flex flex-col items-center">
             <div class="text-4xl mb-2">❓</div>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
@@ -83,9 +91,13 @@ export class AlertComponent {
             </svg>
           </div>
         `;
+        break;
       default:
-        return '';
+        iconHtml = '';
+        break;
     }
+    
+    return this.sanitizer.bypassSecurityTrustHtml(iconHtml);
   }
   
   // ดึงคลาสของ alert ตามประเภท

@@ -1,10 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* Import Variables First */
+@import 'app/shared/styles/variables';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Import Custom Button Styles */
+/* Import Custom Component Styles */
 @import 'app/shared/styles/button.scss';
-/* Import Custom Card Styles */
 @import 'app/shared/styles/card.scss';

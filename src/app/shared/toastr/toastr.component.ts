@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ToastrService } from '../services/toastr.service';
 import { Toast } from '../models/toast.model';
 import { Subscription } from 'rxjs';
@@ -27,6 +28,7 @@ export class ToastrComponent implements OnInit, OnDestroy {
   toasts: Toast[] = [];
   private subscription!: Subscription;
   private toastrService = inject(ToastrService);
+  private sanitizer = inject(DomSanitizer);
 
   ngOnInit(): void {
     this.subscription = this.toastrService.toasts$.subscribe(toasts => {
@@ -70,10 +72,12 @@ export class ToastrComponent implements OnInit, OnDestroy {
   }
 
   // ดึงไอคอนตามประเภทของ toast
-  getIcon(type: string): string {
+  getIcon(type: string): SafeHtml {
+    let iconHtml = '';
+    
     switch (type) {
       case 'success':
-        return `
+        iconHtml = `
           <div class="flex items-center">
             <span class="text-xl mr-1">✅</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -81,8 +85,9 @@ export class ToastrComponent implements OnInit, OnDestroy {
             </svg>
           </div>
         `;
+        break;
       case 'error':
-        return `
+        iconHtml = `
           <div class="flex items-center">
             <span class="text-xl mr-1">❌</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -90,8 +95,9 @@ export class ToastrComponent implements OnInit, OnDestroy {
             </svg>
           </div>
         `;
+        break;
       case 'warning':
-        return `
+        iconHtml = `
           <div class="flex items-center">
             <span class="text-xl mr-1">⚠️</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -99,8 +105,9 @@ export class ToastrComponent implements OnInit, OnDestroy {
             </svg>
           </div>
         `;
+        break;
       case 'info':
-        return `
+        iconHtml = `
           <div class="flex items-center">
             <span class="text-xl mr-1">ℹ️</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -108,8 +115,12 @@ export class ToastrComponent implements OnInit, OnDestroy {
             </svg>
           </div>
         `;
+        break;
       default:
-        return '';
+        iconHtml = '';
     }
+    
+    // บอก Angular ว่า HTML นี้ปลอดภัยและไม่จำเป็นต้อง sanitize
+    return this.sanitizer.bypassSecurityTrustHtml(iconHtml);
   }
 }
