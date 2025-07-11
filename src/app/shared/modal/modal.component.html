@@ -1,0 +1,45 @@
+<!-- Modal Backdrop -->
+<div 
+  *ngIf="modal().show" 
+  class="pk-modal-backdrop"
+  (click)="onBackdropClick()"
+  (keydown.escape)="close()"
+  tabindex="0"
+  [@fadeAnimation]>
+  
+  <!-- Modal Container -->
+  <div 
+    class="pk-modal" 
+    [class]="getModalSizeClass(modal().config?.size)"
+    (click)="onModalClick($event)"
+    (keydown)="$event.stopPropagation()"
+    [@slideAnimation]
+    role="dialog"
+    aria-modal="true"
+    tabindex="-1">
+    
+    <!-- Modal Header -->
+    <div class="pk-modal-header">
+      <h2 class="pk-modal-title">{{ modal().config?.title }}</h2>
+      <button 
+        *ngIf="modal().config?.closeable" 
+        class="pk-modal-close"
+        (click)="close()"
+        aria-label="Close modal">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Modal Body with Content Projection -->
+    <div class="pk-modal-body">
+      <ng-content></ng-content>
+    </div>
+    
+    <!-- Modal Footer with Content Projection -->
+    <div class="pk-modal-footer">
+      <ng-content select="[modal-footer]"></ng-content>
+    </div>
+  </div>
+</div>

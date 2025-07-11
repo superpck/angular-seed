@@ -11,9 +11,11 @@
 3. [UI Components](#ui-components)
    - [Toastr Notifications](./components/toastr.md)
    - [Alert Modals](./components/alert.md)
+   - [Modal Windows](./components/modal.md)
 4. [Services](#services)
    - [ToastrService](./services/toastr-service.md)
    - [AlertService](./services/alert-service.md)
+   - [ModalService](./services/modal-service.md)
 5. [Pages & Routing](#pages--routing)
 6. [Authentication](#authentication)
 7. [Best Practices](#best-practices)
@@ -58,6 +60,7 @@ npm start
 
 - [Toastr Notifications](./components/toastr.md) - การแจ้งเตือนแบบชั่วคราวที่มุมบนขวาของหน้าจอ
 - [Alert Modals](./components/alert.md) - กล่องข้อความเตือนแบบ modal
+- [Modal Windows](./components/modal.md) - popup window ที่ปรับแต่งได้หลากหลาย
 
 ## Services
 
@@ -65,6 +68,7 @@ Services ที่ช่วยในการจัดการข้อมู�
 
 - [ToastrService](./services/toastr-service.md) - บริการสำหรับแสดงการแจ้งเตือนแบบ toast
 - [AlertService](./services/alert-service.md) - บริการสำหรับแสดง alert dialog
+- [ModalService](./services/modal-service.md) - บริการสำหรับควบคุม modal windows
 
 ## Pages & Routing
 
@@ -75,6 +79,7 @@ Services ที่ช่วยในการจัดการข้อมู�
 - `/users` - หน้าจัดการผู้ใช้
 - `/toastr-demo` - หน้าตัวอย่างการใช้งาน Toastr
 - `/alert-demo` - หน้าตัวอย่างการใช้งาน Alert
+- `/modal-demo` - หน้าตัวอย่างการใช้งาน Modal
 - `/icons-demo` - หน้าแสดงตัวอย่าง Icons และ CSS Components
 
 ## Authentication

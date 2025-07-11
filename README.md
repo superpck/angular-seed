@@ -1,12 +1,12 @@
 # Angular 20 + Tailwind CSS 4 Seed Project
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2 and enhanced with Tailwind CSS 4.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2 and enhanced with Tailwind CSS 3.
 
 ## Overview
 This is a modern Angular 20 application template with Tailwind CSS 4 integration, featuring:
 
 - ⚡ Angular 20 with TypeScript
-- 🎨 Tailwind CSS 4 (Next Generation)
+- 🎨 Tailwind CSS 3
 - 📱 Responsive Design
 - 🎯 Modern UI Components
 - 🔧 SCSS Support

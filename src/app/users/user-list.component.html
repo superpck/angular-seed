@@ -81,21 +81,6 @@
     </div>
   </div>
   
-  <!-- Add/Edit User Form -->
-  <div *ngIf="showForm" class="pk-card mb-4">
-    <div class="pk-card-header">
-      <h2 class="pk-card-header-title">{{ editMode ? 'Edit' : 'Add' }} User</h2>
-    </div>
-    <div class="pk-card-body">
-      <app-user-form 
-        [user]="selectedUser" 
-        [editMode]="editMode"
-        (save)="saveUser($event)"
-        (cancelForm)="cancelForm()">
-      </app-user-form>
-    </div>
-  </div>
-
   <!-- Users Table -->
   <div class="pk-card mb-4">
     <div class="pk-card-header">
@@ -207,3 +192,20 @@
     </div>
   </div>
 </div>
+
+<!-- Modal สำหรับแสดงฟอร์มเพิ่ม/แก้ไขผู้ใช้ -->
+<app-modal>
+  <app-user-form 
+    [user]="selectedUser" 
+    [editMode]="editMode"
+    (save)="modalService.close({ saved: true, user: $event })"
+    (cancelForm)="modalService.close()">
+  </app-user-form>
+  
+  <!-- Modal Footer -->
+  <div modal-footer>
+    <button class="pk-button pk-button-outline pk-button-primary" (click)="modalService.close()">
+      ยกเลิก
+    </button>
+  </div>
+</app-modal>

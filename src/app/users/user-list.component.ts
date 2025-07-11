@@ -6,6 +6,8 @@ import { User, UserFilterCriteria } from '../models/user-data.model';
 import { UserFormComponent } from './user-form.component';
 import { ToastrService } from '../shared/services/toastr.service';
 import { AlertService } from '../shared/services/alert.service';
+import { ModalService } from '../shared/services/modal.service';
+import { ModalModule } from '../shared/modal/modal.module';
 
 @Component({
   selector: 'app-user-list',
@@ -14,7 +16,8 @@ import { AlertService } from '../shared/services/alert.service';
     CommonModule, 
     FormsModule,
     ReactiveFormsModule,
-    UserFormComponent
+    UserFormComponent,
+    ModalModule
   ],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss'
@@ -24,6 +27,7 @@ export class UserListComponent implements OnInit {
   private fb = inject(FormBuilder);
   private toastr = inject(ToastrService);
   private alertService = inject(AlertService);
+  protected modalService = inject(ModalService);
   
   // บรรทัดฐานคณิตศาสตร์
   protected Math = Math;
@@ -157,13 +161,47 @@ export class UserListComponent implements OnInit {
   showAddForm(): void {
     this.selectedUser = null;
     this.editMode = false;
-    this.showForm = true;
+    
+    // เปิด Modal แทนการแสดง inline form
+    this.modalService.open({
+      title: 'เพิ่มผู้ใช้ใหม่',
+      size: 'xl',
+      closeable: true,
+      closeOnBackdropClick: false,
+      data: { mode: 'add' }
+    });
+    
+    // รับเหตุการณ์เมื่อ Modal ถูกปิด
+    this.modalService.onClose.subscribe((data: unknown) => {
+      if (data && typeof data === 'object' && 'saved' in data && 'user' in data) {
+        this.saveUser(data.user as User);
+      }
+      // ยกเลิกการ subscribe เพื่อป้องกันการรั่วไหลของหน่วยความจำ
+      this.modalService.onClose.subscribe().unsubscribe();
+    });
   }
   
   editUser(user: User): void {
     this.selectedUser = { ...user }; // สร้างสำเนาเพื่อหลีกเลี่ยงการเปลี่ยนแปลงโดยตรง
     this.editMode = true;
-    this.showForm = true;
+    
+    // เปิด Modal แทนการแสดง inline form
+    this.modalService.open({
+      title: `แก้ไขข้อมูลผู้ใช้: ${user.name.first} ${user.name.last}`,
+      size: 'xl',
+      closeable: true,
+      closeOnBackdropClick: false,
+      data: { user, mode: 'edit' }
+    });
+    
+    // รับเหตุการณ์เมื่อ Modal ถูกปิด
+    this.modalService.onClose.subscribe((data: unknown) => {
+      if (data && typeof data === 'object' && 'saved' in data && 'user' in data) {
+        this.saveUser(data.user as User);
+      }
+      // ยกเลิกการ subscribe เพื่อป้องกันการรั่วไหลของหน่วยความจำ
+      this.modalService.onClose.subscribe().unsubscribe();
+    });
   }
   
   saveUser(user: User): void {

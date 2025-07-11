@@ -8,6 +8,12 @@
 ## [Unreleased]
 
 ### เพิ่มใหม่
+- ระบบ Modal Component (pk-modal)
+  - แสดง popup window ที่ปรับแต่งได้หลากหลาย
+  - รองรับหลายขนาด: sm, md, lg, xl, 2xl, full
+  - สามารถตั้งค่าการปิด: ปุ่ม X, คลิกพื้นหลัง, กดปุ่ม ESC
+  - รองรับการส่งข้อมูลระหว่าง component ผ่าน data และ onClose
+  - มีการล็อคพื้นหลัง (fixed background) เมื่อ modal เปิด
 - ระบบ CSS Components พื้นฐาน
   - `pk-button` พร้อมสี (primary, success, warning, error, info)
   - `pk-button-outline` สำหรับปุ่มแบบเส้นขอบ
@@ -15,9 +21,11 @@
   - `pk-card` พร้อม header, body และ footer
   - `pk-card-sm` และ `pk-card-lg` สำหรับการ์ดขนาดเล็กและใหญ่
   - สีหลากหลายของการ์ด (primary, success, warning, error, info)
+- หน้า Modal Demo แสดงตัวอย่างการใช้งาน modal ในขนาดต่างๆ
 - หน้า Icons Demo แสดงตัวอย่าง emoji และ CSS components
 
 ### ปรับปรุง
+- ปรับปรุงหน้า User Management ให้ใช้ Modal component สำหรับการแก้ไขและเพิ่มข้อมูล
 - ปรับปรุงหน้า User Management ให้ใช้ CSS components ใหม่
 - ปรับปรุงหน้า Alert Demo และ Toastr Demo ให้ใช้ปุ่มใหม่
 
