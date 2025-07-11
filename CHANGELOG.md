@@ -1,0 +1,58 @@
+# Changelog
+
+รายการเปลี่ยนแปลงทั้งหมดของโปรเจคนี้จะถูกบันทึกไว้ในไฟล์นี้
+
+รูปแบบของ changelog นี้อ้างอิงตาม [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+และโปรเจคนี้ยึดหลัก [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
+
+## [Unreleased]
+
+### เพิ่มใหม่
+- ระบบ CSS Components พื้นฐาน
+  - `pk-button` พร้อมสี (primary, success, warning, error, info)
+  - `pk-button-outline` สำหรับปุ่มแบบเส้นขอบ
+  - `pk-button-sm` และ `pk-button-lg` สำหรับปุ่มขนาดเล็กและใหญ่
+  - `pk-card` พร้อม header, body และ footer
+  - `pk-card-sm` และ `pk-card-lg` สำหรับการ์ดขนาดเล็กและใหญ่
+  - สีหลากหลายของการ์ด (primary, success, warning, error, info)
+- หน้า Icons Demo แสดงตัวอย่าง emoji และ CSS components
+
+### ปรับปรุง
+- ปรับปรุงหน้า User Management ให้ใช้ CSS components ใหม่
+- ปรับปรุงหน้า Alert Demo และ Toastr Demo ให้ใช้ปุ่มใหม่
+
+## [0.2.0] - 2025-07-12
+
+### เพิ่มใหม่
+- ระบบการแจ้งเตือนแบบ Toastr
+  - แสดงข้อความแจ้งเตือนชั่วคราวที่มุมบนขวาของหน้าจอ
+  - รองรับประเภท success, error, warning, info
+  - มีไอคอน emoji สำหรับแต่ละประเภท
+  - สามารถปิดได้โดยคลิกที่ X หรือรอให้หายไปเอง
+- ระบบ Alert Modal
+  - แสดงกล่องข้อความตรงกลางหน้าจอพร้อม backdrop
+  - รองรับประเภท success, error, warning, info, confirm
+  - มีไอคอน emoji สำหรับแต่ละประเภท
+  - มีปุ่มตกลงและยกเลิกสำหรับ confirm dialog
+- หน้าตัวอย่างสำหรับทดสอบ Toastr และ Alert
+
+### ปรับปรุง
+- ปรับปรุง Navigation ให้รองรับหน้าตัวอย่างใหม่
+
+## [0.1.0] - 2025-07-01
+
+### เพิ่มใหม่
+- โครงสร้างพื้นฐานของโปรเจค Angular
+- หน้า Login
+- หน้า Home
+- หน้า User Management
+  - ฟังก์ชันการค้นหา, เพิ่ม, แก้ไข, ลบข้อมูลผู้ใช้
+  - การจัดการแสดงผลแบบแบ่งหน้า
+- ระบบ Authentication
+  - การตรวจสอบสิทธิ์การเข้าถึงหน้าต่างๆ
+  - การบันทึกข้อมูลผู้ใช้ที่ล็อกอินในปัจจุบัน
+
+### ปรับปรุง
+- ใช้ Tailwind CSS สำหรับการจัดการ UI
+- ใช้ Standalone Components ของ Angular
+- ใช้ Signal API สำหรับการจัดการ State
