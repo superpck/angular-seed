@@ -27,6 +27,11 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'icons-demo',
+    loadComponent: () => import('./demo/icons-demo.component').then(m => m.IconsDemoComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: '',
     redirectTo: 'users',
     pathMatch: 'full'

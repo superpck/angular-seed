@@ -1,0 +1,122 @@
+/* Card Styles */
+@tailwind components;
+
+@layer components {
+  /* Base Card */
+  .pk-card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden border border-gray-200;
+  }
+
+  /* Card Header */
+  .pk-card-header {
+    @apply px-6 py-4 bg-gray-50 border-b border-gray-200;
+  }
+  
+  .pk-card-header-title {
+    @apply text-xl font-semibold text-gray-800;
+  }
+  
+  /* Card Body */
+  .pk-card-body {
+    @apply p-6;
+  }
+  
+  /* Card Footer */
+  .pk-card-footer {
+    @apply px-6 py-4 bg-gray-50 border-t border-gray-200;
+  }
+  
+  /* Card Variations */
+  .pk-card-primary {
+    @apply border-blue-500;
+  }
+  
+  .pk-card-primary .pk-card-header {
+    @apply bg-blue-500 text-white border-blue-600;
+  }
+  
+  .pk-card-primary .pk-card-footer {
+    @apply bg-blue-50;
+  }
+  
+  .pk-card-success {
+    @apply border-green-500;
+  }
+  
+  .pk-card-success .pk-card-header {
+    @apply bg-green-500 text-white border-green-600;
+  }
+  
+  .pk-card-success .pk-card-footer {
+    @apply bg-green-50;
+  }
+  
+  .pk-card-warning {
+    @apply border-yellow-500;
+  }
+  
+  .pk-card-warning .pk-card-header {
+    @apply bg-yellow-500 text-white border-yellow-600;
+  }
+  
+  .pk-card-warning .pk-card-footer {
+    @apply bg-yellow-50;
+  }
+  
+  .pk-card-error {
+    @apply border-red-500;
+  }
+  
+  .pk-card-error .pk-card-header {
+    @apply bg-red-500 text-white border-red-600;
+  }
+  
+  .pk-card-error .pk-card-footer {
+    @apply bg-red-50;
+  }
+  
+  .pk-card-info {
+    @apply border-blue-400;
+  }
+  
+  .pk-card-info .pk-card-header {
+    @apply bg-blue-400 text-white border-blue-500;
+  }
+  
+  .pk-card-info .pk-card-footer {
+    @apply bg-blue-50;
+  }
+  
+  /* Card Sizes */
+  .pk-card-sm {
+    @apply text-sm;
+  }
+  
+  .pk-card-sm .pk-card-header {
+    @apply py-2 px-4;
+  }
+  
+  .pk-card-sm .pk-card-body {
+    @apply p-4;
+  }
+  
+  .pk-card-sm .pk-card-footer {
+    @apply py-2 px-4;
+  }
+  
+  .pk-card-lg {
+    @apply text-lg;
+  }
+  
+  .pk-card-lg .pk-card-header {
+    @apply py-5 px-7;
+  }
+  
+  .pk-card-lg .pk-card-body {
+    @apply p-7;
+  }
+  
+  .pk-card-lg .pk-card-footer {
+    @apply py-5 px-7;
+  }
+}

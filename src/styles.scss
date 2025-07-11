@@ -3,3 +3,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Import Custom Button Styles */
+@import 'app/shared/styles/button.scss';

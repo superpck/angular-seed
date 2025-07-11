@@ -15,25 +15,25 @@ import { ToastrService } from '../shared/services/toastr.service';
         <h3 class="text-xl font-semibold mb-4">Alert Demos</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <button 
-            class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+            class="pk-button pk-button-success"
             (click)="showSuccessAlert()">
             Success Alert
           </button>
           
           <button 
-            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+            class="pk-button pk-button-error"
             (click)="showErrorAlert()">
             Error Alert
           </button>
           
           <button 
-            class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded"
+            class="pk-button pk-button-warning"
             (click)="showWarningAlert()">
             Warning Alert
           </button>
           
           <button 
-            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+            class="pk-button pk-button-info"
             (click)="showInfoAlert()">
             Info Alert
           </button>
@@ -41,7 +41,7 @@ import { ToastrService } from '../shared/services/toastr.service';
         
         <div class="mt-4">
           <button 
-            class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded"
+            class="pk-button pk-button-primary"
             (click)="showConfirmAlert()">
             Confirm Dialog
           </button>
@@ -52,25 +52,25 @@ import { ToastrService } from '../shared/services/toastr.service';
         <h3 class="text-xl font-semibold mb-4">Toastr Demos</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <button 
-            class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+            class="pk-button pk-button-success"
             (click)="showSuccessToast()">
             Success Toast
           </button>
           
           <button 
-            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+            class="pk-button pk-button-error"
             (click)="showErrorToast()">
             Error Toast
           </button>
           
           <button 
-            class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded"
+            class="pk-button pk-button-warning"
             (click)="showWarningToast()">
             Warning Toast
           </button>
           
           <button 
-            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+            class="pk-button pk-button-info"
             (click)="showInfoToast()">
             Info Toast
           </button>

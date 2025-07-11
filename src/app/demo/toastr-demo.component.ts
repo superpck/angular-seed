@@ -12,25 +12,25 @@ import { ToastrService } from '../shared/services/toastr.service';
       
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <button 
-          class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+          class="pk-button pk-button-success"
           (click)="showSuccess()">
           Success Toast
         </button>
         
         <button 
-          class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+          class="pk-button pk-button-error"
           (click)="showError()">
           Error Toast
         </button>
         
         <button 
-          class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded"
+          class="pk-button pk-button-warning"
           (click)="showWarning()">
           Warning Toast
         </button>
         
         <button 
-          class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+          class="pk-button pk-button-info"
           (click)="showInfo()">
           Info Toast
         </button>
@@ -38,7 +38,7 @@ import { ToastrService } from '../shared/services/toastr.service';
       
       <div class="mt-8">
         <button 
-          class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded"
+          class="pk-button pk-button-primary"
           (click)="showMultiple()">
           Show Multiple Toasts
         </button>
