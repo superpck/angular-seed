@@ -1,0 +1,74 @@
+<!-- Alert container -->
+<div 
+  *ngIf="alert().show" 
+  class="alert-overlay"
+  (click)="close()"
+  (keydown.escape)="close()"
+  tabindex="0"
+  [@fadeAnimation]>
+  
+  <!-- Alert dialog -->
+  <div 
+    class="alert-container" 
+    [class]="getAlertClass(alert().config?.type)"
+    (click)="$event.stopPropagation()"
+    (keydown)="$event.stopPropagation()"
+    role="alertdialog"
+    aria-modal="true"
+    tabindex="-1">
+    
+    <!-- Alert icon -->
+    <div class="alert-icon" [innerHTML]="getIcon(alert().config?.type)"></div>
+    
+    <!-- Alert content -->
+    <div class="alert-content">
+      <h2 class="alert-title">{{ alert().config?.title }}</h2>
+      <p class="alert-message">{{ alert().config?.message }}</p>
+      
+      <!-- Alert actions -->
+      <div class="alert-actions">
+        <!-- Confirm dialog มีปุ่ม Confirm และ Cancel -->
+        <ng-container *ngIf="isConfirmDialog(alert().config?.type); else closeButton">
+          <button 
+            class="btn-cancel" 
+            (click)="cancel()"
+            (keydown.enter)="cancel()"
+            (keydown.space)="cancel()">
+            {{ alert().config?.cancelText }}
+          </button>
+          <button 
+            class="btn-confirm" 
+            (click)="confirm()"
+            (keydown.enter)="confirm()"
+            (keydown.space)="confirm()">
+            {{ alert().config?.confirmText }}
+          </button>
+        </ng-container>
+        
+        <!-- Alert อื่นๆ มีแค่ปุ่ม Close -->
+        <ng-template #closeButton>
+          <button 
+            class="btn-close" 
+            (click)="close()"
+            (keydown.enter)="close()"
+            (keydown.space)="close()">
+            {{ alert().config?.confirmText }}
+          </button>
+        </ng-template>
+      </div>
+    </div>
+    
+    <!-- Close button (X) for non-confirm alerts -->
+    <button 
+      *ngIf="!isConfirmDialog(alert().config?.type)"
+      class="btn-close-x" 
+      aria-label="Close alert"
+      (click)="close()"
+      (keydown.enter)="close()"
+      (keydown.space)="close()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+</div>

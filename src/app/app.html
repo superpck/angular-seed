@@ -1,91 +1,15 @@
-<!-- Angular 20 + Tailwind CSS 4 App -->
-<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-  <!-- Header -->
-  <header class="bg-white shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-6">
-        <h1 class="text-3xl font-bold text-gray-900">Angular 20 + Tailwind 3</h1>
-        <nav class="hidden md:flex space-x-8">
-          <a href="#" class="text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
-          <a href="#" class="text-gray-600 hover:text-indigo-600 transition-colors">About</a>
-          <a href="#" class="text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <!-- Hero Section -->
-    <div class="text-center mb-16">
-      <h2 class="text-5xl font-extrabold text-gray-900 mb-4">
-        Welcome to 
-        <span class="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-          Angular 20
-        </span>
-      </h2>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-        Built with the latest Angular 20 and powered by Tailwind CSS 4 for lightning-fast development
-      </p>
-    </div>
-
-    <!-- Feature Cards -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-      <!-- Card 1 -->
-      <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-shadow">
-        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-          <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">Fast Performance</h3>
-        <p class="text-gray-600">Optimized for speed with Angular 20's latest performance improvements</p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-shadow">
-        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-          <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">Modern Design</h3>
-        <p class="text-gray-600">Beautiful UI components with Tailwind CSS 4's utility-first approach</p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-shadow">
-        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-          <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">Developer Ready</h3>
-        <p class="text-gray-600">Ready-to-use setup with TypeScript, SCSS, and modern tooling</p>
-      </div>
-    </div>
-
-    <!-- CTA Section -->
-    <div class="bg-white rounded-2xl shadow-xl p-8 text-center">
-      <h3 class="text-2xl font-bold text-gray-900 mb-4">Get Started Building</h3>
-      <p class="text-gray-600 mb-6">Start creating amazing applications with this modern stack</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <button class="bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
-          Start Coding
-        </button>
-        <button class="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-          View Docs
-        </button>
-      </div>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p>&copy; 2025 Angular 20 + Tailwind CSS 4. Built with ❤️</p>
-    </div>
-  </footer>
+<div class="app-container">
+  <!-- แสดง NavComponent ยกเว้นในหน้า Login -->
+  <app-nav *ngIf="!isLoginPage"></app-nav>
+  
+  <!-- เนื้อหาหลัก -->
+  <div class="content" [ngClass]="{'with-nav': !isLoginPage}">
+    <router-outlet></router-outlet>
+  </div>
+  
+  <!-- Toastr component สำหรับแสดงการแจ้งเตือน -->
+  <app-toastr></app-toastr>
+  
+  <!-- Alert component สำหรับแสดงการแจ้งเตือนแบบ Modal -->
+  <app-alert></app-alert>
 </div>
-
-<router-outlet />

@@ -1,0 +1,103 @@
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ToastrService } from '../services/toastr.service';
+import { Toast } from '../models/toast.model';
+import { Subscription } from 'rxjs';
+import { trigger, transition, style, animate } from '@angular/animations';
+
+@Component({
+  selector: 'app-toastr',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './toastr.component.html',
+  styleUrls: ['./toastr.component.scss'],
+  animations: [
+    trigger('fadeAnimation', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-20px)' }),
+        animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+      ]),
+      transition(':leave', [
+        animate('200ms ease-in', style({ opacity: 0, transform: 'translateY(-20px)' }))
+      ])
+    ])
+  ]
+})
+export class ToastrComponent implements OnInit, OnDestroy {
+  toasts: Toast[] = [];
+  private subscription!: Subscription;
+  private toastrService = inject(ToastrService);
+
+  ngOnInit(): void {
+    this.subscription = this.toastrService.toasts$.subscribe(toasts => {
+      this.toasts = toasts;
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  // ปิด toast ด้วยตนเอง
+  removeToast(id: string): void {
+    this.toastrService.remove(id);
+  }
+
+  // ดึงคลาสของ toast ตามประเภท
+  getToastClasses(toast: Toast): string {
+    let classes = 'toast-item';
+    
+    switch (toast.type) {
+      case 'success':
+        classes += ' bg-green-500';
+        break;
+      case 'error':
+        classes += ' bg-red-500';
+        break;
+      case 'warning':
+        classes += ' bg-yellow-500';
+        break;
+      case 'info':
+        classes += ' bg-blue-500';
+        break;
+      default:
+        classes += ' bg-gray-500';
+    }
+    
+    return classes;
+  }
+
+  // ดึงไอคอนตามประเภทของ toast
+  getIcon(type: string): string {
+    switch (type) {
+      case 'success':
+        return `
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        `;
+      case 'error':
+        return `
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        `;
+      case 'warning':
+        return `
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        `;
+      case 'info':
+        return `
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        `;
+      default:
+        return '';
+    }
+  }
+}

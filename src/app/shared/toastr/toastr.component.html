@@ -1,0 +1,31 @@
+<div class="toast-container">
+  @for (toast of toasts; track toast.id) {
+    <div 
+      [class]="getToastClasses(toast)" 
+      [@fadeAnimation]="'visible'"
+      role="alert"
+      aria-live="assertive">
+      <div class="relative p-3">
+        <button 
+          class="toast-close-btn absolute top-2 right-2" 
+          aria-label="Close notification"
+          (click)="removeToast(toast.id || '')"
+          (keydown.enter)="removeToast(toast.id || '')"
+          (keydown.space)="removeToast(toast.id || '')">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <div class="flex items-start pr-6">
+          <div class="toast-icon" [innerHTML]="getIcon(toast.type)"></div>
+          <div class="toast-content">
+            @if (toast.title) {
+              <div class="toast-title">{{toast.title}}</div>
+            }
+            <div class="toast-message">{{toast.message}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

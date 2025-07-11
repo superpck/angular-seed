@@ -1,0 +1,112 @@
+<div class="nav-container">
+  <!-- Top Navigation (Fixed) -->
+  <nav class="top-nav">
+    <div class="container mx-auto flex items-center justify-between px-4 py-3">
+      <!-- Logo และ Toggle Button -->
+      <div class="flex items-center">
+        <button (click)="toggleSideNav()" class="mr-4 p-2 rounded hover:bg-blue-600 lg:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <a routerLink="/home" class="text-xl font-bold text-white">Angular for starter</a>
+      </div>
+
+      <!-- ขวา: ข้อมูลผู้ใช้และปุ่ม Logout -->
+      <div class="flex items-center">
+        <div class="hidden md:block mr-4 text-white">
+          <span>{{ currentUser?.name }}</span>
+        </div>
+        <button (click)="logout()" class="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded">
+          Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Left Side Navigation -->
+  <div class="side-nav-container">
+    <div class="side-nav" [class.open]="sideNavOpen">
+      <div class="side-nav-header flex justify-between items-center lg:hidden">
+        <span class="text-lg font-semibold">Menu</span>
+        <button (click)="toggleSideNav()" class="p-2 rounded hover:bg-gray-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      
+      <!-- ข้อมูลผู้ใช้ (สำหรับ Mobile) -->
+      <div class="side-nav-user lg:hidden">
+        <div class="bg-blue-50 rounded-lg p-4 mb-4">
+          <div class="font-medium">{{ currentUser?.name }}</div>
+          <div class="text-sm text-gray-600">{{ currentUser?.role }}</div>
+          <div class="text-sm text-gray-500">{{ currentUser?.email }}</div>
+        </div>
+      </div>
+
+      <!-- Menu Items -->
+      <ul class="menu">
+        <li>
+          <a routerLink="/home" routerLinkActive="active" class="menu-item">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            Home
+          </a>
+        </li>
+        <li>
+          <a routerLink="/users" routerLinkActive="active" class="menu-item">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            User Management
+          </a>
+        </li>
+        <li>
+          <a routerLink="/toastr-demo" routerLinkActive="active" class="menu-item">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Toastr Demo
+          </a>
+        </li>
+        <li>
+          <a routerLink="/alert-demo" routerLinkActive="active" class="menu-item">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            Alert Demo
+          </a>
+        </li>
+        <li>
+          <a routerLink="#" class="menu-item">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            Reports
+          </a>
+        </li>
+        <li>
+          <a routerLink="#" class="menu-item">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            Settings
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Overlay for mobile -->
+  <div 
+    *ngIf="sideNavOpen" 
+    class="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"
+    role="button" 
+    tabindex="0" 
+    (click)="toggleSideNav()"
+    (keydown.escape)="toggleSideNav()">
+  </div>
+</div>
