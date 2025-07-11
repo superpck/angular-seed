@@ -37,6 +37,11 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'grid-demo',
+    loadComponent: () => import('./demo/grid-demo.component').then(m => m.GridDemoComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: '',
     redirectTo: 'users',
     pathMatch: 'full'

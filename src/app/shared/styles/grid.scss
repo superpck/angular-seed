@@ -1,0 +1,144 @@
+/* PK Grid System */
+/* CSS Grid based responsive layout system */
+
+.pk-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Base columns (mobile first - all sizes) */
+@for $i from 1 through 12 {
+  .pk-col-#{$i} {
+    grid-column: span #{$i};
+  }
+}
+
+/* Small breakpoint (sm) - 640px and up */
+@media (min-width: 640px) {
+  @for $i from 1 through 12 {
+    .pk-col-sm-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+}
+
+/* Medium breakpoint (md) - 768px and up */
+@media (min-width: 768px) {
+  @for $i from 1 through 12 {
+    .pk-col-md-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+}
+
+/* Large breakpoint (lg) - 1024px and up */
+@media (min-width: 1024px) {
+  @for $i from 1 through 12 {
+    .pk-col-lg-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+}
+
+/* Extra Large breakpoint (xl) - 1280px and up */
+@media (min-width: 1280px) {
+  @for $i from 1 through 12 {
+    .pk-col-xl-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+}
+
+/* Additional utility classes for grid */
+.pk-row-gap-0 { gap: 0; }
+.pk-row-gap-1 { gap: 0.25rem; }
+.pk-row-gap-2 { gap: 0.5rem; }
+.pk-row-gap-3 { gap: 0.75rem; }
+.pk-row-gap-4 { gap: 1rem; }
+.pk-row-gap-5 { gap: 1.25rem; }
+.pk-row-gap-6 { gap: 1.5rem; }
+.pk-row-gap-8 { gap: 2rem; }
+
+/* Column alignment utilities */
+.pk-col-start-1 { grid-column-start: 1; }
+.pk-col-start-2 { grid-column-start: 2; }
+.pk-col-start-3 { grid-column-start: 3; }
+.pk-col-start-4 { grid-column-start: 4; }
+.pk-col-start-5 { grid-column-start: 5; }
+.pk-col-start-6 { grid-column-start: 6; }
+.pk-col-start-7 { grid-column-start: 7; }
+.pk-col-start-8 { grid-column-start: 8; }
+.pk-col-start-9 { grid-column-start: 9; }
+.pk-col-start-10 { grid-column-start: 10; }
+.pk-col-start-11 { grid-column-start: 11; }
+.pk-col-start-12 { grid-column-start: 12; }
+
+.pk-col-end-1 { grid-column-end: 1; }
+.pk-col-end-2 { grid-column-end: 2; }
+.pk-col-end-3 { grid-column-end: 3; }
+.pk-col-end-4 { grid-column-end: 4; }
+.pk-col-end-5 { grid-column-end: 5; }
+.pk-col-end-6 { grid-column-end: 6; }
+.pk-col-end-7 { grid-column-end: 7; }
+.pk-col-end-8 { grid-column-end: 8; }
+.pk-col-end-9 { grid-column-end: 9; }
+.pk-col-end-10 { grid-column-end: 10; }
+.pk-col-end-11 { grid-column-end: 11; }
+.pk-col-end-12 { grid-column-end: 12; }
+.pk-col-end-13 { grid-column-end: 13; }
+
+/* Row utilities */
+.pk-row-auto { grid-template-rows: auto; }
+.pk-row-1 { grid-template-rows: repeat(1, minmax(0, 1fr)); }
+.pk-row-2 { grid-template-rows: repeat(2, minmax(0, 1fr)); }
+.pk-row-3 { grid-template-rows: repeat(3, minmax(0, 1fr)); }
+.pk-row-4 { grid-template-rows: repeat(4, minmax(0, 1fr)); }
+.pk-row-5 { grid-template-rows: repeat(5, minmax(0, 1fr)); }
+.pk-row-6 { grid-template-rows: repeat(6, minmax(0, 1fr)); }
+
+/* Responsive row gaps */
+@media (min-width: 640px) {
+  .pk-row-gap-sm-0 { gap: 0; }
+  .pk-row-gap-sm-1 { gap: 0.25rem; }
+  .pk-row-gap-sm-2 { gap: 0.5rem; }
+  .pk-row-gap-sm-3 { gap: 0.75rem; }
+  .pk-row-gap-sm-4 { gap: 1rem; }
+  .pk-row-gap-sm-5 { gap: 1.25rem; }
+  .pk-row-gap-sm-6 { gap: 1.5rem; }
+  .pk-row-gap-sm-8 { gap: 2rem; }
+}
+
+@media (min-width: 768px) {
+  .pk-row-gap-md-0 { gap: 0; }
+  .pk-row-gap-md-1 { gap: 0.25rem; }
+  .pk-row-gap-md-2 { gap: 0.5rem; }
+  .pk-row-gap-md-3 { gap: 0.75rem; }
+  .pk-row-gap-md-4 { gap: 1rem; }
+  .pk-row-gap-md-5 { gap: 1.25rem; }
+  .pk-row-gap-md-6 { gap: 1.5rem; }
+  .pk-row-gap-md-8 { gap: 2rem; }
+}
+
+@media (min-width: 1024px) {
+  .pk-row-gap-lg-0 { gap: 0; }
+  .pk-row-gap-lg-1 { gap: 0.25rem; }
+  .pk-row-gap-lg-2 { gap: 0.5rem; }
+  .pk-row-gap-lg-3 { gap: 0.75rem; }
+  .pk-row-gap-lg-4 { gap: 1rem; }
+  .pk-row-gap-lg-5 { gap: 1.25rem; }
+  .pk-row-gap-lg-6 { gap: 1.5rem; }
+  .pk-row-gap-lg-8 { gap: 2rem; }
+}
+
+@media (min-width: 1280px) {
+  .pk-row-gap-xl-0 { gap: 0; }
+  .pk-row-gap-xl-1 { gap: 0.25rem; }
+  .pk-row-gap-xl-2 { gap: 0.5rem; }
+  .pk-row-gap-xl-3 { gap: 0.75rem; }
+  .pk-row-gap-xl-4 { gap: 1rem; }
+  .pk-row-gap-xl-5 { gap: 1.25rem; }
+  .pk-row-gap-xl-6 { gap: 1.5rem; }
+  .pk-row-gap-xl-8 { gap: 2rem; }
+}

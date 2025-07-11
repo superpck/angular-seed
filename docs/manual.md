@@ -5,20 +5,22 @@
 ## สารบัญ
 
 1. [การติดตั้งและเริ่มต้นใช้งาน](#การติดตั้งและเริ่มต้นใช้งาน)
-2. [CSS Components](#css-components)
+2. [Layout System](#layout-system)
+   - [PK Grid System](./components/grid.md)
+3. [CSS Components](#css-components)
    - [Buttons](./components/buttons.md)
    - [Cards](./components/cards.md)
-3. [UI Components](#ui-components)
+4. [UI Components](#ui-components)
    - [Toastr Notifications](./components/toastr.md)
    - [Alert Modals](./components/alert.md)
    - [Modal Windows](./components/modal.md)
-4. [Services](#services)
+5. [Services](#services)
    - [ToastrService](./services/toastr-service.md)
    - [AlertService](./services/alert-service.md)
    - [ModalService](./services/modal-service.md)
-5. [Pages & Routing](#pages--routing)
-6. [Authentication](#authentication)
-7. [Best Practices](#best-practices)
+6. [Pages & Routing](#pages--routing)
+7. [Authentication](#authentication)
+8. [Best Practices](#best-practices)
 
 ## การติดตั้งและเริ่มต้นใช้งาน
 
@@ -46,6 +48,12 @@ npm start
 ```
 
 4. เปิดเบราว์เซอร์และเข้าไปที่ `http://localhost:4200`
+
+## Layout System
+
+โปรเจคนี้มี Layout System ที่ช่วยในการจัดเลย์เอาต์:
+
+- [PK Grid System](./components/grid.md) - ระบบ grid แบบ responsive ที่ใช้ CSS Grid เป็นฐาน
 
 ## CSS Components
 
@@ -80,6 +88,7 @@ Services ที่ช่วยในการจัดการข้อมู�
 - `/toastr-demo` - หน้าตัวอย่างการใช้งาน Toastr
 - `/alert-demo` - หน้าตัวอย่างการใช้งาน Alert
 - `/modal-demo` - หน้าตัวอย่างการใช้งาน Modal
+- `/grid-demo` - หน้าตัวอย่างการใช้งาน Grid System
 - `/icons-demo` - หน้าแสดงตัวอย่าง Icons และ CSS Components
 
 ## Authentication
