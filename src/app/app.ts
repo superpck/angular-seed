@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import { filter } from 'rxjs/operators';
@@ -29,23 +29,31 @@ interface ModalData {
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
+export class App implements OnInit {
   protected title = 'angular-seed';
   protected isLoginPage = false;
   private router = inject(Router);
   protected modalService = inject(ModalService);
   private toastr = inject(ToastrService);
   
+  ngOnInit(): void {
+    // ตั้งค่าเริ่มต้น
+    this.checkLoginPage();
+  }
+  
   constructor() {
     // ตรวจสอบว่าปัจจุบันอยู่ที่หน้า login หรือไม่
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      this.isLoginPage = event.url === '/login';
+      this.checkLoginPage(event.url);
     });
-    
-    // ตั้งค่าเริ่มต้น
-    this.isLoginPage = this.router.url === '/login';
+  }
+  
+  private checkLoginPage(url?: string): void {
+    const currentUrl = url || this.router.url;
+    this.isLoginPage = currentUrl === '/login' || currentUrl.startsWith('/login');
+    console.log('Current URL:', currentUrl, 'isLoginPage:', this.isLoginPage);
   }
   
   /**
