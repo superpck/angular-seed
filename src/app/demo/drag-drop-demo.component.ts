@@ -98,28 +98,23 @@ export class DragDropDemoComponent implements OnInit {
 
   // Handle changes within same container
   onToDoChange(event: DragDropChangeEvent): void {
-    console.log('To Do items changed:', event);
     this.toDoItems = [...event.items];
   }
 
   onInProgressChange(event: DragDropChangeEvent): void {
-    console.log('In Progress items changed:', event);
     this.inProgressItems = [...event.items];
   }
 
   onDoneChange(event: DragDropChangeEvent): void {
-    console.log('Done items changed:', event);
     this.doneItems = [...event.items];
   }
 
   onBasicItemsChange(event: DragDropChangeEvent): void {
-    console.log('Basic items changed:', event);
     this.basicItems = [...event.items];
   }
 
   // Handle transfers between containers (cross-window)
   onToDoTransfer(event: DragDropTransferEvent): void {
-    console.log('Item transferred from To Do:', event);
     // Remove from To Do
     this.toDoItems = this.toDoItems.filter(item => item.id !== event.item.id);
     // Add to target
@@ -127,7 +122,6 @@ export class DragDropDemoComponent implements OnInit {
   }
 
   onInProgressTransfer(event: DragDropTransferEvent): void {
-    console.log('Item transferred from In Progress:', event);
     // Remove from In Progress
     this.inProgressItems = this.inProgressItems.filter(item => item.id !== event.item.id);
     // Add to target
@@ -135,7 +129,6 @@ export class DragDropDemoComponent implements OnInit {
   }
 
   onDoneTransfer(event: DragDropTransferEvent): void {
-    console.log('Item transferred from Done:', event);
     // Remove from Done
     this.doneItems = this.doneItems.filter(item => item.id !== event.item.id);
     // Add to target

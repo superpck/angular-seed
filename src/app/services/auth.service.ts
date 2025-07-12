@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { LoginRequest, LoginResponse, User } from '../models/user.model';
+import { LoginResponse, User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +31,7 @@ export class AuthService {
     }
   }
 
-  login(loginRequest: LoginRequest): Observable<LoginResponse> {
-    console.log(loginRequest);
+  login(_loginRequest: import('../models/user.model').LoginRequest): Observable<LoginResponse> {
     // จะถูก override โดย FakeAuthService
     return throwError(() => new Error('Method not implemented'));
   }

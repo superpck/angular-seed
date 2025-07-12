@@ -54,9 +54,6 @@ export class ModalExampleComponent {
   
   constructor() {
     // Subscribe to modal close events
-    this.modalService.onClose.subscribe(data => {
-      console.log('Modal closed with data:', data);
-    });
   }
   
   openModal(size: string) {

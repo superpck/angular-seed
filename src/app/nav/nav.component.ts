@@ -70,47 +70,47 @@ export class NavComponent {
       route: '/users'
     },
     {
-      label: 'Demo',
+      label: 'Components',
       icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
       expanded: false,
       children: [
         {
-          label: 'Toastr Demo',
+          label: 'Toastr',
           icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
           route: '/toastr-demo'
         },
         {
-          label: 'Alert Demo',
+          label: 'Alert',
           icon: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z',
           route: '/alert-demo'
         },
         {
-          label: 'Icons Demo',
+          label: 'Icons',
           icon: 'M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
           route: '/icons-demo'
         },
         {
-          label: 'Modal Demo',
+          label: 'Modal',
           icon: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z',
           route: '/modal-demo'
         },
         {
-          label: 'Grid Demo',
+          label: 'Grid',
           icon: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z',
           route: '/grid-demo'
         },
         {
-          label: 'Drag & Drop Demo',
+          label: 'Drag & Drop',
           icon: 'M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4',
           route: '/drag-drop-demo'
         },
         {
-          label: 'Badges Demo',
+          label: 'Badges',
           icon: 'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z',
           route: '/badges-demo'
         },
         {
-          label: 'Breadcrumbs Demo',
+          label: 'Breadcrumbs',
           icon: 'M9 5l7 7-7 7',
           route: '/breadcrumbs-demo'
         }

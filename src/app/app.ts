@@ -54,7 +54,6 @@ export class App implements OnInit {
   private checkLoginPage(url?: string): void {
     const currentUrl = url || this.router.url;
     this.isLoginPage = currentUrl === '/login' || currentUrl.startsWith('/login');
-    console.log('Current URL:', currentUrl, 'isLoginPage:', this.isLoginPage);
   }
   
   /**
