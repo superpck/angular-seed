@@ -5,7 +5,7 @@ Modern Angular application template with Tailwind CSS and pre-built UI component
 ## Features
 
 - ⚡ **Angular 20** with TypeScript & Standalone Components
-- 🎨 **Tailwind CSS 3** for styling
+- 🎨 [**Tailwind CSS 3**](https://tailwindcss.com/) for styling
 - 📱 **Responsive Design** with PK Grid System
 - 🏷️ **PK Badges System** with icon support
 - 🔔 **Notification System** (Toastr & Alert Modals)
@@ -23,15 +23,6 @@ Modern Angular application template with Tailwind CSS and pre-built UI component
 - 🦶 **Footer Component** with modern styling Seed Project version 20.1.0 - 2025.07.12-4
 
 Modern Angular application template with Tailwind CSS and pre-built UI components.
-
-## Features
-
-- ⚡ **Angular 20** with TypeScript & Standalone Components
-- 🎨 **Tailwind CSS 3** for styling
-- 📱 **Responsive Design** with PK Grid System
-- 🔔 **Notification System** (Toastr & Alert Modals)
-- � **Pre-built Components** (Buttons, Cards, Modals)
-- 🔐 **Authentication** with route guards
 
 ## Quick Start
 
@@ -89,3 +80,15 @@ src/
 
 - **Username:** `admin` or `user`
 - **Password:** `password`
+
+## Author & Repository
+
+- **Repository:** [https://github.com/superpck/angular-seed](https://github.com/superpck/angular-seed)
+- **Author:** [superpck](https://github.com/superpck)
+- **License:** MIT
+
+## Support
+
+หากพบปัญหาหรือมีข้อเสนอแนะ สามารถสร้าง issue ได้ที่:
+- 🐛 **[Issues](https://github.com/superpck/angular-seed/issues)**
+- 💡 **[Feature Requests](https://github.com/superpck/angular-seed/issues/new?template=feature_request.md)**
