@@ -15,6 +15,8 @@ Modern Angular application template with Tailwind CSS and pre-built UI component
 - 🚀 **Drag & Drop System** with cross-window support
 - 🔐 **Authentication** with route guards
 - 🦶 **Footer Component** with modern styling
+- 📦 **Type-safe APIs** with TypeScript interfaces
+- 🔄 **State Management** with Angular Signals
 
 Modern Angular application template with Tailwind CSS and pre-built UI components.
 
@@ -22,6 +24,7 @@ Modern Angular application template with Tailwind CSS and pre-built UI component
 
 - **Author**: [SuprPCK](https://github.com/superpck)
 - **Repository**: [https://github.com/superpck/angular-seed](https://github.com/superpck/angular-seed)
+- **Assisted by**: [GitHub Copilot](https://github.com/features/copilot)
 
 ## Quick Start
 
@@ -50,10 +53,14 @@ src/
 │   │   ├── components/  # UI components (Modal, Alert, etc.)
 │   │   ├── services/    # Services (Auth, Toastr, etc.)
 │   │   └── styles/      # Global styles & grid system
-│   ├── demo/           # Component demonstrations
-│   └── pages/          # Application pages
-├── docs/               # Documentation
-└── assets/            # Static assets
+│   ├── demo/            # Component demonstrations
+│   ├── pages/           # Application pages
+│   ├── layout/          # Layout components (Nav, Footer, etc.)
+│   └── models/          # TypeScript interfaces & models
+├── docs/                # Documentation
+└── assets/              # Static assets
+    ├── images/          # Images and icons
+    └── data/            # JSON mock data
 ```
 
 ## Documentation
@@ -84,10 +91,20 @@ src/
 
 - **Repository:** [https://github.com/superpck/angular-seed](https://github.com/superpck/angular-seed)
 - **Author:** [superpck](https://github.com/superpck)
-- **License:** MIT
+- **License:** [MIT](./LICENSE)
+- **Assisted by:** [GitHub Copilot](https://github.com/features/copilot)
 
 ## Support
 
 หากพบปัญหาหรือมีข้อเสนอแนะ สามารถสร้าง issue ได้ที่:
 - 🐛 **[Issues](https://github.com/superpck/angular-seed/issues)**
 - 💡 **[Feature Requests](https://github.com/superpck/angular-seed/issues/new?template=feature_request.md)**
+
+## Contribute
+
+ยินดีต้อนรับผู้ที่ต้องการช่วยพัฒนาโปรเจคนี้:
+1. Fork repository
+2. สร้าง branch ใหม่: `git checkout -b feature/your-feature-name`
+3. Commit การเปลี่ยนแปลง: `git commit -m 'Add some feature'`
+4. Push ไปยัง branch: `git push origin feature/your-feature-name`
+5. ส่ง Pull Request

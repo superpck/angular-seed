@@ -7,24 +7,31 @@
 1. [การติดตั้งและเริ่มต้นใช้งาน](#การติดตั้งและเริ่มต้นใช้งาน)
 2. [Layout System](#layout-system)
    - [PK Grid System](./components/grid.md)
+   - [Navigation](./components/navigation.md)
+   - [Footer](./components/footer.md)
 3. [CSS Components](#css-components)
    - [Buttons](./components/buttons.md)
    - [Cards](./components/cards.md)
    - [Badges](./components/badges.md)
    - [Breadcrumbs](./components/breadcrumbs.md)
+   - [Icons](./components/icons.md)
 4. [UI Components](#ui-components)
    - [Toastr Notifications](./components/toastr.md)
    - [Alert Modals](./components/alert.md)
    - [Modal Windows](./components/modal.md)
    - [Drag & Drop Lists](./components/drag-drop.md)
+   - [Forms](./components/forms.md)
 5. [Services](#services)
    - [ToastrService](./services/toastr-service.md)
    - [AlertService](./services/alert-service.md)
    - [ModalService](./services/modal-service.md)
    - [DragDropService](./services/drag-drop-service.md)
+   - [AuthService](./services/auth-service.md)
 6. [Pages & Routing](#pages--routing)
 7. [Authentication](#authentication)
-8. [Best Practices](#best-practices)
+8. [State Management](#state-management)
+9. [Best Practices](#best-practices)
+10. [Troubleshooting](#troubleshooting)
 
 ## การติดตั้งและเริ่มต้นใช้งาน
 
@@ -53,11 +60,31 @@ npm start
 
 4. เปิดเบราว์เซอร์และเข้าไปที่ `http://localhost:4200`
 
+### การ Build สำหรับ Production
+
+เมื่อต้องการ build สำหรับนำไปใช้งานจริง:
+
+```bash
+npm run build
+```
+
+ไฟล์ที่ได้จะอยู่ในโฟลเดอร์ `dist/`
+
+### การทดสอบ
+
+รันชุดทดสอบ:
+
+```bash
+npm test
+```
+
 ## Layout System
 
 โปรเจคนี้มี Layout System ที่ช่วยในการจัดเลย์เอาต์:
 
 - [PK Grid System](./components/grid.md) - ระบบ grid แบบ responsive ที่ใช้ CSS Grid เป็นฐาน
+- [Navigation](./components/navigation.md) - ระบบ navigation ที่มี top bar และ side navigation
+- [Footer](./components/footer.md) - Footer component ที่ปรับขนาดตาม content area
 
 ## CSS Components
 
@@ -117,3 +144,33 @@ Services ที่ช่วยในการจัดการข้อมู�
 - ใช้ Signal API สำหรับการจัดการ State
 - ใช้ CSS Components ที่มีให้เพื่อความสอดคล้องของ UI
 - แยก Services และ Models เพื่อให้โค้ดอ่านง่ายและบำรุงรักษาได้ง่าย
+- ปฏิบัติตาม Angular Style Guide สำหรับการตั้งชื่อและโครงสร้างไฟล์
+- ใช้ TypeScript interfaces สำหรับ type safety
+- ตรวจสอบ responsive design บนอุปกรณ์ขนาดต่างๆ
+
+## State Management
+
+โปรเจคนี้ใช้ Angular Signals สำหรับการจัดการ state:
+
+- Signal เป็น primitive ใหม่ใน Angular 16+ สำหรับจัดการค่าที่เปลี่ยนแปลง
+- Computed values คำนวณค่าใหม่โดยอัตโนมัติเมื่อ dependencies เปลี่ยนแปลง
+- Effects ทำงานเมื่อมีการเปลี่ยนแปลงใน signals
+- ง่ายต่อการใช้งานและเหมาะสำหรับโปรเจคขนาดเล็กถึงกลาง
+
+## Troubleshooting
+
+### ปัญหาที่พบบ่อย
+
+1. **ปัญหาการติดตั้ง dependencies**
+   - ลอง `npm cache clean --force` และติดตั้งใหม่
+   - ตรวจสอบเวอร์ชันของ Node.js และ npm ให้ตรงตามความต้องการ
+
+2. **ปัญหาเกี่ยวกับ Tailwind CSS**
+   - ตรวจสอบไฟล์ `tailwind.config.ts` และ `postcss.config.js`
+   - รัน `npm run build:tailwind` เพื่อสร้าง CSS ใหม่
+
+3. **ปัญหาเกี่ยวกับ Angular**
+   - ลอง `ng update` เพื่ออัปเดต Angular CLI และ dependencies
+   - ตรวจสอบ browser console สำหรับข้อผิดพลาด
+
+สำหรับปัญหาอื่นๆ โปรดสร้าง issue ที่ [GitHub repository](https://github.com/superpck/angular-seed/issues)

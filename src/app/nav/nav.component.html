@@ -26,7 +26,7 @@
 
   <!-- Left Side Navigation -->
   <div class="side-nav-container">
-    <div class="side-nav" [class.open]="sideNavOpen">
+    <div class="side-nav" [class.open]="sideNavOpen" [class.collapsed]="sideNavCollapsed">
       <div class="side-nav-header flex justify-between items-center lg:hidden">
         <span class="text-lg font-semibold">Menu</span>
         <button (click)="toggleSideNav()" class="p-2 rounded hover:bg-gray-200">
@@ -44,106 +44,68 @@
           <div class="text-sm text-gray-500">{{ currentUser?.email }}</div>
         </div>
       </div>
+      
+      <!-- Collapse/Expand Button (Only on Desktop) -->
+      <div class="collapse-button-container hidden lg:flex justify-end p-2">
+        <button (click)="toggleSideNavCollapse()" class="collapse-toggle p-1 rounded-full hover:bg-gray-200" [title]="sideNavCollapsed ? 'Expand menu' : 'Collapse menu'">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" [class.rotate-180]="sideNavCollapsed">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+      </div>
 
       <!-- Menu Items -->
       <ul class="menu">
-        <li>
-          <a routerLink="/home" routerLinkActive="active" class="menu-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-            </svg>
-            Home
-          </a>
-        </li>
-        <li>
-          <a routerLink="/users" routerLinkActive="active" class="menu-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
-            User Management
-          </a>
-        </li>
-        <li>
-          <a routerLink="/toastr-demo" routerLinkActive="active" class="menu-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Toastr Demo
-          </a>
-        </li>
-        <li>
-          <a routerLink="/alert-demo" routerLinkActive="active" class="menu-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-            </svg>
-            Alert Demo
-          </a>
-        </li>
-        <li>
-          <a routerLink="/icons-demo" routerLinkActive="active" class="menu-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Icons Demo
-          </a>
-        </li>
-        <li>
-          <a routerLink="/modal-demo" routerLinkActive="active" class="menu-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-            </svg>
-            Modal Demo
-          </a>
-        </li>
-        <li>
-          <a routerLink="/grid-demo" routerLinkActive="active" class="menu-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-            </svg>
-            Grid Demo
-          </a>
-        </li>
-        <li>
-          <a routerLink="/drag-drop-demo" routerLinkActive="active" class="menu-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-            </svg>
-            Drag & Drop Demo
-          </a>
-        </li>
-        <li>
-          <a routerLink="/badges-demo" routerLinkActive="active" class="menu-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-            </svg>
-            Badges Demo
-          </a>
-        </li>
-        <li>
-          <a routerLink="/breadcrumbs-demo" routerLinkActive="active" class="menu-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-            Breadcrumbs Demo
-          </a>
-        </li>
-        <li>
-          <a routerLink="#" class="menu-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-            Reports
-          </a>
-        </li>
-        <li>
-          <a routerLink="#" class="menu-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            Settings
-          </a>
-        </li>
+        <ng-container *ngFor="let item of menuItems">
+          <!-- Regular menu item without children -->
+          <li *ngIf="!item.children">
+            <a [routerLink]="item.route" routerLinkActive="active" class="menu-item" 
+               [title]="sideNavCollapsed ? item.label : ''"
+               (click)="navigateOnMobile(item.route || '')">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="item.icon"></path>
+              </svg>
+              <span class="menu-text">{{ item.label }}</span>
+            </a>
+          </li>
+          
+          <!-- Menu item with children (submenu) -->
+          <li *ngIf="item.children" class="menu-with-submenu">
+            <div class="menu-item submenu-trigger" 
+                (click)="toggleSubmenu(item, $event)"
+                (keydown.enter)="toggleSubmenu(item)"
+                (keydown.space)="toggleSubmenu(item)"
+                tabindex="0"
+                role="button"
+                [attr.aria-expanded]="item.expanded"
+                [title]="sideNavCollapsed ? item.label : ''">
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="item.icon"></path>
+                </svg>
+                <span class="menu-text">{{ item.label }}</span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform submenu-arrow" 
+                   [class.rotate-180]="item.expanded" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            
+            <!-- Submenu -->
+            <ul class="submenu" [class.submenu-expanded]="item.expanded">
+              <li *ngFor="let child of item.children">
+                <a [routerLink]="child.route" routerLinkActive="active" class="submenu-item" 
+                   [title]="sideNavCollapsed ? child.label : ''"
+                   (click)="navigateOnMobile(child.route || '')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="child.icon"></path>
+                </svg>
+                  <span class="menu-text">{{ child.label }}</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ng-container>
       </ul>
     </div>
   </div>
@@ -151,7 +113,7 @@
   <!-- Overlay for mobile -->
   <div 
     *ngIf="sideNavOpen" 
-    class="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"
+    class="fixed inset-0 bg-black bg-opacity-50 z-15 lg:hidden"
     role="button" 
     tabindex="0" 
     (click)="toggleSideNav()"

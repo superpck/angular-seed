@@ -5,6 +5,21 @@
 รูปแบบของ changelog นี้อ้างอิงตาม [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 และโปรเจคนี้ยึดหลัก [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [20.1.0] - 2025.07.12 - 6
+
+### เพิ่มใหม่
+- **Documentation Improvements**
+  - เพิ่มส่วน Contribute ใน README.md
+  - ปรับปรุงโครงสร้างโปรเจคใน README.md ให้ทันสมัย
+  - เพิ่มคุณสมบัติ Type-safe APIs และ State Management ในรายการคุณสมบัติ
+  - เพิ่มไฟล์ MIT License อย่างเป็นทางการ
+  - เพิ่ม Credit สำหรับ GitHub Copilot
+
+### แก้ไขปรับปรุง
+- ปรับปรุงเอกสารให้ถูกต้องและทันสมัย
+- แก้ไขและปรับปรุงคำอธิบายเกี่ยวกับคุณสมบัติทั้งหมด
+- เพิ่มลิงก์ไปยังไฟล์ LICENSE
+
 ## [20.1.0] - 2025.07.12 - 5
 
 ### เพิ่มใหม่
