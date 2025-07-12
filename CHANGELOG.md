@@ -5,7 +5,27 @@
 รูปแบบของ changelog นี้อ้างอิงตาม [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 และโปรเจคนี้ยึดหลัก [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-## [Unreleased]
+## [20.1.0] - 2025.07.12 - 2
+
+### เพิ่มใหม่
+- ระบบ PK Drag & Drop Component
+  - Component สำหรับลากและวางรายการ (pk-drag-drop)
+  - รองรับการเรียงลำดับใหม่ด้วยการลาก-วาง
+  - ระบบค้นหาและกรองข้อมูลแบบ real-time
+  - รองรับการเชื่อมต่อระหว่าง container (cross-window dragging)
+  - Custom template สำหรับแต่ละรายการ
+  - การจัดการข้อมูลเพิ่มเติม (metadata) สำหรับแต่ละรายการ
+  - การปิดใช้งานรายการ (disabled items)
+  - Responsive design และ mobile-friendly
+  - TypeScript interfaces: DragDropItem, DragDropConfig, DragDropChangeEvent, DragDropTransferEvent
+  - Service สำหรับจัดการข้อมูล: DragDropService
+  - หน้า Demo แสดงตัวอย่างการใช้งานแบบ Kanban Board และรายการพื้นฐาน
+  - `pk-button-sm` และ `pk-button-lg` สำหรับปุ่มขนาดเล็กและใหญ่
+  - `pk-card` พร้อม header, body และ footer
+  - `pk-card-sm` และ `pk-card-lg` สำหรับการ์ดขนาดเล็กและใหญ่
+  - สีหลากหลายของการ์ด (primary, success, warning, error, info)
+
+## [20.1.0] - 2025.07.12 - 1
 
 ### เพิ่มใหม่
 - ระบบ PK Grid System
@@ -28,22 +48,6 @@
 - ระบบ CSS Components พื้นฐาน
   - `pk-button` พร้อมสี (primary, success, warning, error, info)
   - `pk-button-outline` สำหรับปุ่มแบบเส้นขอบ
-- ระบบ PK Drag & Drop Component
-  - Component สำหรับลากและวางรายการ (pk-drag-drop)
-  - รองรับการเรียงลำดับใหม่ด้วยการลาก-วาง
-  - ระบบค้นหาและกรองข้อมูลแบบ real-time
-  - รองรับการเชื่อมต่อระหว่าง container (cross-window dragging)
-  - Custom template สำหรับแต่ละรายการ
-  - การจัดการข้อมูลเพิ่มเติม (metadata) สำหรับแต่ละรายการ
-  - การปิดใช้งานรายการ (disabled items)
-  - Responsive design และ mobile-friendly
-  - TypeScript interfaces: DragDropItem, DragDropConfig, DragDropChangeEvent, DragDropTransferEvent
-  - Service สำหรับจัดการข้อมูล: DragDropService
-  - หน้า Demo แสดงตัวอย่างการใช้งานแบบ Kanban Board และรายการพื้นฐาน
-  - `pk-button-sm` และ `pk-button-lg` สำหรับปุ่มขนาดเล็กและใหญ่
-  - `pk-card` พร้อม header, body และ footer
-  - `pk-card-sm` และ `pk-card-lg` สำหรับการ์ดขนาดเล็กและใหญ่
-  - สีหลากหลายของการ์ด (primary, success, warning, error, info)
 - หน้า Modal Demo แสดงตัวอย่างการใช้งาน modal ในขนาดต่างๆ
 - หน้า Icons Demo แสดงตัวอย่าง emoji และ CSS components
 
