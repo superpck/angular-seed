@@ -1,4 +1,8 @@
-# คู่มือการใช้งาน Angular Seed
+# คู่มือการใช้งาน- [Services](#services)
+   - [ToastrService](./services/toastr-service.md)
+   - [AlertService](./services/alert-service.md)
+   - [ModalService](./services/modal-service.md)
+   - [DragDropService](./services/drag-drop-service.md)ular Seed
 
 คู่มือนี้จะอธิบายถึงการใช้งานคอมโพเนนต์และบริการต่างๆ ที่มีอยู่ในโปรเจค Angular Seed
 
@@ -14,6 +18,7 @@
    - [Toastr Notifications](./components/toastr.md)
    - [Alert Modals](./components/alert.md)
    - [Modal Windows](./components/modal.md)
+   - [Drag & Drop Lists](./components/drag-drop.md)
 5. [Services](#services)
    - [ToastrService](./services/toastr-service.md)
    - [AlertService](./services/alert-service.md)
@@ -69,6 +74,7 @@ npm start
 - [Toastr Notifications](./components/toastr.md) - การแจ้งเตือนแบบชั่วคราวที่มุมบนขวาของหน้าจอ
 - [Alert Modals](./components/alert.md) - กล่องข้อความเตือนแบบ modal
 - [Modal Windows](./components/modal.md) - popup window ที่ปรับแต่งได้หลากหลาย
+- [Drag & Drop Lists](./components/drag-drop.md) - รายการที่สามารถลาก-วางเพื่อเรียงลำดับใหม่ได้
 
 ## Services
 
@@ -77,6 +83,7 @@ Services ที่ช่วยในการจัดการข้อมู�
 - [ToastrService](./services/toastr-service.md) - บริการสำหรับแสดงการแจ้งเตือนแบบ toast
 - [AlertService](./services/alert-service.md) - บริการสำหรับแสดง alert dialog
 - [ModalService](./services/modal-service.md) - บริการสำหรับควบคุม modal windows
+- [DragDropService](./services/drag-drop-service.md) - บริการสำหรับจัดการข้อมูลและการทำงานของ drag-drop component
 
 ## Pages & Routing
 
@@ -89,6 +96,7 @@ Services ที่ช่วยในการจัดการข้อมู�
 - `/alert-demo` - หน้าตัวอย่างการใช้งาน Alert
 - `/modal-demo` - หน้าตัวอย่างการใช้งาน Modal
 - `/grid-demo` - หน้าตัวอย่างการใช้งาน Grid System
+- `/drag-drop-demo` - หน้าตัวอย่างการใช้งาน Drag & Drop Component
 - `/icons-demo` - หน้าแสดงตัวอย่าง Icons และ CSS Components
 
 ## Authentication

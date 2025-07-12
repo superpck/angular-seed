@@ -3,10 +3,44 @@
 }
 
 .login-image {
-  @apply md:w-1/2 bg-indigo-600 flex items-center justify-center p-6;
+  @apply md:w-1/2 bg-indigo-600 flex items-center justify-center p-6 relative overflow-hidden;
   
   img {
-    @apply max-w-full max-h-full object-cover rounded-lg shadow-xl;
+    @apply w-full h-full object-cover rounded-lg shadow-xl transition-all duration-1000 ease-in-out;
+  }
+  
+  .image-overlay {
+    @apply absolute inset-0 bg-gradient-to-br from-indigo-900/60 to-purple-900/60 rounded-lg flex flex-col items-center justify-center;
+    
+    .overlay-content {
+      @apply text-center text-white p-6 flex-1 flex flex-col justify-center;
+      
+      .overlay-title {
+        @apply text-3xl md:text-4xl font-bold mb-4 text-white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      
+      .overlay-subtitle {
+        @apply text-lg md:text-xl font-light text-white/90;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+    }
+    
+    .image-selector {
+      @apply flex space-x-3 mb-6;
+      
+      .selector-dot {
+        @apply w-3 h-3 rounded-full bg-white/40 hover:bg-white/60 transition-all duration-300 cursor-pointer border-0 focus:outline-none focus:ring-2 focus:ring-white/50;
+        
+        &.active {
+          @apply bg-white scale-125;
+        }
+        
+        &:hover {
+          @apply scale-110;
+        }
+      }
+    }
   }
 }
 
@@ -15,10 +49,14 @@
 }
 
 .login-form-box {
-  @apply bg-white rounded-xl shadow-lg p-8 w-full max-w-md;
+  @apply bg-white rounded-xl shadow-2xl p-8 w-full max-w-md backdrop-blur-sm;
   
   h1 {
-    @apply text-3xl font-bold text-gray-800 mb-6 text-center;
+    @apply text-3xl font-bold text-gray-800 mb-8 text-center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
   .form-group {
@@ -29,10 +67,20 @@
     }
     
     input {
-      @apply w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500;
+      @apply w-full p-4 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200;
+      background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+      
+      &:focus {
+        @apply shadow-lg;
+        background: #ffffff;
+      }
       
       &.ng-invalid.ng-touched {
         @apply border-red-500 focus:ring-red-500 focus:border-red-500;
+      }
+      
+      &::placeholder {
+        @apply text-gray-400;
       }
     }
     
@@ -42,10 +90,24 @@
   }
   
   .login-button {
-    @apply w-full bg-indigo-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors;
+    @apply w-full py-4 px-6 rounded-lg font-semibold text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 4px 15px 0 rgba(102, 126, 234, 0.3);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px 0 rgba(102, 126, 234, 0.4);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
     
     &:disabled {
-      @apply bg-gray-400 cursor-not-allowed;
+      @apply cursor-not-allowed opacity-60;
+      background: #9ca3af;
+      transform: none;
+      box-shadow: none;
     }
   }
   

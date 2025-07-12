@@ -1,4 +1,4 @@
-# Angular 20 Seed Project
+# Angular 20 Seed Project version 20.0.1 - 2025.07.10-1
 
 Modern Angular application template with Tailwind CSS and pre-built UI components.
 

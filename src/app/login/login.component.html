@@ -1,7 +1,23 @@
 <div class="login-container">
   <!-- ส่วนแสดงภาพด้านซ้าย (หรือด้านบนในมุมมองมือถือ) -->
   <div class="login-image">
-    <img src="assets/images/login-image.jpg" alt="Login" />
+    <img [src]="currentImage.src" [alt]="currentImage.alt" />
+    <div class="image-overlay">
+      <div class="overlay-content">
+        <h2 class="overlay-title">{{ currentImage.title }}</h2>
+        <p class="overlay-subtitle">{{ currentImage.subtitle }}</p>
+      </div>
+      
+      <!-- Image selector dots -->
+      <div class="image-selector">
+        <button 
+          *ngFor="let image of backgroundImages; let i = index"
+          (click)="selectImage(i)"
+          [class]="'selector-dot ' + (i === currentImageIndex ? 'active' : '')"
+          [attr.aria-label]="'Select image ' + (i + 1)">
+        </button>
+      </div>
+    </div>
   </div>
   
   <!-- ส่วนฟอร์ม login ด้านขวา (หรือด้านล่างในมุมมองมือถือ) -->

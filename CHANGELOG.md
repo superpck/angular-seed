@@ -28,6 +28,18 @@
 - ระบบ CSS Components พื้นฐาน
   - `pk-button` พร้อมสี (primary, success, warning, error, info)
   - `pk-button-outline` สำหรับปุ่มแบบเส้นขอบ
+- ระบบ PK Drag & Drop Component
+  - Component สำหรับลากและวางรายการ (pk-drag-drop)
+  - รองรับการเรียงลำดับใหม่ด้วยการลาก-วาง
+  - ระบบค้นหาและกรองข้อมูลแบบ real-time
+  - รองรับการเชื่อมต่อระหว่าง container (cross-window dragging)
+  - Custom template สำหรับแต่ละรายการ
+  - การจัดการข้อมูลเพิ่มเติม (metadata) สำหรับแต่ละรายการ
+  - การปิดใช้งานรายการ (disabled items)
+  - Responsive design และ mobile-friendly
+  - TypeScript interfaces: DragDropItem, DragDropConfig, DragDropChangeEvent, DragDropTransferEvent
+  - Service สำหรับจัดการข้อมูล: DragDropService
+  - หน้า Demo แสดงตัวอย่างการใช้งานแบบ Kanban Board และรายการพื้นฐาน
   - `pk-button-sm` และ `pk-button-lg` สำหรับปุ่มขนาดเล็กและใหญ่
   - `pk-card` พร้อม header, body และ footer
   - `pk-card-sm` และ `pk-card-lg` สำหรับการ์ดขนาดเล็กและใหญ่
