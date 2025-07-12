@@ -1,8 +1,4 @@
-# คู่มือการใช้งาน- [Services](#services)
-   - [ToastrService](./services/toastr-service.md)
-   - [AlertService](./services/alert-service.md)
-   - [ModalService](./services/modal-service.md)
-   - [DragDropService](./services/drag-drop-service.md)ular Seed
+# คู่มือการใช้งาน Angular Seed
 
 คู่มือนี้จะอธิบายถึงการใช้งานคอมโพเนนต์และบริการต่างๆ ที่มีอยู่ในโปรเจค Angular Seed
 
@@ -14,6 +10,7 @@
 3. [CSS Components](#css-components)
    - [Buttons](./components/buttons.md)
    - [Cards](./components/cards.md)
+   - [Badges](./components/badges.md)
 4. [UI Components](#ui-components)
    - [Toastr Notifications](./components/toastr.md)
    - [Alert Modals](./components/alert.md)
@@ -23,6 +20,7 @@
    - [ToastrService](./services/toastr-service.md)
    - [AlertService](./services/alert-service.md)
    - [ModalService](./services/modal-service.md)
+   - [DragDropService](./services/drag-drop-service.md)
 6. [Pages & Routing](#pages--routing)
 7. [Authentication](#authentication)
 8. [Best Practices](#best-practices)

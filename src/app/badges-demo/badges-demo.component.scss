@@ -1,0 +1,41 @@
+/* Badges Demo Component Styles */
+
+.container {
+  h1, h2 {
+    color: #1f2937;
+  }
+  
+  h2 {
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+  }
+  
+  section {
+    scroll-margin-top: 2rem;
+  }
+  
+  code {
+    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+    font-size: 0.875rem;
+  }
+  
+  pre {
+    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+  }
+  
+  // Demo specific adjustments
+  .pk-badge-group {
+    align-items: center;
+  }
+}
+
+// Custom hover effects for demo
+.pk-badge {
+  cursor: default;
+  
+  &.pk-badge-removable {
+    .pk-badge-close {
+      cursor: pointer;
+    }
+  }
+}

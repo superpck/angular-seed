@@ -5,6 +5,30 @@
 รูปแบบของ changelog นี้อ้างอิงตาม [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 และโปรเจคนี้ยึดหลัก [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [20.1.0] - 2025.07.12 - 4
+
+### เพิ่มใหม่
+- **PK Badges System**
+  - ระบบ Badge components ที่รองรับ icons และมีหลายรูปแบบ
+  - รองรับขนาด: sm, md, lg
+  - รองรับสี: primary, success, warning, error, info, dark, light
+  - รองรับรูปแบบ: outline, gradient, pill, square
+  - รองรับ icon: emoji และ SVG icons
+  - ตำแหน่ง icon: ซ้าย, ขวา, หรือทั้งสองด้าน
+  - คุณสมบัติพิเศษ: removable, notification dots, animations (pulse, bounce)
+  - Accessibility compliant: keyboard navigation, screen reader support
+  - Responsive design สำหรับทุกขนาดหน้าจอ
+- **Page Footer Component**
+  - Footer component ที่ปรับขนาดตาม content area
+  - รองรับ side navigation layout
+  - แสดงข้อมูลบริษัท, ลิงก์ด่วน, เทคโนโลยี, และติดต่อ
+  - Responsive design และ modern styling
+  - Glass morphism effects และ gradient text
+- **หน้า Badges Demo**
+  - หน้าตัวอย่างการใช้งาน PK Badges ครบถ้วน
+  - แสดงตัวอย่าง code และคำอธิบายการใช้งาน
+  - Interactive demos สำหรับทดสอบ removable badges
+
 ## [20.1.0] - 2025.07.12 - 3
 
 ### ปรับปรุง

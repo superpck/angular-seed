@@ -1,0 +1,331 @@
+/* PK Badges - Badge components with icon support */
+
+.pk-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-all duration-200;
+  gap: 0.375rem; /* 6px - space between icon and text */
+  
+  /* Default badge style */
+  @apply bg-gray-100 text-gray-800;
+  
+  /* Badge sizes */
+  &.pk-badge-sm {
+    @apply px-2 py-0.5 text-xs;
+    gap: 0.25rem; /* 4px */
+    
+    .pk-badge-icon {
+      @apply w-3 h-3 text-xs;
+    }
+  }
+  
+  &.pk-badge-md {
+    @apply px-2.5 py-0.5 text-sm;
+    gap: 0.375rem; /* 6px */
+    
+    .pk-badge-icon {
+      @apply w-4 h-4 text-sm;
+    }
+  }
+  
+  &.pk-badge-lg {
+    @apply px-3 py-1 text-base;
+    gap: 0.5rem; /* 8px */
+    
+    .pk-badge-icon {
+      @apply w-5 h-5 text-base;
+    }
+  }
+  
+  /* Badge colors */
+  &.pk-badge-primary {
+    @apply bg-blue-100 text-blue-800;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    
+    &:hover {
+      @apply bg-blue-200;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+  }
+  
+  &.pk-badge-success {
+    @apply bg-green-100 text-green-800;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    
+    &:hover {
+      @apply bg-green-200;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+    }
+  }
+  
+  &.pk-badge-warning {
+    @apply bg-yellow-100 text-yellow-800;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    
+    &:hover {
+      @apply bg-yellow-200;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+    }
+  }
+  
+  &.pk-badge-error {
+    @apply bg-red-100 text-red-800;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    
+    &:hover {
+      @apply bg-red-200;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+  }
+  
+  &.pk-badge-info {
+    @apply bg-cyan-100 text-cyan-800;
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    
+    &:hover {
+      @apply bg-cyan-200;
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+    }
+  }
+  
+  &.pk-badge-dark {
+    @apply bg-gray-800 text-white;
+    border: 1px solid rgba(31, 41, 55, 0.2);
+    
+    &:hover {
+      @apply bg-gray-900;
+      box-shadow: 0 0 0 3px rgba(31, 41, 55, 0.1);
+    }
+  }
+  
+  &.pk-badge-light {
+    @apply bg-gray-50 text-gray-700;
+    border: 1px solid rgba(156, 163, 175, 0.2);
+    
+    &:hover {
+      @apply bg-gray-100;
+      box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.1);
+    }
+  }
+  
+  /* Badge with outline style */
+  &.pk-badge-outline {
+    @apply bg-transparent border-2;
+    
+    &.pk-badge-primary {
+      @apply border-blue-500 text-blue-600;
+      
+      &:hover {
+        @apply bg-blue-50;
+      }
+    }
+    
+    &.pk-badge-success {
+      @apply border-green-500 text-green-600;
+      
+      &:hover {
+        @apply bg-green-50;
+      }
+    }
+    
+    &.pk-badge-warning {
+      @apply border-yellow-500 text-yellow-600;
+      
+      &:hover {
+        @apply bg-yellow-50;
+      }
+    }
+    
+    &.pk-badge-error {
+      @apply border-red-500 text-red-600;
+      
+      &:hover {
+        @apply bg-red-50;
+      }
+    }
+    
+    &.pk-badge-info {
+      @apply border-cyan-500 text-cyan-600;
+      
+      &:hover {
+        @apply bg-cyan-50;
+      }
+    }
+    
+    &.pk-badge-dark {
+      @apply border-gray-800 text-gray-800;
+      
+      &:hover {
+        @apply bg-gray-50;
+      }
+    }
+  }
+  
+  /* Gradient badges */
+  &.pk-badge-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    @apply text-white border-0;
+    
+    &:hover {
+      background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+    
+    &.pk-badge-success {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      
+      &:hover {
+        background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      }
+    }
+    
+    &.pk-badge-warning {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      
+      &:hover {
+        background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+      }
+    }
+    
+    &.pk-badge-error {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      
+      &:hover {
+        background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+      }
+    }
+  }
+  
+  /* Icon styles */
+  .pk-badge-icon {
+    @apply flex-shrink-0;
+    
+    /* Icon positioning */
+    &.icon-left {
+      order: -1;
+    }
+    
+    &.icon-right {
+      order: 1;
+    }
+    
+    /* Emoji icons */
+    &.emoji-icon {
+      font-style: normal;
+      line-height: 1;
+    }
+    
+    /* SVG icons */
+    &.svg-icon {
+      fill: currentColor;
+      stroke: currentColor;
+    }
+  }
+  
+  /* Removable badges */
+  &.pk-badge-removable {
+    @apply pr-1;
+    
+    .pk-badge-close {
+      @apply ml-1 hover:bg-black hover:bg-opacity-20 rounded-full p-0.5 transition-colors duration-200 cursor-pointer border-0 bg-transparent;
+      
+      &:hover {
+        transform: scale(1.1);
+      }
+      
+      &:focus {
+        outline: 2px solid rgba(59, 130, 246, 0.5);
+        outline-offset: 1px;
+      }
+    }
+  }
+  
+  /* Pill style */
+  &.pk-badge-pill {
+    @apply rounded-full;
+  }
+  
+  /* Square style */
+  &.pk-badge-square {
+    @apply rounded-none;
+  }
+  
+  /* Notification dot */
+  &.pk-badge-dot {
+    @apply w-2 h-2 p-0 rounded-full;
+    min-width: 0.5rem;
+    min-height: 0.5rem;
+    
+    &.pk-badge-sm {
+      @apply w-1.5 h-1.5;
+      min-width: 0.375rem;
+      min-height: 0.375rem;
+    }
+    
+    &.pk-badge-lg {
+      @apply w-3 h-3;
+      min-width: 0.75rem;
+      min-height: 0.75rem;
+    }
+  }
+  
+  /* Animation */
+  &.pk-badge-pulse {
+    animation: badge-pulse 2s infinite;
+  }
+  
+  &.pk-badge-bounce {
+    animation: badge-bounce 1s infinite;
+  }
+}
+
+/* Badge group */
+.pk-badge-group {
+  @apply flex flex-wrap gap-2;
+  
+  &.pk-badge-group-sm {
+    @apply gap-1;
+  }
+  
+  &.pk-badge-group-lg {
+    @apply gap-3;
+  }
+}
+
+/* Animations */
+@keyframes badge-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes badge-bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .pk-badge {
+    @apply text-xs px-2 py-0.5;
+    
+    &.pk-badge-lg {
+      @apply text-sm px-2.5 py-0.5;
+    }
+  }
+}

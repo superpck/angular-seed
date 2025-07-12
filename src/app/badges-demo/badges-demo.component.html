@@ -1,0 +1,249 @@
+<div class="container mx-auto p-6">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold mb-4">PK Badges Demo</h1>
+    <p class="text-gray-600 mb-6">ระบบ Badge components ที่รองรับ icons และมีหลายรูปแบบ</p>
+  </div>
+
+  <!-- Basic Badges -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">🏷️ Basic Badges</h2>
+    <div class="pk-badge-group mb-6">
+      <span *ngFor="let badge of badges" class="pk-badge pk-badge-{{badge.type}} pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">{{ badge.icon }}</span>
+        {{ badge.text }}
+      </span>
+    </div>
+
+    <div class="bg-gray-100 p-4 rounded-lg">
+      <h4 class="font-medium mb-2">Code Example:</h4>
+      <pre class="text-sm bg-gray-800 text-green-400 p-3 rounded overflow-x-auto"><code>&lt;span class="pk-badge pk-badge-primary pk-badge-md"&gt;
+  &lt;span class="pk-badge-icon emoji-icon icon-left"&gt;🔵&lt;/span&gt;
+  Primary
+&lt;/span&gt;</code></pre>
+    </div>
+  </section>
+
+  <!-- Badge Sizes -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">📏 Badge Sizes</h2>
+    <div class="pk-badge-group mb-6">
+      <span class="pk-badge pk-badge-primary pk-badge-sm">
+        <span class="pk-badge-icon emoji-icon icon-left">📱</span>
+        Small
+      </span>
+      <span class="pk-badge pk-badge-primary pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">💻</span>
+        Medium
+      </span>
+      <span class="pk-badge pk-badge-primary pk-badge-lg">
+        <span class="pk-badge-icon emoji-icon icon-left">🖥️</span>
+        Large
+      </span>
+    </div>
+  </section>
+
+  <!-- Outline Badges -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">🎨 Outline Badges</h2>
+    <div class="pk-badge-group mb-6">
+      <span class="pk-badge pk-badge-outline pk-badge-primary pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">🔵</span>
+        Primary Outline
+      </span>
+      <span class="pk-badge pk-badge-outline pk-badge-success pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">✅</span>
+        Success Outline
+      </span>
+      <span class="pk-badge pk-badge-outline pk-badge-warning pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">⚠️</span>
+        Warning Outline
+      </span>
+      <span class="pk-badge pk-badge-outline pk-badge-error pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">❌</span>
+        Error Outline
+      </span>
+    </div>
+  </section>
+
+  <!-- Gradient Badges -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">🌈 Gradient Badges</h2>
+    <div class="pk-badge-group mb-6">
+      <span class="pk-badge pk-badge-gradient pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">✨</span>
+        Gradient
+      </span>
+      <span class="pk-badge pk-badge-gradient pk-badge-success pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">🌟</span>
+        Success Gradient
+      </span>
+      <span class="pk-badge pk-badge-gradient pk-badge-warning pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">⚡</span>
+        Warning Gradient
+      </span>
+      <span class="pk-badge pk-badge-gradient pk-badge-error pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">🔥</span>
+        Error Gradient
+      </span>
+    </div>
+  </section>
+
+  <!-- Status Badges -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">📊 Status Badges</h2>
+    <div class="pk-badge-group mb-6">
+      <span *ngFor="let badge of statusBadges" class="pk-badge pk-badge-{{badge.type}} pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">{{ badge.icon }}</span>
+        {{ badge.text }}
+      </span>
+    </div>
+  </section>
+
+  <!-- Icon Position -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">🔄 Icon Position</h2>
+    <div class="pk-badge-group mb-6">
+      <span class="pk-badge pk-badge-primary pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">👈</span>
+        Icon Left
+      </span>
+      <span class="pk-badge pk-badge-success pk-badge-md">
+        Icon Right
+        <span class="pk-badge-icon emoji-icon icon-right">👉</span>
+      </span>
+      <span class="pk-badge pk-badge-warning pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">🎯</span>
+        Both Icons
+        <span class="pk-badge-icon emoji-icon icon-right">✨</span>
+      </span>
+    </div>
+  </section>
+
+  <!-- Removable Badges -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">🗑️ Removable Badges</h2>
+    <div class="pk-badge-group mb-6">
+      <span *ngFor="let badge of notificationBadges; let i = index"
+        class="pk-badge pk-badge-{{badge.type}} pk-badge-md pk-badge-removable">
+        <span class="pk-badge-icon emoji-icon icon-left">{{ badge.icon }}</span>
+        {{ badge.text }} {{ badge.label }}
+        <button class="pk-badge-close" 
+                (click)="removeBadge(i, notificationBadges)"
+                (keydown.enter)="removeBadge(i, notificationBadges)"
+                (keydown.space)="removeBadge(i, notificationBadges)"
+                type="button"
+                aria-label="Remove badge">
+          <span class="pk-badge-icon emoji-icon">❌</span>
+        </button>
+      </span>
+    </div>
+    <p class="text-sm text-gray-600">คลิกที่ ❌ เพื่อลบ badge</p>
+  </section>
+
+  <!-- Badge Shapes -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">🔶 Badge Shapes</h2>
+    <div class="pk-badge-group mb-6">
+      <span class="pk-badge pk-badge-primary pk-badge-md">
+        <span class="pk-badge-icon emoji-icon icon-left">🟫</span>
+        Default Rounded
+      </span>
+      <span class="pk-badge pk-badge-success pk-badge-md pk-badge-pill">
+        <span class="pk-badge-icon emoji-icon icon-left">🟢</span>
+        Pill Shape
+      </span>
+      <span class="pk-badge pk-badge-warning pk-badge-md pk-badge-square">
+        <span class="pk-badge-icon emoji-icon icon-left">🟨</span>
+        Square
+      </span>
+    </div>
+  </section>
+
+  <!-- Notification Dots -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">🔴 Notification Dots</h2>
+    <div class="pk-badge-group mb-6">
+      <span class="pk-badge pk-badge-dot pk-badge-primary pk-badge-sm"></span>
+      <span class="pk-badge pk-badge-dot pk-badge-success pk-badge-md"></span>
+      <span class="pk-badge pk-badge-dot pk-badge-error pk-badge-lg"></span>
+      <span class="pk-badge pk-badge-dot pk-badge-warning pk-badge-lg pk-badge-pulse"></span>
+    </div>
+    <p class="text-sm text-gray-600">Notification dots สำหรับแสดงสถานะหรือการแจ้งเตือน</p>
+  </section>
+
+  <!-- Animated Badges -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">⚡ Animated Badges</h2>
+    <div class="pk-badge-group mb-6">
+      <span class="pk-badge pk-badge-primary pk-badge-md pk-badge-pulse">
+        <span class="pk-badge-icon emoji-icon icon-left">💫</span>
+        Pulse Animation
+      </span>
+      <span class="pk-badge pk-badge-success pk-badge-md pk-badge-bounce">
+        <span class="pk-badge-icon emoji-icon icon-left">🎾</span>
+        Bounce Animation
+      </span>
+    </div>
+  </section>
+
+  <!-- SVG Icons Example -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">🎯 SVG Icons Example</h2>
+    <div class="pk-badge-group mb-6">
+      <span class="pk-badge pk-badge-primary pk-badge-md">
+        <svg class="pk-badge-icon svg-icon icon-left" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        Users
+      </span>
+      <span class="pk-badge pk-badge-success pk-badge-md">
+        <svg class="pk-badge-icon svg-icon icon-left" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        Completed
+      </span>
+      <span class="pk-badge pk-badge-error pk-badge-md">
+        <svg class="pk-badge-icon svg-icon icon-left" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        Alert
+      </span>
+    </div>
+  </section>
+
+  <!-- Usage Guidelines -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">📋 Usage Guidelines</h2>
+    <div class="bg-blue-50 p-6 rounded-lg">
+      <h4 class="font-semibold mb-3">คลาสหลัก:</h4>
+      <ul class="list-disc ml-6 space-y-2 text-sm">
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.pk-badge</code> - คลาสพื้นฐาน</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.pk-badge-&#123;color&#125;</code> - สี: primary, success, warning, error,
+          info, dark, light</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.pk-badge-&#123;size&#125;</code> - ขนาด: sm, md, lg</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.pk-badge-outline</code> - รูปแบบขอบ</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.pk-badge-gradient</code> - รูปแบบ gradient</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.pk-badge-pill</code> - รูปร่างแคปซูล</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.pk-badge-square</code> - รูปร่างสี่เหลี่ยม</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.pk-badge-dot</code> - จุดแจ้งเตือน</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.pk-badge-removable</code> - สามารถลบได้</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.pk-badge-pulse</code> - Animation แบบกระพริบ</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.pk-badge-bounce</code> - Animation แบบเด้ง</li>
+      </ul>
+
+      <h4 class="font-semibold mb-3 mt-6">คลาสสำหรับ Icon:</h4>
+      <ul class="list-disc ml-6 space-y-2 text-sm">
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.pk-badge-icon</code> - คลาสพื้นฐานสำหรับ icon</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.icon-left</code> - วาง icon ทางซ้าย</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.icon-right</code> - วาง icon ทางขวา</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.emoji-icon</code> - สำหรับ emoji icons</li>
+        <li><code class="bg-gray-200 px-2 py-1 rounded">.svg-icon</code> - สำหรับ SVG icons</li>
+      </ul>
+    </div>
+  </section>
+</div>
