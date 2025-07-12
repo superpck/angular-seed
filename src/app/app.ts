@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
+import { FooterComponent } from './footer/footer.component';
 import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { ToastrComponent } from './shared/toastr/toastr.component';
@@ -25,7 +26,7 @@ interface ModalData {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavComponent, CommonModule, ToastrComponent, AlertComponent, ModalModule],
+  imports: [RouterOutlet, NavComponent, FooterComponent, CommonModule, ToastrComponent, AlertComponent, ModalModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

@@ -1,0 +1,77 @@
+<footer class="app-footer">
+  <div class="footer-container">
+    <!-- Main footer content -->
+    <div class="footer-content">
+      <!-- Brand section -->
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <img src="images/angular-logo.svg" alt="Angular Logo" class="footer-logo" />
+          <div class="brand-text">
+            <h3>Angular Seed</h3>
+            <p>Modern Development Platform</p>
+          </div>
+        </div>
+        <p class="brand-description">
+          ระบบจัดการที่ทันสมัยและใช้งานง่าย สร้างด้วย Angular 20 และเทคโนโลยีล่าสุด
+        </p>
+      </div>
+      
+      <!-- Quick links -->
+      <div class="footer-links">
+        <h4>ลิงก์ด่วน</h4>
+        <ul>
+          <li *ngFor="let link of links">
+            <a [href]="link.url">{{ link.title }}</a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Technology stack -->
+      <div class="footer-tech">
+        <h4>เทคโนโลยี</h4>
+        <div class="tech-grid">
+          <a *ngFor="let social of socialLinks" 
+             [href]="social.url" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             [title]="social.name"
+             class="tech-link">
+            <span class="tech-icon">{{ social.icon }}</span>
+            <span class="tech-name">{{ social.name }}</span>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Contact info -->
+      <div class="footer-contact">
+        <h4>ติดต่อเรา</h4>
+        <div class="contact-info">
+          <p class="contact-item">
+            <span class="contact-icon">📧</span>
+            <span>info&#64;angular-seed.com</span>
+          </p>
+          <p class="contact-item">
+            <span class="contact-icon">📱</span>
+            <span>+66 2 123 4567</span>
+          </p>
+          <p class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span>Bangkok, Thailand</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p class="copyright">
+          &copy; {{ currentYear }} Angular Seed. สงวนลิขสิทธิ์ทั้งหมด.
+        </p>
+        <p class="version">
+          Version 20.1.0 - Build with ❤️ using Angular
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

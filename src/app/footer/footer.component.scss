@@ -1,0 +1,193 @@
+.app-footer {
+  @apply bg-gray-900 text-gray-300;
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  margin-top: auto; // Push footer to bottom of content area
+  
+  .footer-container {
+    @apply max-w-7xl mx-auto px-4 py-6;
+  }
+  
+  .footer-content {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6;
+  }
+  
+  .footer-brand {
+    @apply lg:col-span-1;
+    
+    .brand-logo {
+      @apply flex items-center mb-3;
+      
+      .footer-logo {
+        @apply w-10 h-10 mr-2;
+        filter: brightness(0.9);
+      }
+      
+      .brand-text {
+        h3 {
+          @apply text-lg font-bold mb-1;
+          background: linear-gradient(135deg, #DD0031 0%, #C3002F 50%, #667eea 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        
+        p {
+          @apply text-xs text-gray-400;
+        }
+      }
+    }
+    
+    .brand-description {
+      @apply text-xs text-gray-400 leading-relaxed;
+    }
+  }
+  
+  .footer-links {
+    h4 {
+      @apply text-base font-semibold mb-3 text-white;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    ul {
+      @apply space-y-1;
+      
+      li {
+        a {
+          @apply text-gray-400 hover:text-white transition-colors duration-300 text-xs;
+          
+          &:hover {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+          }
+        }
+      }
+    }
+  }
+  
+  .footer-tech {
+    h4 {
+      @apply text-base font-semibold mb-3 text-white;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .tech-grid {
+      @apply space-y-2;
+      
+      .tech-link {
+        @apply flex items-center text-gray-400 hover:text-white transition-all duration-300 text-xs;
+        
+        .tech-icon {
+          @apply mr-2 text-base;
+        }
+        
+        .tech-name {
+          @apply font-medium;
+        }
+        
+        &:hover {
+          transform: translateX(4px);
+          text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+          
+          .tech-icon {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+  }
+  
+  .footer-contact {
+    h4 {
+      @apply text-base font-semibold mb-3 text-white;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .contact-info {
+      @apply space-y-2;
+      
+      .contact-item {
+        @apply flex items-center text-xs text-gray-400;
+        
+        .contact-icon {
+          @apply mr-2 text-base;
+        }
+        
+        &:hover {
+          @apply text-white;
+          text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        }
+      }
+    }
+  }
+  
+  .footer-bottom {
+    @apply border-t border-gray-800 pt-4;
+    
+    .footer-bottom-content {
+      @apply flex flex-col md:flex-row justify-between items-center text-xs text-gray-500;
+      
+      .copyright {
+        @apply mb-2 md:mb-0;
+      }
+      
+      .version {
+        @apply text-xs;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .app-footer {
+    .footer-content {
+      @apply grid-cols-1 gap-6;
+    }
+    
+    .footer-brand .brand-logo {
+      @apply justify-center text-center;
+    }
+    
+    .footer-links,
+    .footer-tech,
+    .footer-contact {
+      @apply text-center;
+    }
+    
+    .footer-tech .tech-grid {
+      @apply flex flex-wrap justify-center gap-4;
+      
+      .tech-link {
+        @apply justify-center;
+      }
+    }
+  }
+}
+
+// Animation for footer on page load
+.app-footer {
+  animation: footerSlideUp 0.6s ease-out;
+}
+
+@keyframes footerSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

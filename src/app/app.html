@@ -9,7 +9,12 @@
   
   <!-- เนื้อหาหลัก -->
   <div class="content" [ngClass]="{'with-nav': !isLoginPage}">
-    <router-outlet></router-outlet>
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+      
+      <!-- Footer component สำหรับหน้าอื่นๆ ยกเว้นหน้า Login -->
+      <app-footer *ngIf="!isLoginPage"></app-footer>
+    </div>
   </div>
   
   <!-- Toastr component สำหรับแสดงการแจ้งเตือน -->
