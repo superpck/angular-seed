@@ -1,9 +1,9 @@
-# Angular Seed Project version 20.1.1 - 2025.07.12-6
+# Angular Seed Project version 20.1.0 - 2025.07.12-6
 
 
 Modern Angular application template with Tailwind CSS and pre-built UI components.
 
-## What's New (20.1.1)
+## What's New (20.1.0 - 2025.07.12-6)
 
 - Fixed: Login now redirects to /home after successful authentication
 - Improved: User profile dropdown menu (hover/click behavior, UI)
