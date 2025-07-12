@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { User, UserFilterCriteria } from '../models/user-data.model';
 import { UserFormComponent } from './user-form.component';
@@ -28,6 +29,7 @@ export class UserListComponent implements OnInit {
   private toastr = inject(ToastrService);
   private alertService = inject(AlertService);
   protected modalService = inject(ModalService);
+  private router = inject(Router);
   
   // บรรทัดฐานคณิตศาสตร์
   protected Math = Math;
@@ -228,5 +230,9 @@ export class UserListComponent implements OnInit {
         this.toastr.warning(`ข้อมูลของ ${user.name.first} ${user.name.last} ถูกลบเรียบร้อยแล้ว`, 'ลบผู้ใช้สำเร็จ');
       }
     );
+  }
+  
+  navigateToHome(): void {
+    this.router.navigate(['/home']);
   }
 }

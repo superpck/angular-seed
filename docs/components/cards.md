@@ -20,9 +20,11 @@
 </div>
 ```
 
-## การ์ดประเภทต่างๆ
+## รูปแบบการ์ด (Card Variants)
 
-การ์ดมีหลากหลายประเภทให้เลือกใช้:
+การ์ดมีหลายรูปแบบให้เลือกใช้ตามความเหมาะสมกับข้อมูลและการใช้งาน:
+
+### การ์ดสี (Colored Cards)
 
 ```html
 <!-- การ์ดหลัก (Primary) -->
@@ -51,7 +53,7 @@
   </div>
 </div>
 
-<!-- การ์ดคำเตือน (Warning) -->
+<!-- การ์ดเตือน (Warning) -->
 <div class="pk-card pk-card-warning">
   <div class="pk-card-header">
     <h3 class="pk-card-header-title">Warning Card</h3>
@@ -91,101 +93,145 @@
 </div>
 ```
 
-## ขนาดของการ์ด
+### ขนาดการ์ด (Card Sizes)
 
-การ์ดมีขนาดให้เลือกใช้ 3 ขนาด:
+มีขนาดการ์ดให้เลือกใช้ 3 ขนาด:
 
 ```html
-<!-- การ์ดขนาดเล็ก -->
+<!-- การ์ดขนาดเล็ก (Small) -->
 <div class="pk-card pk-card-sm">
-  <!-- เนื้อหาการ์ด -->
+  <div class="pk-card-header">
+    <h3 class="pk-card-header-title">Small Card</h3>
+  </div>
+  <div class="pk-card-body">
+    <p>เนื้อหาของการ์ดขนาดเล็ก</p>
+  </div>
+  <div class="pk-card-footer">
+    <button class="pk-button pk-button-sm pk-button-primary">ตกลง</button>
+  </div>
 </div>
 
-<!-- การ์ดขนาดปกติ (ไม่ต้องกำหนดคลาสเพิ่มเติม) -->
+<!-- การ์ดขนาดปกติ (Default) -->
 <div class="pk-card">
-  <!-- เนื้อหาการ์ด -->
+  <div class="pk-card-header">
+    <h3 class="pk-card-header-title">Default Card</h3>
+  </div>
+  <div class="pk-card-body">
+    <p>เนื้อหาของการ์ดขนาดปกติ</p>
+  </div>
+  <div class="pk-card-footer">
+    <button class="pk-button pk-button-primary">ตกลง</button>
+  </div>
 </div>
 
-<!-- การ์ดขนาดใหญ่ -->
+<!-- การ์ดขนาดใหญ่ (Large) -->
 <div class="pk-card pk-card-lg">
-  <!-- เนื้อหาการ์ด -->
-</div>
-```
-
-## การใช้งานเพิ่มเติม
-
-### การ์ดที่ไม่มี Footer
-
-```html
-<div class="pk-card">
   <div class="pk-card-header">
-    <h3 class="pk-card-header-title">การ์ดไม่มี Footer</h3>
+    <h3 class="pk-card-header-title">Large Card</h3>
   </div>
   <div class="pk-card-body">
-    <p>เนื้อหาของการ์ดที่ไม่มีส่วน Footer</p>
+    <p>เนื้อหาของการ์ดขนาดใหญ่</p>
+  </div>
+  <div class="pk-card-footer">
+    <button class="pk-button pk-button-lg pk-button-primary">ตกลง</button>
   </div>
 </div>
 ```
 
-### การ์ดที่มีเนื้อหาซับซ้อน
+## การใช้งานร่วมกับ Grid System
+
+คุณสามารถใช้ Card ร่วมกับ Grid System เพื่อสร้าง layout ที่สวยงาม:
 
 ```html
-<div class="pk-card">
-  <div class="pk-card-header">
-    <h3 class="pk-card-header-title">การ์ดที่มีเนื้อหาซับซ้อน</h3>
-  </div>
-  <div class="pk-card-body">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div>
-        <h4 class="font-semibold">ส่วนที่ 1</h4>
-        <p>ข้อความส่วนที่ 1</p>
-      </div>
-      <div>
-        <h4 class="font-semibold">ส่วนที่ 2</h4>
-        <p>ข้อความส่วนที่ 2</p>
-      </div>
-    </div>
-    
-    <div class="mt-4">
-      <p>ข้อความเพิ่มเติม...</p>
-    </div>
-  </div>
-  <div class="pk-card-footer flex justify-between">
-    <button class="pk-button pk-button-outline pk-button-primary">ย้อนกลับ</button>
-    <button class="pk-button pk-button-primary">ดำเนินการต่อ</button>
-  </div>
-</div>
-```
-
-## ตัวอย่างการใช้งานใน Angular Component
-
-```typescript
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-card-example',
-  template: `
-    <div class="pk-card" *ngIf="isLoaded">
+<div class="pk-row">
+  <div class="pk-col-md-6">
+    <div class="pk-card pk-card-primary">
       <div class="pk-card-header">
-        <h3 class="pk-card-header-title">{{ cardTitle }}</h3>
+        <h3 class="pk-card-header-title">Card 1</h3>
       </div>
       <div class="pk-card-body">
-        <p>{{ cardContent }}</p>
-      </div>
-      <div class="pk-card-footer">
-        <button class="pk-button pk-button-primary" (click)="onAction()">{{ actionText }}</button>
+        <p>เนื้อหาของการ์ด 1</p>
       </div>
     </div>
-  `
-})
-export class CardExampleComponent {
-  isLoaded = true;
-  cardTitle = 'ตัวอย่างการ์ด';
-  cardContent = 'นี่คือเนื้อหาตัวอย่างของการ์ด';
-  actionText = 'ดำเนินการ';
-  
-  onAction() {
-    console.log('คลิกปุ่มดำเนินการ');
-  }
-}
+  </div>
+  <div class="pk-col-md-6">
+    <div class="pk-card pk-card-success">
+      <div class="pk-card-header">
+        <h3 class="pk-card-header-title">Card 2</h3>
+      </div>
+      <div class="pk-card-body">
+        <p>เนื้อหาของการ์ด 2</p>
+      </div>
+    </div>
+  </div>
+</div>
 ```
+
+## การใช้งานร่วมกับองค์ประกอบอื่นๆ
+
+คุณสามารถใช้ Card ร่วมกับองค์ประกอบอื่นๆ เพื่อสร้าง UI ที่ซับซ้อนได้:
+
+### การ์ดกับ Badges
+
+```html
+<div class="pk-card">
+  <div class="pk-card-header">
+    <div class="flex justify-between items-center">
+      <h3 class="pk-card-header-title">รายการแจ้งเตือน</h3>
+      <span class="pk-badge pk-badge-primary">ใหม่</span>
+    </div>
+  </div>
+  <div class="pk-card-body">
+    <div class="space-y-2">
+      <div class="flex justify-between items-center">
+        <p>แจ้งเตือนที่ 1</p>
+        <span class="pk-badge pk-badge-success">อ่านแล้ว</span>
+      </div>
+      <div class="flex justify-between items-center">
+        <p>แจ้งเตือนที่ 2</p>
+        <span class="pk-badge pk-badge-warning">ยังไม่อ่าน</span>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### การ์ดกับ Modal
+
+```html
+<div class="pk-card">
+  <div class="pk-card-header">
+    <h3 class="pk-card-header-title">การใช้งานร่วมกับ Modal</h3>
+  </div>
+  <div class="pk-card-body">
+    <p>คลิกปุ่มด้านล่างเพื่อเปิด Modal</p>
+  </div>
+  <div class="pk-card-footer">
+    <button class="pk-button pk-button-primary" (click)="openModal()">เปิด Modal</button>
+  </div>
+</div>
+```
+
+## สรุป CSS Classes
+
+| Class | คำอธิบาย |
+|-------|---------|
+| `.pk-card` | Class หลักสำหรับการ์ด |
+| `.pk-card-header` | ส่วนหัวของการ์ด |
+| `.pk-card-header-title` | ข้อความหัวข้อในส่วนหัวของการ์ด |
+| `.pk-card-body` | ส่วนเนื้อหาของการ์ด |
+| `.pk-card-footer` | ส่วนท้ายของการ์ด |
+| `.pk-card-primary` | การ์ดสีหลัก (น้ำเงิน) |
+| `.pk-card-success` | การ์ดสีสำเร็จ (เขียว) |
+| `.pk-card-warning` | การ์ดสีเตือน (เหลือง) |
+| `.pk-card-error` | การ์ดสีข้อผิดพลาด (แดง) |
+| `.pk-card-info` | การ์ดสีข้อมูล (ฟ้า) |
+| `.pk-card-sm` | การ์ดขนาดเล็ก |
+| `.pk-card-lg` | การ์ดขนาดใหญ่ |
+
+## ข้อแนะนำการใช้งาน
+
+1. ใช้การ์ดสีให้สอดคล้องกับประเภทของข้อมูล (เช่น สีเขียวสำหรับสำเร็จ, สีแดงสำหรับข้อผิดพลาด)
+2. จำกัดการใช้ส่วนหัวและส่วนท้ายให้กระชับ ข้อมูลหลักควรอยู่ในส่วนเนื้อหา
+3. ใช้ขนาดการ์ดให้เหมาะสมกับข้อมูลและพื้นที่แสดงผล
+4. ใช้ร่วมกับ Grid System เพื่อจัดการ์ดหลายๆ ใบในหน้าเดียวกัน

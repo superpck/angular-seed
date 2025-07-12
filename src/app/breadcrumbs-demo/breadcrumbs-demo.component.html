@@ -1,0 +1,216 @@
+<div class="demo-container">
+  <!-- Breadcrumb Navigation -->
+  <nav class="pk-breadcrumbs pk-breadcrumbs-large mb-6" aria-label="Breadcrumbs demo breadcrumb navigation">
+    <ol class="pk-breadcrumb-list">
+      <li class="pk-breadcrumb-item">
+        <button type="button" class="pk-breadcrumb-link" (click)="navigateTo('/home')">
+          <span class="pk-breadcrumb-icon">🏠</span>
+          Home
+        </button>
+      </li>
+      <li class="pk-breadcrumb-item">
+        <span class="pk-breadcrumb-text">
+          <span class="pk-breadcrumb-icon">🧪</span>
+          Demos
+        </span>
+      </li>
+      <li class="pk-breadcrumb-item">
+        <span class="pk-breadcrumb-text pk-breadcrumb-active" aria-current="page">
+          <span class="pk-breadcrumb-icon">📍</span>
+          PK Breadcrumbs Demo
+        </span>
+      </li>
+    </ol>
+  </nav>
+
+  <h2>PK Breadcrumbs Demo</h2>
+  <p>Comprehensive breadcrumb navigation components with multiple styles and variants.</p>
+  
+  <!-- Basic Breadcrumbs -->
+  <section class="demo-section">
+    <h3>Basic Breadcrumbs</h3>
+    <p>Standard breadcrumb navigation with links and active state.</p>
+    
+    <nav class="pk-breadcrumbs" aria-label="Basic breadcrumb navigation">
+      <ol class="pk-breadcrumb-list">
+        <li class="pk-breadcrumb-item" *ngFor="let item of basicBreadcrumbs; let isLast = last">
+          <button 
+            *ngIf="item.path && !item.isActive; else textSpan"
+            type="button"
+            class="pk-breadcrumb-link"
+            (click)="navigateTo(item.path)"
+            [attr.aria-label]="'Navigate to ' + item.text">
+            {{ item.text }}
+          </button>
+          <ng-template #textSpan>
+            <span class="pk-breadcrumb-text" [class.pk-breadcrumb-active]="item.isActive">
+              {{ item.text }}
+            </span>
+          </ng-template>
+        </li>
+      </ol>
+    </nav>
+  </section>
+
+  <!-- Background Style -->
+  <section class="demo-section">
+    <h3>Background Style</h3>
+    <p>Breadcrumbs with background styling for better visibility.</p>
+    
+    <nav class="pk-breadcrumbs pk-breadcrumbs-background" aria-label="Background breadcrumb navigation">
+      <ol class="pk-breadcrumb-list">
+        <li class="pk-breadcrumb-item" *ngFor="let item of basicBreadcrumbs; let isLast = last">
+          <button 
+            *ngIf="item.path && !item.isActive; else textSpan"
+            type="button"
+            class="pk-breadcrumb-link"
+            (click)="navigateTo(item.path)"
+            [attr.aria-label]="'Navigate to ' + item.text">
+            {{ item.text }}
+          </button>
+          <ng-template #textSpan>
+            <span class="pk-breadcrumb-text" [class.pk-breadcrumb-active]="item.isActive">
+              {{ item.text }}
+            </span>
+          </ng-template>
+        </li>
+      </ol>
+    </nav>
+  </section>
+
+  <!-- Colored Style -->
+  <section class="demo-section">
+    <h3>Colored Style</h3>
+    <p>Breadcrumbs with colored accent for branding.</p>
+    
+    <nav class="pk-breadcrumbs pk-breadcrumbs-colored" aria-label="Colored breadcrumb navigation">
+      <ol class="pk-breadcrumb-list">
+        <li class="pk-breadcrumb-item" *ngFor="let item of basicBreadcrumbs; let isLast = last">
+          <button 
+            *ngIf="item.path && !item.isActive; else textSpan"
+            type="button"
+            class="pk-breadcrumb-link"
+            (click)="navigateTo(item.path)"
+            [attr.aria-label]="'Navigate to ' + item.text">
+            {{ item.text }}
+          </button>
+          <ng-template #textSpan>
+            <span class="pk-breadcrumb-text" [class.pk-breadcrumb-active]="item.isActive">
+              {{ item.text }}
+            </span>
+          </ng-template>
+        </li>
+      </ol>
+    </nav>
+  </section>
+
+  <!-- Large Size -->
+  <section class="demo-section">
+    <h3>Large Size</h3>
+    <p>Larger breadcrumbs for better accessibility and prominence.</p>
+    
+    <nav class="pk-breadcrumbs pk-breadcrumbs-large" aria-label="Large breadcrumb navigation">
+      <ol class="pk-breadcrumb-list">
+        <li class="pk-breadcrumb-item" *ngFor="let item of iconBreadcrumbs; let isLast = last">
+          <button 
+            *ngIf="item.path && !item.isActive; else textSpan"
+            type="button"
+            class="pk-breadcrumb-link"
+            (click)="navigateTo(item.path)"
+            [attr.aria-label]="'Navigate to ' + item.text">
+            {{ item.text }}
+          </button>
+          <ng-template #textSpan>
+            <span class="pk-breadcrumb-text" [class.pk-breadcrumb-active]="item.isActive">
+              {{ item.text }}
+            </span>
+          </ng-template>
+        </li>
+      </ol>
+    </nav>
+  </section>
+
+  <!-- With Icons -->
+  <section class="demo-section">
+    <h3>With Icons</h3>
+    <p>Breadcrumbs enhanced with icons for better visual context.</p>
+    
+    <nav class="pk-breadcrumbs pk-breadcrumbs-background" aria-label="Icon breadcrumb navigation">
+      <ol class="pk-breadcrumb-list">
+        <li class="pk-breadcrumb-item">
+          <button type="button" class="pk-breadcrumb-link" (click)="navigateTo('/dashboard')">
+            <span class="pk-breadcrumb-icon">🏠</span>
+            Dashboard
+          </button>
+        </li>
+        <li class="pk-breadcrumb-item">
+          <button type="button" class="pk-breadcrumb-link" (click)="navigateTo('/users')">
+            <span class="pk-breadcrumb-icon">👥</span>
+            Users
+          </button>
+        </li>
+        <li class="pk-breadcrumb-item">
+          <span class="pk-breadcrumb-text pk-breadcrumb-active">
+            <span class="pk-breadcrumb-icon">⚙️</span>
+            Profile Settings
+          </span>
+        </li>
+      </ol>
+    </nav>
+  </section>
+
+  <!-- Long Path -->
+  <section class="demo-section">
+    <h3>Long Path Navigation</h3>
+    <p>Handling longer navigation paths with proper responsive behavior.</p>
+    
+    <nav class="pk-breadcrumbs pk-breadcrumbs-colored" aria-label="Long path breadcrumb navigation">
+      <ol class="pk-breadcrumb-list">
+        <li class="pk-breadcrumb-item" *ngFor="let item of longPathBreadcrumbs; let isLast = last">
+          <button 
+            *ngIf="item.path && !item.isActive; else textSpan"
+            type="button"
+            class="pk-breadcrumb-link"
+            (click)="navigateTo(item.path)"
+            [attr.aria-label]="'Navigate to ' + item.text">
+            {{ item.text }}
+          </button>
+          <ng-template #textSpan>
+            <span class="pk-breadcrumb-text" [class.pk-breadcrumb-active]="item.isActive">
+              {{ item.text }}
+            </span>
+          </ng-template>
+        </li>
+      </ol>
+    </nav>
+  </section>
+
+  <!-- Usage Examples -->
+  <section class="demo-section">
+    <h3>Usage Information</h3>
+    <div class="usage-info">
+      <h4>CSS Classes Available:</h4>
+      <ul>
+        <li><code>.pk-breadcrumbs</code> - Base breadcrumb container</li>
+        <li><code>.pk-breadcrumbs-background</code> - Background styling variant</li>
+        <li><code>.pk-breadcrumbs-colored</code> - Colored accent variant</li>
+        <li><code>.pk-breadcrumbs-large</code> - Large size variant</li>
+        <li><code>.pk-breadcrumb-list</code> - Breadcrumb items list</li>
+        <li><code>.pk-breadcrumb-item</code> - Individual breadcrumb item</li>
+        <li><code>.pk-breadcrumb-link</code> - Clickable breadcrumb links</li>
+        <li><code>.pk-breadcrumb-text</code> - Non-clickable breadcrumb text</li>
+        <li><code>.pk-breadcrumb-active</code> - Active/current page indicator</li>
+        <li><code>.pk-breadcrumb-icon</code> - Icon container within breadcrumbs</li>
+      </ul>
+      
+      <h4>Accessibility Features:</h4>
+      <ul>
+        <li>Semantic HTML structure with nav and ol elements</li>
+        <li>ARIA labels for screen readers</li>
+        <li>Keyboard navigation support</li>
+        <li>Focus management and hover states</li>
+        <li>Clear visual separation between links and current page</li>
+      </ul>
+    </div>
+  </section>
+</div>

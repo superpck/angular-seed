@@ -1,0 +1,308 @@
+/* PK Breadcrumbs - Navigation breadcrumb component */
+
+.pk-breadcrumbs {
+  @apply w-full;
+  
+  .pk-breadcrumb-list {
+    @apply flex items-center flex-wrap gap-2 text-sm text-gray-600;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .pk-breadcrumb-item {
+    @apply flex items-center;
+    position: relative;
+    
+    /* Add separator after each item except the last */
+    &:not(:last-child)::after {
+      content: "›";
+      @apply text-gray-400 ml-2 mr-2;
+      font-size: 16px;
+      line-height: 1;
+    }
+    
+    .pk-breadcrumb-link {
+      @apply text-blue-600 hover:text-blue-800 transition-colors duration-200 bg-transparent border-none cursor-pointer;
+      text-decoration: none;
+      padding: 0;
+      font-family: inherit;
+      font-size: inherit;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+      
+      &:focus {
+        @apply outline-none ring-2 ring-blue-500 ring-offset-1 rounded;
+      }
+    }
+    
+    .pk-breadcrumb-text {
+      @apply text-gray-600;
+      
+      &.pk-breadcrumb-active {
+        @apply text-gray-900 font-medium;
+      }
+    }
+    
+    .pk-breadcrumb-icon {
+      @apply mr-1;
+      display: inline-block;
+    }
+  }
+}
+
+/* Background Style Variant */
+.pk-breadcrumbs-background {
+  @apply bg-gray-50 border border-gray-200 rounded-lg px-4 py-3;
+  
+  .pk-breadcrumb-item {
+    .pk-breadcrumb-link {
+      @apply text-blue-700 hover:text-blue-900;
+    }
+    
+    .pk-breadcrumb-text.pk-breadcrumb-active {
+      @apply text-gray-800 font-semibold;
+    }
+    
+    &:not(:last-child)::after {
+      @apply text-gray-500;
+    }
+  }
+}
+
+/* Colored Style Variant */
+.pk-breadcrumbs-colored {
+  @apply bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg px-4 py-3;
+  
+  .pk-breadcrumb-item {
+    .pk-breadcrumb-link {
+      @apply text-blue-700 hover:text-blue-900 font-medium;
+    }
+    
+    .pk-breadcrumb-text.pk-breadcrumb-active {
+      @apply text-indigo-800 font-semibold;
+    }
+    
+    &:not(:last-child)::after {
+      @apply text-blue-400;
+      font-weight: bold;
+    }
+  }
+}
+
+/* Large Size Variant */
+.pk-breadcrumbs-large {
+  .pk-breadcrumb-list {
+    @apply text-base;
+  }
+  
+  .pk-breadcrumb-item {
+    .pk-breadcrumb-icon {
+      @apply mr-2;
+      font-size: 1.1em;
+    }
+    
+    &:not(:last-child)::after {
+      @apply text-lg font-bold;
+      margin: 0 0.75rem;
+    }
+  }
+  
+  &.pk-breadcrumbs-background,
+  &.pk-breadcrumbs-colored {
+    @apply px-5 py-4;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pk-breadcrumbs {
+    .pk-breadcrumb-list {
+      @apply text-xs;
+    }
+    
+    .pk-breadcrumb-item {
+      .pk-breadcrumb-icon {
+        @apply mr-1;
+        font-size: 0.9em;
+      }
+      
+      &:not(:last-child)::after {
+        margin: 0 0.25rem;
+        font-size: 14px;
+      }
+    }
+  }
+  
+  .pk-breadcrumbs-large {
+    .pk-breadcrumb-list {
+      @apply text-sm;
+    }
+  }
+  
+  .pk-breadcrumbs-background,
+  .pk-breadcrumbs-colored {
+    @apply px-3 py-2;
+  }
+}
+
+/* With underline style */
+.pk-breadcrumbs-underline {
+  .pk-breadcrumb-item {
+    @apply border-b-2 border-transparent pb-2;
+    
+    &.active {
+      @apply border-blue-500;
+    }
+  }
+}
+
+/* With icons support */
+.pk-breadcrumbs-with-icons {
+  .pk-breadcrumb-item {
+    @apply flex items-center space-x-1;
+    
+    .pk-breadcrumb-icon {
+      @apply w-4 h-4 flex-shrink-0;
+      
+      &.emoji-icon {
+        @apply text-base leading-none;
+      }
+      
+      &.svg-icon {
+        fill: currentColor;
+        stroke: currentColor;
+      }
+    }
+  }
+  
+  &.pk-breadcrumbs-sm .pk-breadcrumb-icon {
+    @apply w-3 h-3;
+  }
+  
+  &.pk-breadcrumbs-lg .pk-breadcrumb-icon {
+    @apply w-5 h-5;
+  }
+}
+
+/* Dark theme */
+.pk-breadcrumbs-dark {
+  @apply text-gray-300;
+  
+  .pk-breadcrumb-item {
+    a {
+      @apply text-blue-400 hover:text-blue-300;
+    }
+    
+    &.active {
+      @apply text-white;
+      
+      a {
+        @apply text-white;
+      }
+    }
+    
+    &.disabled {
+      @apply text-gray-500;
+      
+      a {
+        @apply text-gray-500;
+      }
+    }
+  }
+  
+  .pk-breadcrumb-separator {
+    @apply text-gray-500;
+    
+    &.separator-icon svg {
+      @apply text-gray-500;
+    }
+  }
+}
+
+/* Breadcrumb container styles */
+.pk-breadcrumbs-container {
+  @apply bg-gray-50 px-4 py-3 rounded-lg border;
+  
+  &.container-white {
+    @apply bg-white shadow-sm;
+  }
+  
+  &.container-dark {
+    @apply bg-gray-800 border-gray-700;
+  }
+  
+  &.container-transparent {
+    @apply bg-transparent border-transparent;
+  }
+}
+
+/* Mobile specific styles */
+@media (max-width: 640px) {
+  .pk-breadcrumbs {
+    &.pk-breadcrumbs-mobile-stack {
+      @apply flex-col items-start space-x-0 space-y-2;
+      
+      .pk-breadcrumb-separator {
+        @apply hidden;
+      }
+      
+      .pk-breadcrumb-item {
+        @apply w-full;
+      }
+    }
+    
+    &.pk-breadcrumbs-mobile-scroll {
+      @apply overflow-x-auto whitespace-nowrap;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      
+      .pk-breadcrumb-item {
+        @apply flex-shrink-0;
+      }
+    }
+  }
+}
+
+/* Accessibility styles */
+.pk-breadcrumbs {
+  /* Focus styles */
+  .pk-breadcrumb-item a:focus {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2 rounded;
+  }
+  
+  /* Screen reader only text */
+  .pk-breadcrumb-sr-only {
+    @apply sr-only;
+  }
+}
+
+/* Animation effects */
+@keyframes breadcrumb-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.pk-breadcrumbs-fade-in {
+  .pk-breadcrumb-item {
+    animation: breadcrumb-fade-in 0.3s ease-out forwards;
+    
+    &:nth-child(1) { animation-delay: 0ms; }
+    &:nth-child(2) { animation-delay: 100ms; }
+    &:nth-child(3) { animation-delay: 200ms; }
+    &:nth-child(4) { animation-delay: 300ms; }
+    &:nth-child(5) { animation-delay: 400ms; }
+  }
+}

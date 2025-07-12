@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-icons-demo',
@@ -7,6 +8,30 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <div class="p-6 max-w-3xl mx-auto my-8 bg-white rounded-lg shadow-md">
+      <!-- Breadcrumb Navigation -->
+      <nav class="pk-breadcrumbs pk-breadcrumbs-background mb-6" aria-label="Icons demo breadcrumb navigation">
+        <ol class="pk-breadcrumb-list">
+          <li class="pk-breadcrumb-item">
+            <button type="button" class="pk-breadcrumb-link" (click)="navigateToHome()">
+              <span class="pk-breadcrumb-icon">🏠</span>
+              Home
+            </button>
+          </li>
+          <li class="pk-breadcrumb-item">
+            <span class="pk-breadcrumb-text">
+              <span class="pk-breadcrumb-icon">🧪</span>
+              Demos
+            </span>
+          </li>
+          <li class="pk-breadcrumb-item">
+            <span class="pk-breadcrumb-text pk-breadcrumb-active" aria-current="page">
+              <span class="pk-breadcrumb-icon">😀</span>
+              Icons Demo
+            </span>
+          </li>
+        </ol>
+      </nav>
+
       <h2 class="text-2xl font-bold mb-6">Emoji Icons Demo</h2>
       
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -212,4 +237,9 @@ import { CommonModule } from '@angular/common';
   styles: []
 })
 export class IconsDemoComponent {
+  private router = inject(Router);
+
+  navigateToHome(): void {
+    this.router.navigate(['/home']);
+  }
 }

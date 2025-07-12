@@ -1,4 +1,28 @@
 <div class="container mx-auto p-6">
+  <!-- Breadcrumb Navigation -->
+  <nav class="pk-breadcrumbs pk-breadcrumbs-background mb-6" aria-label="Grid demo breadcrumb navigation">
+    <ol class="pk-breadcrumb-list">
+      <li class="pk-breadcrumb-item">
+        <button type="button" class="pk-breadcrumb-link" (click)="navigateToHome()">
+          <span class="pk-breadcrumb-icon">🏠</span>
+          Home
+        </button>
+      </li>
+      <li class="pk-breadcrumb-item">
+        <span class="pk-breadcrumb-text">
+          <span class="pk-breadcrumb-icon">🧪</span>
+          Demos
+        </span>
+      </li>
+      <li class="pk-breadcrumb-item">
+        <span class="pk-breadcrumb-text pk-breadcrumb-active" aria-current="page">
+          <span class="pk-breadcrumb-icon">🔲</span>
+          Grid Demo
+        </span>
+      </li>
+    </ol>
+  </nav>
+
   <h1 class="text-3xl font-bold mb-8 text-center">{{ title }}</h1>
 
   <!-- Basic Grid Example -->

@@ -11,6 +11,7 @@
    - [Buttons](./components/buttons.md)
    - [Cards](./components/cards.md)
    - [Badges](./components/badges.md)
+   - [Breadcrumbs](./components/breadcrumbs.md)
 4. [UI Components](#ui-components)
    - [Toastr Notifications](./components/toastr.md)
    - [Alert Modals](./components/alert.md)
@@ -64,6 +65,8 @@ npm start
 
 - [Buttons](./components/buttons.md) - ปุ่มหลากหลายรูปแบบ (primary, success, warning, error, info)
 - [Cards](./components/cards.md) - การ์ดพร้อม header, body และ footer
+- [Badges](./components/badges.md) - ระบบ Badge ที่หลากหลายและปรับแต่งได้พร้อมรองรับ Icon
+- [Breadcrumbs](./components/breadcrumbs.md) - ระบบ Breadcrumb navigation แบบเต็มรูปแบบพร้อม variants
 
 ## UI Components
 
@@ -96,6 +99,8 @@ Services ที่ช่วยในการจัดการข้อมู�
 - `/grid-demo` - หน้าตัวอย่างการใช้งาน Grid System
 - `/drag-drop-demo` - หน้าตัวอย่างการใช้งาน Drag & Drop Component
 - `/icons-demo` - หน้าแสดงตัวอย่าง Icons และ CSS Components
+- `/badges-demo` - หน้าแสดงตัวอย่าง PK Badges System
+- `/breadcrumbs-demo` - หน้าแสดงตัวอย่าง PK Breadcrumbs System
 
 ## Authentication
 

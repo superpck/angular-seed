@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { AlertService } from '../shared/services/alert.service';
 import { ToastrService } from '../shared/services/toastr.service';
 
@@ -9,6 +10,30 @@ import { ToastrService } from '../shared/services/toastr.service';
   imports: [CommonModule],
   template: `
     <div class="demo-container p-6 max-w-3xl mx-auto my-8">
+      <!-- Breadcrumb Navigation -->
+      <nav class="pk-breadcrumbs pk-breadcrumbs-background mb-6" aria-label="Alert demo breadcrumb navigation">
+        <ol class="pk-breadcrumb-list">
+          <li class="pk-breadcrumb-item">
+            <button type="button" class="pk-breadcrumb-link" (click)="navigateToHome()">
+              <span class="pk-breadcrumb-icon">🏠</span>
+              Home
+            </button>
+          </li>
+          <li class="pk-breadcrumb-item">
+            <span class="pk-breadcrumb-text">
+              <span class="pk-breadcrumb-icon">🧪</span>
+              Demos
+            </span>
+          </li>
+          <li class="pk-breadcrumb-item">
+            <span class="pk-breadcrumb-text pk-breadcrumb-active" aria-current="page">
+              <span class="pk-breadcrumb-icon">⚠️</span>
+              Alert Demo
+            </span>
+          </li>
+        </ol>
+      </nav>
+
       <h2 class="text-2xl font-bold mb-6">Alert & Toastr Demo</h2>
       
       <div class="mb-8">
@@ -89,6 +114,7 @@ import { ToastrService } from '../shared/services/toastr.service';
 export class AlertDemoComponent {
   private alertService = inject(AlertService);
   private toastrService = inject(ToastrService);
+  private router = inject(Router);
   
   // Alert Demo Methods
   showSuccessAlert(): void {
@@ -134,5 +160,9 @@ export class AlertDemoComponent {
   
   showInfoToast(): void {
     this.toastrService.info('ระบบกำลังประมวลผลข้อมูลของคุณ', 'ข้อมูล');
+  }
+
+  navigateToHome(): void {
+    this.router.navigate(['/home']);
   }
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-grid-demo',
@@ -9,6 +11,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./grid-demo.component.scss']
 })
 export class GridDemoComponent {
+  private router = inject(Router);
+  
   title = 'PK Grid System Demo';
   
   examples = [
@@ -25,4 +29,8 @@ export class GridDemoComponent {
       description: 'แสดงการใช้คอลัมน์ขนาดต่างๆ ในแถวเดียวกัน'
     }
   ];
+
+  navigateToHome(): void {
+    this.router.navigate(['/home']);
+  }
 }

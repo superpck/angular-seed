@@ -1,4 +1,4 @@
-# Angular Seed Project version 20.1.0 - 2025.07.12-4
+# Angular Seed Project version 20.1.0 - 2025.07.12-5
 
 Modern Angular application template with Tailwind CSS and pre-built UI components.
 
@@ -7,14 +7,21 @@ Modern Angular application template with Tailwind CSS and pre-built UI component
 - ⚡ [**Angular 20**](https://angular.dev/) with TypeScript & Standalone Components
 - 🎨 [**Tailwind CSS 3**](https://tailwindcss.com/) for styling
 - 📱 **Responsive Design** with PK Grid System
+- 📍 **PK Breadcrumbs System** with navigation & icons
 - 🏷️ **PK Badges System** with icon support
+- 🃏 **Card System** with variants and responsive layouts
 - 🔔 **Notification System** (Toastr & Alert Modals)
-- 🧩 **Pre-built Components** (Buttons, Cards, Modals, Badges)
+- 🧩 **Pre-built Components** (Buttons, Modals)
 - 🚀 **Drag & Drop System** with cross-window support
 - 🔐 **Authentication** with route guards
-- 🦶 **Footer Component** with modern styling20** with TypeScript & Standalone Components
+- 🦶 **Footer Component** with modern styling
 
 Modern Angular application template with Tailwind CSS and pre-built UI components.
+
+## Author & Repository
+
+- **Author**: [SuprPCK](https://github.com/superpck)
+- **Repository**: [https://github.com/superpck/angular-seed](https://github.com/superpck/angular-seed)
 
 ## Quick Start
 

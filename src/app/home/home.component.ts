@@ -10,6 +10,18 @@ import { inject } from '@angular/core';
   imports: [CommonModule, RouterLink],
   template: `
     <div class="container mx-auto p-6">
+      <!-- Breadcrumb Navigation -->
+      <nav class="pk-breadcrumbs mb-6" aria-label="Home breadcrumb navigation">
+        <ol class="pk-breadcrumb-list">
+          <li class="pk-breadcrumb-item">
+            <span class="pk-breadcrumb-text pk-breadcrumb-active" aria-current="page">
+              <span class="pk-breadcrumb-icon">🏠</span>
+              Home
+            </span>
+          </li>
+        </ol>
+      </nav>
+
       <div class="bg-white rounded-lg shadow-lg p-8">
         <h1 class="text-3xl font-bold mb-4">Welcome, {{ username }}</h1>
         <p class="mb-6">You have successfully logged in to the Angular Seed application.</p>

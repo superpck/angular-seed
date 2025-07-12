@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { DragDropComponent } from '../shared/drag-drop/drag-drop.component';
 import { DragDropItem, DragDropConfig, DragDropChangeEvent, DragDropTransferEvent } from '../shared/models/drag-drop.model';
 import { DragDropService } from '../shared/services/drag-drop.service';
@@ -12,6 +13,7 @@ import { DragDropService } from '../shared/services/drag-drop.service';
   styleUrls: ['./drag-drop-demo.component.scss']
 })
 export class DragDropDemoComponent implements OnInit {
+  private router = inject(Router);
   private dragDropService = inject(DragDropService);
   
   // Kanban board columns
@@ -189,5 +191,9 @@ export class DragDropDemoComponent implements OnInit {
       case 'low': return 'bg-green-100 text-green-800';
       default: return 'bg-gray-100 text-gray-800';
     }
+  }
+
+  navigateToHome(): void {
+    this.router.navigate(['/home']);
   }
 }

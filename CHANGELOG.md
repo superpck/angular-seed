@@ -5,6 +5,25 @@
 รูปแบบของ changelog นี้อ้างอิงตาม [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 และโปรเจคนี้ยึดหลัก [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [20.1.0] - 2025.07.12 - 5
+
+### เพิ่มใหม่
+- **PK Breadcrumbs System**
+  - ระบบ Breadcrumb navigation ที่รองรับ icons และมีหลายรูปแบบ
+  - รองรับ variants: background, colored, large
+  - รองรับ responsive design ปรับตามขนาดหน้าจอ
+  - Accessibility compliant: ARIA labels, semantic HTML structure
+  - มี animation และ hover effects
+  - รองรับ icon: emoji และ SVG icons
+  - เพิ่มในทุกหน้าของระบบ: Users, Demo pages, Home
+
+### แก้ไขปรับปรุง
+- ปรับปรุงโครงสร้าง CSS ให้ breadcrumbs เรียงจากซ้ายไปขวาได้อย่างถูกต้อง
+- ปรับปรุงเอกสารประกอบการใช้งาน breadcrumbs อย่างครบถ้วน
+- เพิ่ม Author และ Repository information ใน README.md
+- ปรับปรุงรายละเอียด Card System ในเอกสาร
+- แก้ไข CSS ให้ถูกต้องสำหรับ breadcrumbs ในโหมด responsive
+
 ## [20.1.0] - 2025.07.12 - 4
 
 ### เพิ่มใหม่

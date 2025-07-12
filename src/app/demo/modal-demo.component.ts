@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { ModalService } from '../shared/services/modal.service';
 import { ModalModule } from '../shared/modal/modal.module';
 import { ModalSize } from '../shared/models/modal.model';
@@ -20,6 +21,30 @@ interface DemoCard {
   imports: [CommonModule, ModalModule],
   template: `
     <div class="container mx-auto p-4">
+      <!-- Breadcrumb Navigation -->
+      <nav class="pk-breadcrumbs pk-breadcrumbs-background mb-6" aria-label="Modal demo breadcrumb navigation">
+        <ol class="pk-breadcrumb-list">
+          <li class="pk-breadcrumb-item">
+            <button type="button" class="pk-breadcrumb-link" (click)="navigateToHome()">
+              <span class="pk-breadcrumb-icon">🏠</span>
+              Home
+            </button>
+          </li>
+          <li class="pk-breadcrumb-item">
+            <span class="pk-breadcrumb-text">
+              <span class="pk-breadcrumb-icon">🧪</span>
+              Demos
+            </span>
+          </li>
+          <li class="pk-breadcrumb-item">
+            <span class="pk-breadcrumb-text pk-breadcrumb-active" aria-current="page">
+              <span class="pk-breadcrumb-icon">🪟</span>
+              Modal Demo
+            </span>
+          </li>
+        </ol>
+      </nav>
+
       <h1 class="text-2xl font-bold mb-6">Modal Component Demo</h1>
       
       <!-- Modal Size Demo -->
@@ -93,8 +118,9 @@ interface DemoCard {
   `
 })
 export class ModalDemoComponent {
-  protected modalService = inject(ModalService);
+  private modalService = inject(ModalService);
   private toastr = inject(ToastrService);
+  private router = inject(Router);
   
   // ข้อมูลสำหรับแสดงใน Modal
   modalContent = {
@@ -172,5 +198,9 @@ export class ModalDemoComponent {
       data: { timestamp: new Date() } 
     });
     this.toastr.info('Modal ถูกปิดพร้อมส่งข้อมูลกลับ', 'Modal ถูกปิด');
+  }
+  
+  navigateToHome(): void {
+    this.router.navigate(['/home']);
   }
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-badges-demo',
@@ -9,6 +11,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./badges-demo.component.scss']
 })
 export class BadgesDemoComponent {
+  private router = inject(Router);
+
   badges = [
     { text: 'Default', icon: '📝', type: 'default' },
     { text: 'Primary', icon: '🔵', type: 'primary' },
@@ -37,5 +41,9 @@ export class BadgesDemoComponent {
   
   removeBadge(index: number, array: Array<{text: string; icon: string; type: string; label?: string}>): void {
     array.splice(index, 1);
+  }
+
+  navigateToHome(): void {
+    this.router.navigate(['/home']);
   }
 }

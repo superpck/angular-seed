@@ -1,4 +1,28 @@
 <div class="container mx-auto p-6">
+  <!-- Breadcrumb Navigation -->
+  <nav class="pk-breadcrumbs pk-breadcrumbs-colored mb-6" aria-label="Badges demo breadcrumb navigation">
+    <ol class="pk-breadcrumb-list">
+      <li class="pk-breadcrumb-item">
+        <button type="button" class="pk-breadcrumb-link" (click)="navigateToHome()">
+          <span class="pk-breadcrumb-icon">🏠</span>
+          Home
+        </button>
+      </li>
+      <li class="pk-breadcrumb-item">
+        <span class="pk-breadcrumb-text">
+          <span class="pk-breadcrumb-icon">🧪</span>
+          Demos
+        </span>
+      </li>
+      <li class="pk-breadcrumb-item">
+        <span class="pk-breadcrumb-text pk-breadcrumb-active" aria-current="page">
+          <span class="pk-breadcrumb-icon">🏷️</span>
+          PK Badges Demo
+        </span>
+      </li>
+    </ol>
+  </nav>
+
   <div class="mb-8">
     <h1 class="text-3xl font-bold mb-4">PK Badges Demo</h1>
     <p class="text-gray-600 mb-6">ระบบ Badge components ที่รองรับ icons และมีหลายรูปแบบ</p>

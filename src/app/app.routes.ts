@@ -52,6 +52,11 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'breadcrumbs-demo',
+    loadComponent: () => import('./breadcrumbs-demo/breadcrumbs-demo.component').then(m => m.BreadcrumbsDemoComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: '',
     redirectTo: 'users',
     pathMatch: 'full'
