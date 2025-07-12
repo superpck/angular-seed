@@ -5,6 +5,26 @@
 รูปแบบของ changelog นี้อ้างอิงตาม [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 และโปรเจคนี้ยึดหลัก [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [20.1.0] - 2025.07.12 - 3
+
+### ปรับปรุง
+- **หน้า Login**
+  - เพิ่ม Angular Logo พร้อม animation หมุนช้าๆ
+  - ปรับปรุง layout ของ login form ให้มี branding ที่ชัดเจน
+  - เพิ่ม gradient text สำหรับชื่อแอปพลิเคชัน
+  - ปรับขนาดหัวข้อให้เหมาะสมกับ logo
+- **Image Carousel**
+  - ระบบ sliding carousel สำหรับภาพพื้นหลัง login
+  - Auto-rotation ทุก 6 วินาที
+  - Navigation arrows และ indicator dots
+  - Smooth transition effects ด้วย CSS transforms
+  - รองรับการ reset auto-rotation เมื่อเลือกภาพด้วยตนเอง
+- **Visual Design**
+  - ปรับปรุงสีสันและ gradient ให้ทันสมัย
+  - Glass morphism effects สำหรับ UI elements
+  - เพิ่ม backdrop-filter และ drop-shadow effects
+  - Modern responsive design
+
 ## [20.1.0] - 2025.07.12 - 2
 
 ### เพิ่มใหม่

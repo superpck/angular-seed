@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,7 +13,7 @@ import { inject } from '@angular/core';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   private formBuilder = inject(FormBuilder);
   private authService = inject(FakeAuthService);
   private router = inject(Router);
@@ -27,27 +27,34 @@ export class LoginComponent implements OnInit {
   // Modern background images
   backgroundImages = [
     {
-      src: 'assets/images/login-image-modern.jpg',
-      alt: 'Modern workspace - Professional login',
+      src: 'images/login-abstract-blue.jpg',
+      alt: 'Modern abstract blue background',
       title: 'Welcome to Angular Seed',
       subtitle: 'Modern web application platform'
     },
     {
-      src: 'assets/images/login-bg-gradient.jpg',
-      alt: 'Abstract gradient background',
+      src: 'images/login-geometric.jpg',
+      alt: 'Modern geometric pattern',
       title: 'Innovation Starts Here',
       subtitle: 'Building the future with Angular'
     },
     {
-      src: 'assets/images/login-business.jpg',
-      alt: 'Modern business environment',
+      src: 'images/login-waves.jpg',
+      alt: 'Modern wave pattern',
       title: 'Professional Platform',
       subtitle: 'Enterprise-ready solutions'
+    },
+    {
+      src: 'images/login-business.jpg',
+      alt: 'Modern business environment',
+      title: 'Digital Transformation',
+      subtitle: 'Empowering your business'
     }
   ];
   
   currentImageIndex = 0;
   currentImage = this.backgroundImages[0];
+  private autoSlideInterval: number | undefined;
 
   ngOnInit(): void {
     // สร้างฟอร์ม
@@ -62,14 +69,20 @@ export class LoginComponent implements OnInit {
     // ดึงค่า returnUrl จาก query params ถ้ามี แต่ default เป็น '/users'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
     
-    // Set up automatic image rotation every 8 seconds
+    // Set up automatic image rotation every 6 seconds
     this.startImageRotation();
   }
   
+  ngOnDestroy(): void {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
+    }
+  }
+  
   startImageRotation(): void {
-    setInterval(() => {
+    this.autoSlideInterval = setInterval(() => {
       this.nextImage();
-    }, 8000);
+    }, 6000); // Auto slide every 6 seconds
   }
   
   nextImage(): void {
@@ -77,9 +90,32 @@ export class LoginComponent implements OnInit {
     this.currentImage = this.backgroundImages[this.currentImageIndex];
   }
   
+  prevImage(): void {
+    this.currentImageIndex = this.currentImageIndex === 0 
+      ? this.backgroundImages.length - 1 
+      : this.currentImageIndex - 1;
+    this.currentImage = this.backgroundImages[this.currentImageIndex];
+  }
+  
   selectImage(index: number): void {
     this.currentImageIndex = index;
     this.currentImage = this.backgroundImages[index];
+    
+    // Reset auto-rotation after manual selection
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
+      this.startImageRotation();
+    }
+  }
+  
+  getNextIndex(): number {
+    return (this.currentImageIndex + 1) % this.backgroundImages.length;
+  }
+  
+  getPrevIndex(): number {
+    return this.currentImageIndex === 0 
+      ? this.backgroundImages.length - 1 
+      : this.currentImageIndex - 1;
   }
 
   onSubmit(): void {
