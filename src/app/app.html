@@ -5,10 +5,10 @@
   </div> -->
   
   <!-- แสดง NavComponent ยกเว้นในหน้า Login -->
-  <app-nav *ngIf="!isLoginPage"></app-nav>
+  <app-nav *ngIf="!isLoginPage" (sideNavCollapsedChange)="sideNavCollapsed = $event"></app-nav>
   
   <!-- เนื้อหาหลัก -->
-  <div class="content" [ngClass]="{'with-nav': !isLoginPage}">
+  <div class="content" [ngClass]="{'with-nav': !isLoginPage, 'collapsed-nav': sideNavCollapsed}">
     <div class="content-wrapper">
       <router-outlet></router-outlet>
       

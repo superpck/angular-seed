@@ -8,7 +8,7 @@ import { ToastrService } from '../shared/services/toastr.service';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="toastr-demo p-6 max-w-3xl mx-auto my-8">
+    <div class="toastr-demo p-6 mx-auto my-8">
       <!-- Breadcrumb Navigation -->
       <nav class="pk-breadcrumbs pk-breadcrumbs-background mb-6" aria-label="Toastr demo breadcrumb navigation">
         <ol class="pk-breadcrumb-list">

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="p-6 max-w-3xl mx-auto my-8 bg-white rounded-lg shadow-md">
+    <div class="p-6 mx-auto my-8 bg-white rounded-lg shadow-md">
       <!-- Breadcrumb Navigation -->
       <nav class="pk-breadcrumbs pk-breadcrumbs-background mb-6" aria-label="Icons demo breadcrumb navigation">
         <ol class="pk-breadcrumb-list">

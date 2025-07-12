@@ -20,7 +20,7 @@ interface DemoCard {
   standalone: true,
   imports: [CommonModule, ModalModule],
   template: `
-    <div class="container mx-auto p-4">
+    <div class="container w-full mx-auto p-4">
       <h1 class="text-2xl font-bold mb-6">Component Demo</h1>
       
       <!-- Toastr Demo -->

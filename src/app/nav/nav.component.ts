@@ -1,4 +1,5 @@
 import { Component, inject, HostListener } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { FakeAuthService } from '../services/fake-auth.service';
@@ -19,6 +20,7 @@ interface MenuItem {
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
+  @Output() sideNavCollapsedChange = new EventEmitter<boolean>();
   onProfileDropdownMouseLeave() {
     // ซ่อน dropdown เฉพาะเมื่อ mouse ออกและ dropdown ไม่ถูกเปิดด้วยคลิก
     if (this.showProfileDropdown) {
@@ -134,6 +136,7 @@ export class NavComponent {
   
   toggleSideNavCollapse(): void {
     this.sideNavCollapsed = !this.sideNavCollapsed;
+    this.sideNavCollapsedChange.emit(this.sideNavCollapsed);
   }
   
   toggleSubmenu(item: MenuItem, event?: Event): void {

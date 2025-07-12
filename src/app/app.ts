@@ -31,6 +31,7 @@ interface ModalData {
   styleUrl: './app.scss'
 })
 export class App implements OnInit {
+  protected sideNavCollapsed = false;
   protected title = 'angular-seed';
   protected isLoginPage = false;
   private router = inject(Router);
@@ -43,6 +44,8 @@ export class App implements OnInit {
   }
   
   constructor() {
+    // Listen for sideNavCollapsed changes from NavComponent
+    // This will be bound in the template via (sideNavCollapsedChange)
     // ตรวจสอบว่าปัจจุบันอยู่ที่หน้า login หรือไม่
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)

@@ -1,3 +1,9 @@
+// Collapsed nav style
+.content.collapsed-nav {
+  @media (min-width: 1024px) {
+    padding-left: 80px !important; // กำหนดความกว้าง side nav เมื่อ collapse
+  }
+}
 /* App Component Styles */
 /* Custom styles for this component only */
 

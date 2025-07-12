@@ -36,7 +36,8 @@ export class BreadcrumbsDemoComponent {
     { text: 'Edit Role', isActive: true }
   ];
 
-  navigateTo(): void {
+  navigateTo(route: string): void {
+    console.log('Navigating to:', route);
     // In real application, use Router.navigate([path])
   }
 }
