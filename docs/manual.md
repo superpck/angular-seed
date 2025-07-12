@@ -1,4 +1,11 @@
+
 # คู่มือการใช้งาน Angular Seed
+
+## What's New (20.1.1)
+
+- ระบบ login redirect ไป /home หลังเข้าสู่ระบบสำเร็จ
+- ปรับ dropdown user profile ให้ใช้งานได้ทั้ง hover/click และไม่ hide เมื่อ mouse อยู่บนเมนู
+- ปรับปรุง UI dropdown และ navigation
 
 คู่มือนี้จะอธิบายถึงการใช้งานคอมโพเนนต์และบริการต่างๆ ที่มีอยู่ในโปรเจค Angular Seed
 

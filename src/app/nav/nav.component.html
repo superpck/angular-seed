@@ -9,17 +9,41 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
-        <a routerLink="/home" class="text-xl font-bold text-white">Angular 20 <small>for starter</small></a>
+        <a routerLink="/home" class="flex items-center gap-2 text-xl font-bold text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-orange-500" viewBox="0 0 32 32" fill="currentColor">
+            <polygon points="16,3 30,9 27,25 16,29 5,25 2,9" fill="#dd0031"/>
+            <polygon points="16,6 27,10.5 25,23.5 16,26.5 7,23.5 5,10.5" fill="#fff" opacity="0.2"/>
+            <path d="M16 10.5l-5.5 9h2.2l1.1-2h4.4l1.1 2h2.2l-5.5-9zm0 3.2l1.6 2.8h-3.2l1.6-2.8z" fill="#fff"/>
+          </svg>
+          <span>Angular 20</span>
+          <span class="inline-block bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded align-middle ml-2">for Starter</span>
+        </a>
       </div>
 
       <!-- ขวา: ข้อมูลผู้ใช้และปุ่ม Logout -->
       <div class="flex items-center">
-        <div class="hidden md:block mr-4 text-white">
-          <span>{{ currentUser?.name }}</span>
+        <div class="relative hidden md:block mr-4 text-white"
+          (mouseenter)="showProfileDropdown=true"
+          (mouseleave)="onProfileDropdownMouseLeave()">
+          <button class="flex items-center gap-2 focus:outline-none"
+            (click)="showProfileDropdown = !showProfileDropdown">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.657 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>{{ currentUser?.name }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div *ngIf="showProfileDropdown" class="absolute right-0 w-40 bg-white rounded shadow-lg z-50 text-gray-700">
+            <div class="px-4 py-2 border-b">
+              <div class="font-semibold">{{ currentUser?.name }}</div>
+              <div class="text-xs text-gray-500">{{ currentUser?.email }}</div>
+            </div>
+            <a class="block px-4 py-2 hover:bg-gray-100 cursor-pointer" routerLink="/home">Profile</a>
+            <button (click)="logout(); showProfileDropdown=false" class="block w-full text-left px-4 py-2 hover:bg-gray-100 cursor-pointer">Logout</button>
+          </div>
         </div>
-        <button (click)="logout()" class="bg-red-600 hover:bg-red-700 text-white py-1 px-3 rounded">
-          Logout
-        </button>
       </div>
     </div>
   </nav>

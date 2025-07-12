@@ -19,6 +19,16 @@ interface MenuItem {
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
+  onProfileDropdownMouseLeave() {
+    // ซ่อน dropdown เฉพาะเมื่อ mouse ออกและ dropdown ไม่ถูกเปิดด้วยคลิก
+    if (this.showProfileDropdown) {
+      setTimeout(() => {
+        // ถ้า mouse ไม่กลับเข้ามาใน dropdown ภายใน 200ms ให้ซ่อน
+        this.showProfileDropdown = false;
+      }, 200);
+    }
+  }
+  showProfileDropdown = false;
   private authService = inject(FakeAuthService);
   private router = inject(Router);
   

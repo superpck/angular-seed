@@ -5,6 +5,14 @@
 รูปแบบของ changelog นี้อ้างอิงตาม [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 และโปรเจคนี้ยึดหลัก [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+
+## [20.1.0] - 2025.07.12 - 6
+
+### แก้ไขปรับปรุง
+- แก้ไขระบบ login: หลัง login สำเร็จจะ redirect ไป /home
+- ปรับ dropdown user profile ให้ใช้งานได้ทั้ง hover/click และไม่ hide เมื่อ mouse อยู่บนเมนู
+- ปรับปรุง UI dropdown และ navigation
+
 ## [20.1.0] - 2025.07.12 - 6
 
 ### เพิ่มใหม่
