@@ -4,7 +4,7 @@ Modern Angular application template with Tailwind CSS and pre-built UI component
 
 ## Features
 
-- ⚡ **Angular 20** with TypeScript & Standalone Components
+- ⚡ [**Angular 20**](https://angular.dev/) with TypeScript & Standalone Components
 - 🎨 [**Tailwind CSS 3**](https://tailwindcss.com/) for styling
 - 📱 **Responsive Design** with PK Grid System
 - 🏷️ **PK Badges System** with icon support
@@ -13,14 +13,6 @@ Modern Angular application template with Tailwind CSS and pre-built UI component
 - 🚀 **Drag & Drop System** with cross-window support
 - 🔐 **Authentication** with route guards
 - 🦶 **Footer Component** with modern styling20** with TypeScript & Standalone Components
-- 🎨 **Tailwind CSS 3** for styling
-- 📱 **Responsive Design** with PK Grid System
-- 🏷️ **PK Badges System** with icon support
-- 🔔 **Notification System** (Toastr & Alert Modals)
-- 🧩 **Pre-built Components** (Buttons, Cards, Modals, Badges)
-- 🚀 **Drag & Drop System** with cross-window support
-- 🔐 **Authentication** with route guards
-- 🦶 **Footer Component** with modern styling Seed Project version 20.1.0 - 2025.07.12-4
 
 Modern Angular application template with Tailwind CSS and pre-built UI components.
 
