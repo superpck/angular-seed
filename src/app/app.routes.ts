@@ -42,6 +42,11 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'drag-drop-demo',
+    loadComponent: () => import('./demo/drag-drop-demo.component').then(m => m.DragDropDemoComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: '',
     redirectTo: 'users',
     pathMatch: 'full'
