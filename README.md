@@ -89,21 +89,51 @@ Advanced tab component with multiple overflow handling strategies:
 
 ```typescript
 // Basic usage
-<app-pk-tabs overflow="dropdown" [showAddButton]="true">
-  <app-pk-tab title="Tab 1" [active]="true">Content 1</app-pk-tab>
-  <app-pk-tab title="Tab 2" [isClose]="true">Content 2</app-pk-tab>
+<app-pk-tabs overflow="dropdown" [showAddButton]="true" 
+             (tabChange)="onTabChange($event)"
+             (tabClose)="onTabClose($event)"
+             (addTab)="onAddTab()">
+  <app-pk-tab title="Dashboard" [active]="true" theme="primary">
+    <h3>Dashboard Content</h3>
+    <p>Main dashboard with statistics and charts.</p>
+  </app-pk-tab>
+  
+  <app-pk-tab title="Settings" [isClose]="true" theme="warn">
+    <h3>Settings Panel</h3>
+    <p>Application configuration and preferences.</p>
+  </app-pk-tab>
+  
+  <app-pk-tab title="Reports" theme="success">
+    <!-- Custom title template -->
+    <ng-template #titleTemplate>
+      <i class="icon-chart"></i>
+      <span>Reports</span>
+      <span class="badge bg-green-500 text-white text-xs px-1 rounded">5</span>
+    </ng-template>
+    
+    <h3>Reports & Analytics</h3>
+    <p>Detailed reports and data visualization.</p>
+  </app-pk-tab>
 </app-pk-tabs>
 
-// Overflow types: 'scroll' | 'dropdown' | 'new-line'
+// Overflow handling types
+type TabOverflowType = 'scroll' | 'dropdown' | 'new-line';
+
+// Theme options  
+type TabTheme = 'primary' | 'warn' | 'success' | 'error';
 ```
 
-**Features:**
-- Multiple overflow strategies (scroll, dropdown, new-line)
-- Closeable tabs with confirmation
-- Theme support (primary, warn, success, error)
-- Responsive design with proper z-index management
-- Custom title templates support
-- Add button functionality
+**Key Features:**
+- **Smart Overflow Handling**: Automatically handles many tabs with 3 strategies
+  - `scroll`: Horizontal scrolling with thin scrollbar
+  - `dropdown`: Overflow tabs in dropdown menu with window boundary detection
+  - `new-line`: Wrap tabs to new lines for multi-row layout
+- **Interactive Tabs**: Closeable tabs with event handling
+- **Visual Themes**: 4 built-in themes with proper color schemes
+- **Responsive Design**: Works perfectly on all screen sizes
+- **Advanced Z-Index**: Proper layering that works with navigation system
+- **Accessibility**: Full keyboard navigation and screen reader support
+- **Custom Templates**: Support for complex tab titles with icons and badges
 
 ### 🧭 **Navigation System**
 Professional sidebar navigation with:
@@ -126,22 +156,39 @@ Professional sidebar navigation with:
 
 - 📖 **[Complete Manual](./docs/manual.md)** - Comprehensive guide
 - 🧩 **[Components](./docs/components/)** - UI component docs
+  - 🗂️ **[PK-Tabs System](./docs/components/PK-TABS.md)** - Complete tab documentation
+  - ⚡ **[PK-Tabs Quick Reference](./docs/components/PK-TABS-QUICK-REF.md)** - Quick API reference
+  - 🧭 **[Navigation System](./docs/components/navigation.md)** - Navigation documentation
 - ⚙️ **[Services](./docs/services/)** - Service documentation
+- 🔧 **[Technical Fixes](./docs/TECHNICAL-FIXES.md)** - Technical improvements & fixes
 - 📋 **[Changelog](./CHANGELOG.md)** - Version history
 
-## Demo Pages
+## Demo Pages & Features Showcase
 
-- `/login` - Authentication system
-- `/home` - Dashboard with navigation demo
-- `/users` - User management with CRUD operations
-- `/tabs-demo` - **NEW**: Advanced Tab System showcase
-- `/toastr-demo` - Toast notifications
-- `/alert-demo` - Alert modals
-- `/modal-demo` - Modal windows
-- `/grid-demo` - Grid system examples
-- `/badges-demo` - Badge components showcase
-- `/drag-drop-demo` - Drag & drop functionality
-- `/icons-demo` - Icon & component showcase
+### 🏠 **Core Application**
+- `/login` - Authentication system with route guards
+- `/home` - Dashboard with responsive navigation demo
+
+### 🗂️ **PK-Tabs System Showcase** ⭐
+- `/tabs-demo` - **FEATURED**: Complete Tab System demonstration
+  - All overflow strategies (scroll, dropdown, new-line)
+  - Interactive tab creation, deletion, and management  
+  - Theme variations and custom styling examples
+  - Responsive behavior testing
+  - Performance with many tabs (50+ tabs demo)
+  - Integration with forms and complex content
+
+### 🧩 **UI Components Gallery**
+- `/modal-demo` - Modal windows with size variants
+- `/alert-demo` - Alert notifications and confirmations
+- `/toastr-demo` - Toast notifications system
+- `/badges-demo` - Badge components with icons
+- `/grid-demo` - Responsive grid system examples
+- `/drag-drop-demo` - Advanced drag & drop functionality
+- `/icons-demo` - Icon library and component showcase
+
+### 👥 **Application Features**
+- `/users` - Complete CRUD operations with data management
 
 ## Technical Specifications
 

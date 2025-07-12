@@ -1,11 +1,17 @@
 
 # คู่มือการใช้งาน Angular Seed
 
-## What's New (20.1.1)
+## What's New (20.1.0-7)
 
-- ระบบ login redirect ไป /home หลังเข้าสู่ระบบสำเร็จ
-- ปรับ dropdown user profile ให้ใช้งานได้ทั้ง hover/click และไม่ hide เมื่อ mouse อยู่บนเมนู
-- ปรับปรุง UI dropdown และ navigation
+### 🆕 **ฟีเจอร์ใหม่**
+- **PK-Tabs System**: ระบบ Tab ขั้นสูงพร้อม overflow handling
+- **Professional Navigation**: ระบบ navigation ที่ปรับปรุงใหม่
+- **Z-Index Management**: จัดการ z-index อย่างเป็นระบบ
+
+### 🔧 **แก้ไขปัญหา**
+- แก้ไขปัญหาปุ่มใต้ side nav ที่ย่อแล้ว click ไม่ได้
+- ปรับปรุงระบบ navigation ให้ใช้งานได้ดีขึ้น
+- ปรับปรุงการจัดการ layout และ responsive design
 
 คู่มือนี้จะอธิบายถึงการใช้งานคอมโพเนนต์และบริการต่างๆ ที่มีอยู่ในโปรเจค Angular Seed
 
@@ -16,29 +22,33 @@
    - [PK Grid System](./components/grid.md)
    - [Navigation](./components/navigation.md)
    - [Footer](./components/footer.md)
-3. [CSS Components](#css-components)
+3. [Advanced UI Components](#advanced-ui-components)
+   - [🗂️ PK-Tabs System](./components/PK-TABS.md) - **ใหม่!**
+4. [CSS Components](#css-components)
    - [Buttons](./components/buttons.md)
    - [Cards](./components/cards.md)
    - [Badges](./components/badges.md)
    - [Breadcrumbs](./components/breadcrumbs.md)
    - [Icons](./components/icons.md)
-4. [UI Components](#ui-components)
+5. [UI Components](#ui-components)
    - [Toastr Notifications](./components/toastr.md)
    - [Alert Modals](./components/alert.md)
    - [Modal Windows](./components/modal.md)
    - [Drag & Drop Lists](./components/drag-drop.md)
    - [Forms](./components/forms.md)
-5. [Services](#services)
+6. [Services](#services)
    - [ToastrService](./services/toastr-service.md)
    - [AlertService](./services/alert-service.md)
    - [ModalService](./services/modal-service.md)
    - [DragDropService](./services/drag-drop-service.md)
    - [AuthService](./services/auth-service.md)
-6. [Pages & Routing](#pages--routing)
-7. [Authentication](#authentication)
-8. [State Management](#state-management)
-9. [Best Practices](#best-practices)
-10. [Troubleshooting](#troubleshooting)
+7. [Technical Documentation](#technical-documentation)
+   - [🔧 Technical Fixes & Improvements](./TECHNICAL-FIXES.md) - **ใหม่!**
+8. [Pages & Routing](#pages--routing)
+9. [Authentication](#authentication)
+10. [State Management](#state-management)
+11. [Best Practices](#best-practices)
+12. [Troubleshooting](#troubleshooting)
 
 ## การติดตั้งและเริ่มต้นใช้งาน
 
@@ -92,6 +102,80 @@ npm test
 - [PK Grid System](./components/grid.md) - ระบบ grid แบบ responsive ที่ใช้ CSS Grid เป็นฐาน
 - [Navigation](./components/navigation.md) - ระบบ navigation ที่มี top bar และ side navigation
 - [Footer](./components/footer.md) - Footer component ที่ปรับขนาดตาม content area
+
+## Advanced UI Components
+
+### 🗂️ PK-Tabs System - ระบบ Tab ขั้นสูง
+
+ระบบ Tab ที่มีความสามารถขั้นสูงสำหรับจัดการ content หลายหน้าในพื้นที่เดียว
+
+#### คุณสมบัติหลัก
+- **Smart Overflow Handling**: จัดการ tab เยอะๆ ด้วย 3 วิธี
+  - `scroll`: เลื่อนแนวนอนเมื่อ tab เยอะ
+  - `dropdown`: แสดง tab เกินใน dropdown menu
+  - `new-line`: แบ่ง tab เป็นหลายแถว
+- **Interactive Tabs**: ปิด tab ได้และมี event handling
+- **Theme System**: 4 theme สี (primary, warn, success, error)
+- **Custom Templates**: รองรับ title แบบ custom พร้อม icon และ badge
+- **Responsive Design**: ทำงานได้ดีทุกขนาดหน้าจอ
+- **Z-Index Management**: จัดการ layer ให้ทำงานร่วมกับ navigation
+
+#### การใช้งานพื้นฐาน
+```html
+<app-pk-tabs overflow="dropdown" [showAddButton]="true"
+             (tabChange)="onTabChange($event)"
+             (tabClose)="onTabClose($event)">
+  <app-pk-tab title="หน้าหลัก" [active]="true">
+    เนื้อหาหน้าหลัก
+  </app-pk-tab>
+  
+  <app-pk-tab title="การตั้งค่า" [isClose]="true" theme="warn">
+    เนื้อหาการตั้งค่า
+  </app-pk-tab>
+</app-pk-tabs>
+```
+
+#### การใช้งานขั้นสูง
+```html
+<app-pk-tabs overflow="scroll">
+  <app-pk-tab theme="success">
+    <!-- Custom title template -->
+    <ng-template #titleTemplate>
+      <i class="fas fa-chart-bar mr-2"></i>
+      <span>รายงาน</span>
+      <span class="bg-green-500 text-white text-xs px-1 rounded ml-1">5</span>
+    </ng-template>
+    
+    <div class="p-4">
+      <h3>รายงานและสถิติ</h3>
+      <p>เนื้อหารายงานที่มีกราฟและตาราง</p>
+    </div>
+  </app-pk-tab>
+</app-pk-tabs>
+```
+
+#### Event Handling
+```typescript
+export class MyComponent {
+  onTabChange(index: number) {
+    console.log('เปลี่ยนไป tab:', index);
+  }
+  
+  onTabClose(index: number) {
+    console.log('ขอปิด tab:', index);
+    // จัดการการปิด tab
+  }
+  
+  onAddTab() {
+    console.log('ขอเพิ่ม tab ใหม่');
+    // จัดการการเพิ่ม tab
+  }
+}
+```
+
+สำหรับข้อมูลเพิ่มเติม ดูได้ที่ [PK-Tabs Documentation](./components/PK-TABS.md)
+
+**Demo**: เยี่ยมชม `/tabs-demo` เพื่อดูตัวอย่างการใช้งานทั้งหมด
 
 ## CSS Components
 
