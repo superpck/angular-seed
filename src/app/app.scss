@@ -1,17 +1,32 @@
-// Collapsed nav style
-.content.collapsed-nav {
-  @media (min-width: 1024px) {
-    padding-left: 80px !important; // กำหนดความกว้าง side nav เมื่อ collapse
-  }
-}
-/* App Component Styles */
-/* Custom styles for this component only */
-
 // App container styles
 .app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+// Navigation wrapper
+.nav-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50; /* Higher than content to ensure nav is always on top */
+}
+
+// Main content wrapper
+.main-content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  
+  &.with-nav {
+    padding-top: 56px; /* Account for top nav height */
+    
+    @media (min-width: 1024px) { /* lg breakpoint */
+      padding-left: 250px; /* Account for side nav width */
+    }
+  }
 }
 
 // Content styles
@@ -21,12 +36,20 @@
   transition: padding-left 0.3s;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 10; /* Ensure content is above the side nav when collapsed */
   
   &.with-nav {
-    padding-top: 56px; // ความสูงของ top nav
+    /* Padding is now handled by main-content-wrapper */
+  }
+  
+  &.collapsed-nav {
+    @media (min-width: 1024px) {
+      /* Adjust the main wrapper instead */
+    }
     
-    @media (min-width: 1024px) { // lg breakpoint
-      padding-left: 250px; // ความกว้างของ side nav
+    .content-wrapper {
+      z-index: 30; /* Ensure content is above the side nav when collapsed */
     }
   }
   
@@ -34,13 +57,32 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: 0; // Allow flex child to shrink
+    min-height: 0; /* Allow flex child to shrink */
+    position: relative;
     
-    // Make sure router-outlet content takes remaining space
+    /* Make sure router-outlet content takes remaining space */
     > :first-child:not(app-footer) {
       flex: 1;
       display: flex;
       flex-direction: column;
+      position: relative;
+      z-index: 15; /* Ensure router content is above the side nav */
     }
+  }
+}
+
+// Adjust main wrapper for collapsed nav
+.main-content-wrapper.with-nav {
+  @media (min-width: 1024px) {
+    &:has(.content.collapsed-nav) {
+      padding-left: 80px !important; /* Adjust for collapsed nav width */
+    }
+  }
+}
+
+// Alternative approach using class on wrapper
+.main-content-wrapper.collapsed-nav {
+  @media (min-width: 1024px) {
+    padding-left: 80px !important; /* Adjust for collapsed nav width */
   }
 }

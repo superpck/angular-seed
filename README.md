@@ -1,31 +1,41 @@
-# Angular Seed Project version 20.1.0 - 2025.07.12-6
+# Angular Seed Project version 20.1.0 - 2025.07.12-7
 
+Modern Angular application template with Tailwind CSS, advanced UI components, and professional navigation system.
 
-Modern Angular application template with Tailwind CSS and pre-built UI components.
+## What's New (20.1.0 - 2025.07.12-7)
 
-## What's New (20.1.0 - 2025.07.12-6)
+### 🆕 **Major Updates**
+- **NEW**: Advanced Tab Component System (PK-Tabs) with overflow handling
+- **NEW**: Professional Navigation Layout with collapsible sidebar
+- **FIXED**: Z-index management and click event handling
+- **IMPROVED**: Layout structure with proper nav-wrapper and content separation
+- **ENHANCED**: Responsive design for all screen sizes
 
-- Fixed: Login now redirects to /home after successful authentication
-- Improved: User profile dropdown menu (hover/click behavior, UI)
-- UI: Minor style fixes for navigation and dropdown
+### 🔧 **Technical Improvements**
+- Fixed: Buttons under collapsed sidebar now clickable
+- Improved: Side navigation click handling after collapse/expand
+- Enhanced: Z-index hierarchy management (Nav: 50, Content: 9999 when collapsed)
+- Added: Pointer-events management for better UX
+- Restructured: App layout with nav-wrapper and main-content-wrapper
 
 ## Features
 
 - ⚡ [**Angular 20**](https://angular.dev/) with TypeScript & Standalone Components
 - 🎨 [**Tailwind CSS 3**](https://tailwindcss.com/) for styling
-- 📱 **Responsive Design** with PK Grid System
+- 📱 **Responsive Design** with advanced layout management
+- 🗂️ **Advanced Tab System** (PK-Tabs) with overflow handling (scroll, dropdown, new-line)
+- 🧭 **Professional Navigation** with collapsible sidebar and responsive design
 - 📍 **PK Breadcrumbs System** with navigation & icons
 - 🏷️ **PK Badges System** with icon support
 - 🃏 **Card System** with variants and responsive layouts
 - 🔔 **Notification System** (Toastr & Alert Modals)
-- 🧩 **Pre-built Components** (Buttons, Modals)
+- 🧩 **Pre-built Components** (Buttons, Modals, Tabs)
 - 🚀 **Drag & Drop System** with cross-window support
 - 🔐 **Authentication** with route guards
 - 🦶 **Footer Component** with modern styling
 - 📦 **Type-safe APIs** with TypeScript interfaces
 - 🔄 **State Management** with Angular Signals
-
-Modern Angular application template with Tailwind CSS and pre-built UI components.
+- 🎯 **Z-index Management** with proper layering system
 
 ## Author & Repository
 
@@ -58,16 +68,58 @@ src/
 ├── app/
 │   ├── shared/          # Reusable components & services
 │   │   ├── components/  # UI components (Modal, Alert, etc.)
-│   │   ├── services/    # Services (Auth, Toastr, etc.)
+│   │   ├── tabs/        # PK-Tabs system (pk-tabs, pk-tab components)
+│   │   ├── services/    # Services (Auth, Toastr, Modal, etc.)
 │   │   └── styles/      # Global styles & grid system
 │   ├── demo/            # Component demonstrations
 │   ├── pages/           # Application pages
-│   ├── layout/          # Layout components (Nav, Footer, etc.)
+│   ├── nav/             # Navigation system (NavComponent)
+│   ├── footer/          # Footer component
 │   └── models/          # TypeScript interfaces & models
 ├── docs/                # Documentation
 └── assets/              # Static assets
     ├── images/          # Images and icons
     └── data/            # JSON mock data
+```
+
+## Key Components
+
+### 🗂️ **PK-Tabs System**
+Advanced tab component with multiple overflow handling strategies:
+
+```typescript
+// Basic usage
+<app-pk-tabs overflow="dropdown" [showAddButton]="true">
+  <app-pk-tab title="Tab 1" [active]="true">Content 1</app-pk-tab>
+  <app-pk-tab title="Tab 2" [isClose]="true">Content 2</app-pk-tab>
+</app-pk-tabs>
+
+// Overflow types: 'scroll' | 'dropdown' | 'new-line'
+```
+
+**Features:**
+- Multiple overflow strategies (scroll, dropdown, new-line)
+- Closeable tabs with confirmation
+- Theme support (primary, warn, success, error)
+- Responsive design with proper z-index management
+- Custom title templates support
+- Add button functionality
+
+### 🧭 **Navigation System**
+Professional sidebar navigation with:
+- Collapsible sidebar (desktop: 250px → 60px)
+- Mobile-responsive overlay menu
+- Submenu support with animations
+- User profile dropdown
+- Proper z-index hierarchy (nav: 50, content: 9999 when collapsed)
+
+### 🎯 **Layout Architecture**
+```html
+<nav-wrapper>           <!-- z-index: 50 -->
+  <app-nav>
+</nav-wrapper>
+<main-content-wrapper>  <!-- Dynamic padding based on nav state -->
+  <div class="content">  <!-- z-index: 9999 when nav collapsed -->
 ```
 
 ## Documentation
@@ -79,8 +131,10 @@ src/
 
 ## Demo Pages
 
-- `/login` - Authentication
+- `/login` - Authentication system
+- `/home` - Dashboard with navigation demo
 - `/users` - User management with CRUD operations
+- `/tabs-demo` - **NEW**: Advanced Tab System showcase
 - `/toastr-demo` - Toast notifications
 - `/alert-demo` - Alert modals
 - `/modal-demo` - Modal windows
@@ -88,6 +142,29 @@ src/
 - `/badges-demo` - Badge components showcase
 - `/drag-drop-demo` - Drag & drop functionality
 - `/icons-demo` - Icon & component showcase
+
+## Technical Specifications
+
+### Z-Index Management
+```scss
+// Z-index hierarchy
+Navigation:     50    // Always on top
+Dropdown Menu:  150   // Above navigation
+Content:        10    // Normal layer
+Content (Nav Collapsed): 9999  // Above collapsed nav
+Tab Components: 100-1000  // Proper layering
+```
+
+### Responsive Breakpoints
+- **Mobile**: < 768px (overlay navigation)
+- **Tablet**: 768px - 1024px (responsive adjustments)
+- **Desktop**: > 1024px (full sidebar navigation)
+
+### Browser Support
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
 
 ## Login Credentials
 

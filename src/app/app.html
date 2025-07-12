@@ -4,16 +4,26 @@
     isLoginPage: {{ isLoginPage }}
   </div> -->
   
-  <!-- แสดง NavComponent ยกเว้นในหน้า Login -->
-  <app-nav *ngIf="!isLoginPage" (sideNavCollapsedChange)="sideNavCollapsed = $event"></app-nav>
+  <!-- Navigation Container -->
+  <div class="nav-wrapper" *ngIf="!isLoginPage">
+    <app-nav (sideNavCollapsedChange)="sideNavCollapsed = $event"></app-nav>
+  </div>
   
-  <!-- เนื้อหาหลัก -->
-  <div class="content" [ngClass]="{'with-nav': !isLoginPage, 'collapsed-nav': sideNavCollapsed}">
-    <div class="content-wrapper">
-      <router-outlet></router-outlet>
-      
-      <!-- Footer component สำหรับหน้าอื่นๆ ยกเว้นหน้า Login -->
-      <app-footer *ngIf="!isLoginPage"></app-footer>
+  <!-- Main Content Container -->
+  <div class="main-content-wrapper" [ngClass]="{'with-nav': !isLoginPage, 'collapsed-nav': sideNavCollapsed}">
+    <!-- เนื้อหาหลัก -->
+    <div class="content" 
+         [ngClass]="{'with-nav': !isLoginPage, 'collapsed-nav': sideNavCollapsed}"
+         [style.z-index]="sideNavCollapsed ? '100' : '30'"
+         [style.pointer-events]="'auto'">
+      <div class="content-wrapper" 
+           [style.z-index]="sideNavCollapsed ? '100' : '15'"
+           [style.pointer-events]="'auto'">
+        <router-outlet></router-outlet>
+        
+        <!-- Footer component สำหรับหน้าอื่นๆ ยกเว้นหน้า Login -->
+        <app-footer *ngIf="!isLoginPage"></app-footer>
+      </div>
     </div>
   </div>
   

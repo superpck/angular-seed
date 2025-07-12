@@ -7,7 +7,7 @@
   height: 56px;
   background-color: #3b82f6; // bg-blue-500
   color: white;
-  z-index: 30;
+  z-index: 101;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -20,6 +20,21 @@
   width: 250px;
   z-index: 20;
   transition: width 0.3s ease;
+  
+  // When collapsed, create a transparent overlay only outside the nav area
+  &.collapsed {
+    &::before {
+      content: '';
+      position: fixed;
+      top: 56px;
+      left: 60px; // Start after the collapsed nav width
+      right: 0;
+      bottom: 0;
+      background: transparent;
+      pointer-events: none; // This overlay doesn't block clicks
+      z-index: -1;
+    }
+  }
 }
 
 .side-nav {
@@ -47,6 +62,19 @@
   &.collapsed {
     width: 60px;
     
+    // Create a visual background that doesn't interfere with clicks
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 100%;
+      z-index: -1;
+      background-color: white;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+    
     .menu-text, .submenu-arrow {
       display: none;
     }
@@ -54,6 +82,8 @@
     .menu-item {
       justify-content: center;
       padding: 0.75rem 0;
+      position: relative;
+      z-index: 30;
       
       svg {
         margin-right: 0; // Remove margin when collapsed
@@ -69,7 +99,7 @@
       border: 1px solid #e5e7eb;
       border-radius: 0 4px 4px 0;
       box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 30;
+      z-index: 40;
       max-height: none;
       
       &.submenu-expanded {
@@ -83,6 +113,15 @@
     
     .menu-with-submenu {
       position: relative;
+    }
+    
+    // Ensure all interactive elements in collapsed state can receive clicks
+    .collapse-button-container,
+    .side-nav-header,
+    .side-nav-user,
+    .menu {
+      position: relative;
+      z-index: 30;
     }
   }
 }

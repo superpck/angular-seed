@@ -49,8 +49,11 @@
   </nav>
 
   <!-- Left Side Navigation -->
-  <div class="side-nav-container">
-    <div class="side-nav" [class.open]="sideNavOpen" [class.collapsed]="sideNavCollapsed">
+  <div class="side-nav-container" 
+       [class.collapsed]="sideNavCollapsed">
+    <div class="side-nav" 
+         [class.open]="sideNavOpen" 
+         [class.collapsed]="sideNavCollapsed">
       <div class="side-nav-header flex justify-between items-center lg:hidden">
         <span class="text-lg font-semibold">Menu</span>
         <button (click)="toggleSideNav()" class="p-2 rounded hover:bg-gray-200">
