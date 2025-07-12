@@ -33,16 +33,16 @@ export class NavComponent {
   showProfileDropdown = false;
   private authService = inject(FakeAuthService);
   private router = inject(Router);
-  
+
   sideNavOpen = false; // สถานะของ sidenav
   sideNavCollapsed = false; // สถานะของ sidenav เมื่อย่อ
-  
+
   // กำหนดค่าเริ่มต้นตามขนาดหน้าจอ
   constructor() {
     // Initialize menu state based on screen size
     this.checkScreenSize();
   }
-  
+
   // ฟังก์ชันสำหรับการ resize หน้าจอ
   @HostListener('window:resize')
   checkScreenSize(): void {
@@ -54,12 +54,12 @@ export class NavComponent {
       this.sideNavOpen = false;
     }
   }
-  
+
   // ข้อมูลผู้ใช้
   get currentUser() {
     return this.authService.currentUser;
   }
-  
+
   menuItems: MenuItem[] = [
     {
       label: 'Home',
@@ -116,6 +116,12 @@ export class NavComponent {
           icon: 'M9 5l7 7-7 7',
           route: '/breadcrumbs-demo'
         }
+        ,
+        {
+          label: 'Tabs Demo',
+          icon: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z',
+          route: '/tabs-demo'
+        }
       ]
     },
     {
@@ -129,16 +135,16 @@ export class NavComponent {
       route: '#'
     }
   ];
-  
+
   toggleSideNav(): void {
     this.sideNavOpen = !this.sideNavOpen;
   }
-  
+
   toggleSideNavCollapse(): void {
     this.sideNavCollapsed = !this.sideNavCollapsed;
     this.sideNavCollapsedChange.emit(this.sideNavCollapsed);
   }
-  
+
   toggleSubmenu(item: MenuItem, event?: Event): void {
     if (event) {
       event.stopPropagation(); // ป้องกันการทำงานของการนำทาง
@@ -149,10 +155,10 @@ export class NavComponent {
     //     menuItem.expanded = false;
     //   }
     // });
-    
+
     item.expanded = !item.expanded;
   }
-  
+
   // แก้ไขสำหรับมือถือ - ปิดเมนูหลังจากเลือกรายการ
   navigateOnMobile(route: string): void {
     if (route && route !== '#') {
@@ -165,7 +171,7 @@ export class NavComponent {
       this.router.navigate([route]);
     }
   }
-  
+
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);

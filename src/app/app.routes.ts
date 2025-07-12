@@ -57,6 +57,11 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'tabs-demo',
+    loadComponent: () => import('./demo/tabs-demo.component').then(m => m.TabsDemoComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: '',
     redirectTo: 'users',
     pathMatch: 'full'
