@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
   loading = false;
   errorMessage = '';
-  returnUrl = '/users'; // เปลี่ยนจาก '/' เป็น '/users'
+  returnUrl = '/'; // เปลี่ยนจาก '/home' เป็น '/' เพื่อให้ใช้ default route
   
   // Modern background images
   backgroundImages = [
@@ -66,8 +66,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     // ลอก logout ก่อนเพื่อให้แน่ใจว่าไม่มีการ login ค้างอยู่
     this.authService.logout();
 
-    // ดึงค่า returnUrl จาก query params ถ้ามี แต่ default เป็น '/users'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+    // ดึงค่า returnUrl จาก query params ถ้ามี แต่ default เป็น '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     
     // Set up automatic image rotation every 6 seconds
     this.startImageRotation();
@@ -140,6 +140,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       next: (response) => {
         if (response.success) {
           // นำทางไปยังหน้าที่ต้องการหลังจาก login สำเร็จ
+          console.log('Navigating to:', this.returnUrl);
           this.router.navigate([this.returnUrl]);
         } else {
           this.errorMessage = response.message;

@@ -86,7 +86,7 @@ interface DemoCard {
             <img [src]="card.image" [alt]="card.title" class="w-full h-40 object-cover mb-4 rounded">
             <p>{{ card.description }}</p>
           </div>
-          <div class="pk-card-footer flex justify-end space-x-2">
+          <div class="pk-card-footer justify-end space-x-2">
             <button 
               class="pk-button pk-button-sm" 
               [ngClass]="'pk-button-' + card.type"

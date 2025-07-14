@@ -1,8 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
-import { NavComponent } from './nav/nav.component';
-import { FooterComponent } from './footer/footer.component';
-import { filter } from 'rxjs/operators';
+import { Component, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ToastrComponent } from './shared/toastr/toastr.component';
 import { AlertComponent } from './shared/alert/alert.component';
@@ -26,38 +23,14 @@ interface ModalData {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavComponent, FooterComponent, CommonModule, ToastrComponent, AlertComponent, ModalModule],
+  imports: [RouterOutlet, CommonModule, ToastrComponent, AlertComponent, ModalModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App implements OnInit {
-  protected sideNavCollapsed = false;
+export class App {
   protected title = 'angular-seed';
-  protected isLoginPage = false;
-  private router = inject(Router);
   protected modalService = inject(ModalService);
   private toastr = inject(ToastrService);
-  
-  ngOnInit(): void {
-    // ตั้งค่าเริ่มต้น
-    this.checkLoginPage();
-  }
-  
-  constructor() {
-    // Listen for sideNavCollapsed changes from NavComponent
-    // This will be bound in the template via (sideNavCollapsedChange)
-    // ตรวจสอบว่าปัจจุบันอยู่ที่หน้า login หรือไม่
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      this.checkLoginPage(event.url);
-    });
-  }
-  
-  private checkLoginPage(url?: string): void {
-    const currentUrl = url || this.router.url;
-    this.isLoginPage = currentUrl === '/login' || currentUrl.startsWith('/login');
-  }
   
   /**
    * รับข้อมูล card จาก modal data

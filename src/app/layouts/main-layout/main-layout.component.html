@@ -1,0 +1,24 @@
+<div class="app-container">
+  <!-- Navigation Container -->
+  <div class="nav-wrapper">
+    <app-nav (sideNavCollapsedChange)="onSideNavCollapsedChange($event)"></app-nav>
+  </div>
+  
+  <!-- Main Content Container -->
+  <div class="main-content-wrapper" [ngClass]="{'with-nav': true, 'collapsed-nav': sideNavCollapsed}">
+    <!-- เนื้อหาหลัก -->
+    <div class="content" 
+         [ngClass]="{'with-nav': true, 'collapsed-nav': sideNavCollapsed}"
+         [style.z-index]="sideNavCollapsed ? '100' : '30'"
+         [style.pointer-events]="'auto'">
+      <div class="content-wrapper" 
+           [style.z-index]="sideNavCollapsed ? '100' : '15'"
+           [style.pointer-events]="'auto'">
+        <router-outlet></router-outlet>
+        
+        <!-- Footer component -->
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
+</div>

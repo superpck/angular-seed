@@ -1,0 +1,46 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &.with-nav {
+    margin-top: 56px; // ความสูงของ top nav
+    transition: margin-left 0.3s ease;
+    
+    @media (min-width: 1024px) { // lg breakpoint
+      margin-left: 250px; // ความกว้างของ side nav
+    }
+    
+    &.collapsed-nav {
+      @media (min-width: 1024px) { // lg breakpoint
+        margin-left: 60px; // ความกว้างของ side nav เมื่อ collapse
+      }
+    }
+  }
+}
+
+.content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  
+  // กำหนด z-index ให้สูงกว่า side-nav ใน collapsed state
+  position: relative;
+  z-index: 15;
+  
+  // สร้าง stacking context ใหม่เพื่อให้ elements ภายใน content ไม่ถูกบัง
+  isolation: isolate;
+}
+
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
