@@ -1,14 +1,15 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { User, UserFilterCriteria } from '../models/user-data.model';
-import { UserFormComponent } from './user-form.component';
 import { ToastrService } from '../shared/services/toastr.service';
 import { AlertService } from '../shared/services/alert.service';
 import { ModalService } from '../shared/services/modal.service';
 import { ModalModule } from '../shared/modal/modal.module';
+import { ModalResult } from '../shared/models/modal.model';
+import { UserFormModalComponent } from './user-form-modal.component';
 
 @Component({
   selector: 'app-user-list',
@@ -17,13 +18,13 @@ import { ModalModule } from '../shared/modal/modal.module';
     CommonModule, 
     FormsModule,
     ReactiveFormsModule,
-    UserFormComponent,
-    ModalModule
+    ModalModule,
+    UserFormModalComponent
   ],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss'
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit, OnDestroy {
   private userService = inject(UserService);
   private fb = inject(FormBuilder);
   private toastr = inject(ToastrService);
@@ -62,6 +63,9 @@ export class UserListComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    // Initialize modal service
+    this.modalService.initialize();
+    
     this.loadUsers();
     
     // สมัครสมาชิกเพื่อดูการเปลี่ยนแปลงข้อมูลผู้ใช้
@@ -71,6 +75,11 @@ export class UserListComponent implements OnInit {
       this.updateDisplayedUsers();
       this.loading = false;
     });
+  }
+  
+  ngOnDestroy(): void {
+    // Clean up modal service when component is destroyed
+    this.modalService.destroyModal();
   }
   
   loadUsers(): void {
@@ -170,16 +179,50 @@ export class UserListComponent implements OnInit {
       size: 'xl',
       closeable: true,
       closeOnBackdropClick: false,
-      data: { mode: 'add' }
+      data: { mode: 'add' },
+      content: `
+        <div class="p-4">
+          <app-user-form 
+            [editMode]="false"
+            (save)="document.dispatchEvent(new CustomEvent('saveUser', {detail: $event}))"
+            (cancelForm)="document.dispatchEvent(new CustomEvent('cancelForm'))">
+          </app-user-form>
+        </div>
+      `,
+      footerContent: `
+        <div class="flex justify-end space-x-4">
+          <button id="closeModalBtn" class="pk-button pk-button-outline pk-button-primary">
+            ยกเลิก
+          </button>
+        </div>
+      `
     });
     
+    // เพิ่ม event listener สำหรับปุ่มปิด
+    setTimeout(() => {
+      const closeBtn = document.getElementById('closeModalBtn');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => this.modalService.close());
+      }
+      
+      // ตรวจจับ event เมื่อบันทึกข้อมูลผู้ใช้
+      document.addEventListener('saveUser', ((e: CustomEvent) => {
+        this.modalService.close({ saved: true, user: e.detail });
+      }) as EventListener, { once: true });
+      
+      // ตรวจจับ event เมื่อยกเลิก
+      document.addEventListener('cancelForm', (() => {
+        this.modalService.close();
+      }) as EventListener, { once: true });
+    }, 100);
+    
     // รับเหตุการณ์เมื่อ Modal ถูกปิด
-    this.modalService.onClose.subscribe((data: unknown) => {
-      if (data && typeof data === 'object' && 'saved' in data && 'user' in data) {
-        this.saveUser(data.user as User);
+    const subscription = this.modalService.onClose.subscribe((result: ModalResult) => {
+      if (result && result.saved && result.user) {
+        this.saveUser(result.user as User);
       }
       // ยกเลิกการ subscribe เพื่อป้องกันการรั่วไหลของหน่วยความจำ
-      this.modalService.onClose.subscribe().unsubscribe();
+      subscription.unsubscribe();
     });
   }
   
@@ -193,16 +236,51 @@ export class UserListComponent implements OnInit {
       size: 'xl',
       closeable: true,
       closeOnBackdropClick: false,
-      data: { user, mode: 'edit' }
+      data: { user, mode: 'edit' },
+      content: `
+        <div class="p-4">
+          <app-user-form 
+            [user]="${JSON.stringify(user).replace(/"/g, '&quot;')}"
+            [editMode]="true"
+            (save)="document.dispatchEvent(new CustomEvent('saveUser', {detail: $event}))"
+            (cancelForm)="document.dispatchEvent(new CustomEvent('cancelForm'))">
+          </app-user-form>
+        </div>
+      `,
+      footerContent: `
+        <div class="flex justify-end space-x-4">
+          <button id="closeEditModalBtn" class="pk-button pk-button-outline pk-button-primary">
+            ยกเลิก
+          </button>
+        </div>
+      `
     });
     
+    // เพิ่ม event listener สำหรับปุ่มปิด
+    setTimeout(() => {
+      const closeBtn = document.getElementById('closeEditModalBtn');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => this.modalService.close());
+      }
+      
+      // ตรวจจับ event เมื่อบันทึกข้อมูลผู้ใช้
+      document.addEventListener('saveUser', ((e: CustomEvent) => {
+        this.modalService.close({ saved: true, user: e.detail });
+      }) as EventListener, { once: true });
+      
+      // ตรวจจับ event เมื่อยกเลิก
+      document.addEventListener('cancelForm', (() => {
+        this.modalService.close();
+      }) as EventListener, { once: true });
+    }, 100);
+    
     // รับเหตุการณ์เมื่อ Modal ถูกปิด
-    this.modalService.onClose.subscribe((data: unknown) => {
-      if (data && typeof data === 'object' && 'saved' in data && 'user' in data) {
-        this.saveUser(data.user as User);
+    const subscription = this.modalService.onClose.subscribe((result: ModalResult) => {
+      if (result && result.saved && result.user) {
+        this.saveUser(result.user as User);
       }
       // ยกเลิกการ subscribe เพื่อป้องกันการรั่วไหลของหน่วยความจำ
-      this.modalService.onClose.subscribe().unsubscribe();
+      subscription.unsubscribe();
     });
   }
   

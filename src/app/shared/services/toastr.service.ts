@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Toast } from '../models/toast.model';
+import { ToastrComponentFactory } from './toastr-component-factory.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,33 @@ export class ToastrService {
   private toasts: Toast[] = [];
   private toastSubject = new BehaviorSubject<Toast[]>([]);
   public toasts$ = this.toastSubject.asObservable();
+  
+  // สำหรับสร้าง component แบบ dynamic
+  private componentFactory = inject(ToastrComponentFactory);
+  private initialized = false;
+
+  constructor() {
+    // ไม่ initialize ทันที เพื่อหลีกเลี่ยง circular dependency
+  }
+  
+  /**
+   * เริ่มต้นการทำงานของ ToastrService โดยสร้าง ToastrComponent
+   */
+  initialize(): void {
+    if (this.initialized) return;
+    
+    // ใช้ factory สร้าง component
+    this.componentFactory.create();
+    this.initialized = true;
+  }
 
   // เพิ่ม toast ใหม่
   show(toast: Toast): string {
+    // ตรวจสอบว่าได้ initialize แล้วหรือไม่
+    if (!this.initialized) {
+      this.initialize();
+    }
+    
     const id = this.generateId();
     const newToast: Toast = {
       id,
@@ -89,5 +114,13 @@ export class ToastrService {
   // สร้าง id สำหรับ toast
   private generateId(): string {
     return Date.now().toString() + Math.random().toString(36).substr(2, 5);
+  }
+  
+  /**
+   * ทำลาย ToastrComponent
+   */
+  destroyToastr(): void {
+    this.componentFactory.destroy();
+    this.initialized = false;
   }
 }

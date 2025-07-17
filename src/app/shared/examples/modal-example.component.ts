@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalModule } from '../modal/modal.module';
 import { ModalService } from '../services/modal.service';
+import { ModalSize } from '../models/modal.model';
 
 @Component({
   selector: 'app-modal-example',
@@ -50,17 +51,17 @@ import { ModalService } from '../services/modal.service';
 })
 export class ModalExampleComponent {
   private modalService = inject(ModalService);
-  protected currentSize = 'md';
+  protected currentSize: ModalSize = 'md';
   
   constructor() {
     // Subscribe to modal close events
   }
   
-  openModal(size: string) {
+  openModal(size: ModalSize) {
     this.currentSize = size;
     this.modalService.open({
       title: `${this.getSizeTitle(size)} Modal Example`,
-      size: size as 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full',
+      size: size,
       closeable: true,
       closeOnBackdropClick: true,
       data: { example: 'data', size }
@@ -75,7 +76,7 @@ export class ModalExampleComponent {
     this.modalService.close({ confirmed: true, size: this.currentSize });
   }
   
-  private getSizeTitle(size: string): string {
+  private getSizeTitle(size: ModalSize): string {
     switch(size) {
       case 'sm': return 'Small';
       case 'md': return 'Medium';

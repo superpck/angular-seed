@@ -1,5 +1,6 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
 import { AlertConfig, AlertState } from '../models/alert.model';
+import { AlertComponentFactory } from './alert-component-factory.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,31 @@ export class AlertService {
 
   // Expose state as readonly
   readonly alert = this.alertState.asReadonly();
+  
+  // ใช้ factory สำหรับสร้าง component
+  private componentFactory = inject(AlertComponentFactory);
+  private initialized = false;
+
+  constructor() {
+    // ไม่ initialize ทันที เพื่อหลีกเลี่ยง circular dependency
+  }
+  
+  // เรียกเมธอดนี้จากภายนอกเพื่อเริ่มต้นใช้งาน AlertService
+  initialize(): void {
+    if (this.initialized) return;
+    
+    // ใช้ factory สร้าง component
+    this.componentFactory.create();
+    this.initialized = true;
+  }
 
   // แสดง Alert
   show(config: AlertConfig): void {
+    // ตรวจสอบว่าได้ initialize แล้วหรือไม่
+    if (!this.initialized) {
+      this.initialize();
+    }
+    
     // ตั้งค่าเริ่มต้นถ้าไม่ได้กำหนด
     const defaultConfig = {
       ...config,
@@ -45,6 +68,12 @@ export class AlertService {
       show: false,
       config: null
     });
+  }
+
+  // Cleanup resource เมื่อไม่ใช้งานแล้ว
+  destroyAlert(): void {
+    this.componentFactory.destroy();
+    this.initialized = false;
   }
 
   // Helper methods สำหรับประเภท Alert ต่างๆ

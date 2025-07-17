@@ -1,53 +1,35 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ToastrComponent } from './shared/toastr/toastr.component';
-import { AlertComponent } from './shared/alert/alert.component';
-import { ModalModule } from './shared/modal/modal.module';
 import { ModalService } from './shared/services/modal.service';
 import { ToastrService } from './shared/services/toastr.service';
-
-// Define type for modal data
-interface CardData {
-  id: number;
-  title: string;
-  description: string;
-  type: string;
-  image: string;
-}
-
-interface ModalData {
-  card?: CardData;
-}
+import { AlertService } from './shared/services/alert.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, ToastrComponent, AlertComponent, ModalModule],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
+export class App implements OnInit, OnDestroy {
   protected title = 'angular-seed';
   protected modalService = inject(ModalService);
   private toastr = inject(ToastrService);
+  private alertService = inject(AlertService);
   
-  /**
-   * รับข้อมูล card จาก modal data
-   */
-  getCardData(): CardData | undefined {
-    const data = this.modalService.modal().config?.data as ModalData;
-    return data?.card;
+  ngOnInit(): void {
+    // AlertService จะสร้าง AlertComponent โดยอัตโนมัติเมื่อ initialize
+    console.log('Services initialized with dynamic component loading');
+    this.alertService.initialize(); // เรียกใช้ initialize เพื่อสร้าง AlertComponent
+    this.toastr.initialize(); // เรียกใช้ initialize เพื่อสร้าง ToastrComponent
+    this.modalService.initialize(); // เรียกใช้ initialize เพื่อสร้าง ModalComponent
   }
   
-  /**
-   * ปิด Modal พร้อมส่งข้อมูลกลับ
-   */
-  closeModalWithData(): void {
-    this.modalService.close({ 
-      action: 'close_with_data', 
-      data: { timestamp: new Date() } 
-    });
-    this.toastr.info('Modal ถูกปิดพร้อมส่งข้อมูลกลับ', 'Modal ถูกปิด');
+  ngOnDestroy(): void {
+    // ทำลาย Component เมื่อ App component ถูกทำลาย
+    this.alertService.destroyAlert();
+    this.toastr.destroyToastr();
+    this.modalService.destroyModal();
   }
 }

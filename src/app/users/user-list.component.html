@@ -211,19 +211,9 @@
   </div>
 </div>
 
-<!-- Modal สำหรับแสดงฟอร์มเพิ่ม/แก้ไขผู้ใช้ -->
-<app-modal>
-  <app-user-form 
-    [user]="selectedUser" 
-    [editMode]="editMode"
-    (save)="modalService.close({ saved: true, user: $event })"
-    (cancelForm)="modalService.close()">
-  </app-user-form>
-  
-  <!-- Modal Footer -->
-  <div modal-footer>
-    <button class="pk-button pk-button-outline pk-button-primary" (click)="modalService.close()">
-      ยกเลิก
-    </button>
-  </div>
-</app-modal>
+<!-- Modal content for UserFormModalComponent -->
+<app-user-form-modal 
+  *ngIf="modalService.modal().show" 
+  [user]="selectedUser" 
+  [editMode]="editMode">
+</app-user-form-modal>

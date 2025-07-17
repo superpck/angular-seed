@@ -1,11 +1,36 @@
 /* Modal Styles */
 @tailwind components;
 
+/* Define custom z-index utilities */
+@layer utilities {
+  .z-45 {
+    z-index: 45;
+  }
+  .z-60 {
+    z-index: 60;
+  }
+  .z-70 {
+    z-index: 70;
+  }
+  .z-75 {
+    z-index: 75;
+  }
+  .z-100 {
+    z-index: 100;
+  }
+}
+
 @layer components {
   /* Modal Backdrop */
   .pk-modal-backdrop {
     @apply fixed inset-0 bg-black bg-opacity-50 z-40 flex items-center justify-center overflow-y-auto;
     padding: 1rem;
+  }
+  
+  /* กรณี modal-full ไม่ต้องมี padding */
+  .pk-modal-full-backdrop {
+    padding: 0;
+    @apply z-60;
   }
 
   /* เมื่อ Modal เปิด ป้องกันการเลื่อนของ body */
@@ -17,10 +42,24 @@
 
   /* Modal Container */
   .pk-modal {
-    @apply bg-white rounded-lg shadow-xl overflow-hidden z-50 relative mx-auto my-6;
+    @apply bg-white rounded-lg shadow-xl overflow-hidden z-70 relative mx-auto my-6;
     max-height: calc(100vh - 2rem);
     display: flex;
     flex-direction: column;
+  }
+  
+  /* กรณี full screen ให้มีความสูงเต็มจอ */
+  .pk-modal-full {
+    max-height: 100vh !important;
+    margin: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 
   /* Modal Size Variations */
@@ -45,20 +84,52 @@
   }
 
   .pk-modal-full {
-    @apply w-[95%] max-w-[95%] h-[90vh];
+    @apply w-full h-full max-w-[100vw] max-h-[100vh];
+    margin: 0;
+    border-radius: 0;
   }
 
   /* Modal Parts */
   .pk-modal-header {
     @apply px-6 py-4 border-b border-gray-200 flex items-center justify-between;
+    position: relative;
+  }
+  
+  /* ปรับแต่ง header ของ modal-full */
+  .pk-modal-full .pk-modal-header {
+    @apply bg-gray-800 text-white border-gray-700 z-75;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding-top: 60px; /* Add top padding to account for the top navbar */
+  }
+  
+  .pk-modal-full .pk-modal-title {
+    @apply text-white;
   }
 
   .pk-modal-title {
     @apply text-xl font-semibold text-gray-800;
+    flex: 1;
   }
 
   .pk-modal-close {
-    @apply text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full p-1 transition-colors duration-200 cursor-pointer;
+    @apply text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full p-1 transition-colors duration-200 cursor-pointer z-100;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* ปรับแต่งปุ่มปิดเมื่ออยู่ใน modal-full */
+  .pk-modal-full .pk-modal-close {
+    @apply text-white hover:text-white hover:bg-red-600;
+    background-color: rgba(220, 38, 38, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    position: absolute;
+    right: 16px;
+    top: 60px; /* Adjust to match the header padding-top */
   }
 
   .pk-modal-body {
